@@ -5,6 +5,8 @@ namespace App\Http\Controllers\backend;
 use App\Models\Admin;
 use Illuminate\Http\Request;
 use App\Http\Requests\AdminRequest;
+use App\Http\Controllers\Controller;
+
 
 class AdminController extends Controller
 {

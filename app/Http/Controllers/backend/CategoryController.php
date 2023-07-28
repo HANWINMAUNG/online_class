@@ -5,6 +5,7 @@ namespace App\Http\Controllers\backend;
 use App\Models\Category;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 use App\Http\Requests\CategoryRequest;
 
 class CategoryController extends Controller

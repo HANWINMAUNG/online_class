@@ -4,7 +4,9 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\backend\UserController;
 use App\Http\Controllers\backend\AdminController;
 use App\Http\Controllers\backend\CategoryController;
+use App\Http\Controllers\backend\auth\LoginController;
 use App\Http\Controllers\backend\InstructorController;
+use App\Http\Controllers\backend\auth\RegisterController;
 
 /*
 |--------------------------------------------------------------------------
@@ -59,3 +61,14 @@ Route::post('admin/category_account', [CategoryController::class, 'store'])->nam
 Route::delete('admin/category_account/{category:id}', [CategoryController::class,'destroy'])->name('category.destroy');
 Route::get('admin/category_account/{category:id}/edit', [CategoryController::class,'edit'])->name('category.edit');
 Route::patch('admin/category_account/{category:id}', [CategoryController::class,'update'])->name('category.update');
+
+
+
+Route::get('admin/login', [LoginController::class, 'Login'])->name('admin_get.login');
+Route::post('admin/login', [LoginController::class, 'postLogin'])->name('admin_post.login');
+
+// Route::get('forgot-password' ,[ForgotPasswordController::class, 'index'])->name('forgot-password.index');
+// Route::post('forgot-password' ,[ForgotPasswordController::class, 'sendEmail'])->name('forgot-password.send-email');
+
+// Route::get('reset-password', [ResetPasswordController::class, 'index'])->name('reset-password.index'); 
+// Route::post('reset-password', [ResetPasswordController::class, 'reset'])->name('reset-password.reset'); 

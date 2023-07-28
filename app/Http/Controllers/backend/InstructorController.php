@@ -5,6 +5,7 @@ namespace App\Http\Controllers\backend;
 use App\Models\Instructor;
 
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 use App\Http\Requests\InstructorRequest;
 
 class InstructorController extends Controller
