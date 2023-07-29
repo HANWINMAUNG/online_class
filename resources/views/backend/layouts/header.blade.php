@@ -229,7 +229,7 @@
                     <li class="flex">
                       <a
                         class="inline-flex items-center w-full px-2 py-1 text-sm font-semibold transition-colors duration-150 rounded-md hover:bg-gray-100 hover:text-gray-800 dark:hover:bg-gray-800 dark:hover:text-gray-200"
-                        href="#"
+                        href="{{route('admin.logout')}}"
                       >
                         <svg
                           class="w-4 h-4 mr-3"
@@ -252,5 +252,14 @@
                 </template>
               </li>
             </ul>
-          </div>
-        </header>
+
+            <div class="ml-4">
+                <a href="{{route('admin_get.login')}}"
+                  class="px-4 py-2 text-sm font-medium leading-5 text-white transition-colors duration-150 bg-purple-600 border border-transparent rounded-lg active:bg-purple-600 hover:bg-purple-700 focus:outline-none focus:shadow-outline-purple"
+                >
+                  Login
+                </a>
+              </div>
+
+    </div>
+</header>

@@ -1,8 +1,8 @@
 @if($errors->any())
- <div class="text-red-500">
+ <div style="color:red">
     <ul>
        @foreach($errors->all() as $error)
-       <li>{!! $error !!}</li>
+       <li >{!! $error !!}</li>
        @endforeach
     </ul>
  </div>
@@ -10,8 +10,8 @@
 
 
  @if(session()->has('success'))
- <div class="text-green-500 w-full bg-green-400">
-   {{ session('success')}} 
+ <div class="text-green-500 w-full bg-green-800">
+  <h2> {{ session('success')}} </h2>
  </div>
  @endif
 

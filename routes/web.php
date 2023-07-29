@@ -7,6 +7,8 @@ use App\Http\Controllers\backend\CategoryController;
 use App\Http\Controllers\backend\auth\LoginController;
 use App\Http\Controllers\backend\InstructorController;
 use App\Http\Controllers\backend\auth\RegisterController;
+use App\Http\Controllers\backend\auth\ResetPasswordController;
+use App\Http\Controllers\backend\auth\ForgotPasswordController;
 
 /*
 |--------------------------------------------------------------------------
@@ -66,9 +68,11 @@ Route::patch('admin/category_account/{category:id}', [CategoryController::class,
 
 Route::get('admin/login', [LoginController::class, 'Login'])->name('admin_get.login');
 Route::post('admin/login', [LoginController::class, 'postLogin'])->name('admin_post.login');
+Route::get('admin/logout', [LoginController::class, 'Logout'])->name('admin.logout');
 
-// Route::get('forgot-password' ,[ForgotPasswordController::class, 'index'])->name('forgot-password.index');
-// Route::post('forgot-password' ,[ForgotPasswordController::class, 'sendEmail'])->name('forgot-password.send-email');
+Route::get('admin/forgot-password' ,[ForgotPasswordController::class, 'index'])->name('forgot-password.index');
+Route::post('admin/forgot-password' ,[ForgotPasswordController::class, 'sendEmail'])->name('forgot-password.send-email');
 
-// Route::get('reset-password', [ResetPasswordController::class, 'index'])->name('reset-password.index'); 
-// Route::post('reset-password', [ResetPasswordController::class, 'reset'])->name('reset-password.reset'); 
+Route::get('admin/reset-password', [ResetPasswordController::class, 'index'])->name('reset-password.index'); 
+Route::post('admin/reset-password', [ResetPasswordController::class, 'reset'])->name('reset-password.reset'); 
+
