@@ -27,9 +27,9 @@
               class="px-4 py-3 mb-8 bg-white rounded-lg shadow-md dark:bg-gray-800"
             >
               <label class="block text-sm">
-                <span class="text-gray-700 dark:text-gray-400">Name</span>
+                <span class="text-gray-700 dark:text-gray-400">Name *</span>
                 <input type="text" name="name" class="block w-full mt-1 text-sm dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input"
-                  placeholder="Jane Doe"
+                 
                 />
               </label>
                
@@ -39,10 +39,10 @@
                  @enderror
               
               <label class="block text- sm mt-4">
-                <span class="text-gray-700 dark:text-gray-400">Email</span>
+                <span class="text-gray-700 dark:text-gray-400">Email *</span>
                 <input type="email" name="email"
                   class="block w-full mt-1 text-sm dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input"
-                  placeholder="Jane Doe"
+                  
                 />
               </label>
                @error('email')
@@ -50,10 +50,10 @@
                 @enderror
 
               <label class="block mt-4 text-sm">
-                <span class="text-gray-700 dark:text-gray-400">Password</span>
+                <span class="text-gray-700 dark:text-gray-400">Password *</span>
                 <input type="password" name="password"
                   class="block w-full mt-1 text-sm dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input"
-                  placeholder="Jane Doe"
+                 
                 />
               </label>
 
@@ -61,7 +61,7 @@
                         <small style="color:red;">{{$message}}*</small>
                 @enderror
               <label class="block mt-4 text-sm">
-                <span class="text-gray-700 dark:text-gray-400">Phone</span>
+                <span class="text-gray-700 dark:text-gray-400">Phone *</span>
                 <input type="text" name="phone"
                   class="block w-full mt-1 text-sm dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input"
                   placeholder=""
@@ -72,10 +72,10 @@
                         <small style="color:red;">{{$message}}*</small>
                 @enderror
               <label class="block text- sm mt-4">
-                <span class="text-gray-700 dark:text-gray-400">Date Of Birth</span>
-                <input type="date" id="datePicker"  name="dob"
-                  class=" w-full mt-1 text-sm dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input"
-                  placeholder="Jane Doe"
+                <span class="text-gray-700 dark:text-gray-400">Date Of Birth *</span>
+                <input type="date" id="datePicker"  name="dob" style="background-color:gray;"
+                  class=" w-full mt-1 text-sm dark:border-gray-600 dark:bg-gray-700 focus:border-purple-700 focus:outline-none focus:shadow-outline-purple-500 dark:text-gray-300 dark:focus:shadow-outline-gray form-input"
+                 
                 />
               </label>
 
@@ -84,7 +84,7 @@
                 @enderror
               <label class="block mt-4 text-sm">
                 <span class="text-gray-700 dark:text-gray-400">
-                 Gender
+                 Gender *
                 </span>
                 <select name="gender"
                   class="block w-full mt-1 text-sm dark:text-gray-300 dark:border-gray-600 dark:bg-gray-700 form-select focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:focus:shadow-outline-gray"
@@ -101,7 +101,7 @@
                 @enderror
 
                 <label class="block mt-4 text-sm">
-                <span class="text-gray-700 dark:text-gray-400">Profile</span>
+                <span class="text-gray-700 dark:text-gray-400">Profile *</span>
                 <input type="file" name="profile"
                   class="block w-full mt-1 text-sm dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input"
                   placeholder=""
@@ -111,9 +111,21 @@
               @error('profile')
                         <small style="color:red;">{{$message}}*</small>
                 @enderror
+                   
+                <label class="block mt-4 text-sm">
+                <span class="text-gray-700 dark:text-gray-400">Bio *</span>
+                <textarea type="text" name="bio"
+                  class="block w-full mt-1 text-sm dark:text-gray-300 dark:border-gray-600 dark:bg-gray-700 form-textarea focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:focus:shadow-outline-gray"
+                  rows="3"
+                  placeholder="Enter your bio...."
+                ></textarea>
+              </label>
+              @error('bio')
+                        <small style="color:red;">{{$message}}*</small>
+                @enderror
 
               <label class="block mt-4 text-sm">
-                <span class="text-gray-700 dark:text-gray-400">Address</span>
+                <span class="text-gray-700 dark:text-gray-400">Address *</span>
                 <textarea type="text" name="address"
                   class="block w-full mt-1 text-sm dark:text-gray-300 dark:border-gray-600 dark:bg-gray-700 form-textarea focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:focus:shadow-outline-gray"
                   rows="3"

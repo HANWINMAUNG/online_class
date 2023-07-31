@@ -1,8 +1,6 @@
 @extends('backend.layouts.app')
 @push('header')
-<link href="{{asset('css/date-picker.css')}}" rel="stylesheet"/>
 
-<script src="{{asset('js/date-picker.js')}}"></script>
 @endpush
 @section('content')
 <main class="h-full pb-16 overflow-y-auto">

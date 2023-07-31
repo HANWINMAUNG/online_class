@@ -5,6 +5,7 @@ namespace App\Http\Controllers\backend;
 use App\Models\Category;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
+use Yajra\DataTables\DataTables;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\CategoryRequest;
 
@@ -15,11 +16,20 @@ class CategoryController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $categories = Category::query()->get();
+        if($request->ajax()){
+            $query = Category::query();
+
+            return DataTables::of($query)
+                       ->addColumn('action', function($category){
+                        return view('backend.action.category_action',['category' => $category]);
+                       })
+                       ->rawColumns(['action'])
+                       ->make(true);
+        }
         
-        return view('backend.category.index',['categories' =>$categories]);
+        return view('backend.category.index');
     }
 
     /**

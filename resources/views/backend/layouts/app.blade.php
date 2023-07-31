@@ -24,6 +24,9 @@
     <script src="{{ asset('assets/js/charts-pie.js')}}"></script>
 
     <link rel="stylesheet" href="//cdn.datatables.net/1.13.5/css/jquery.dataTables.min.css">
+
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
     
     @stack('header')
   </head>
@@ -38,15 +41,13 @@
                 @yield('content')
                
 
-                
-
 
          </div>
     </div>
-    @stack('script')
+    
     <script src="//cdn.datatables.net/1.13.5/js/jquery.dataTables.min.js"></script>
     <script>
-                  let table = new DataTable('#myTable')
+                
 
                   $("#datePicker").pDatePicker({
 
@@ -54,5 +55,6 @@
 
                         });
     </script>
+    @stack('script')
 </body>
 </html>

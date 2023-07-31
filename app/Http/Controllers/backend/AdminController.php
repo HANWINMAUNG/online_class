@@ -4,9 +4,9 @@ namespace App\Http\Controllers\backend;
 
 use App\Models\Admin;
 use Illuminate\Http\Request;
+use Yajra\DataTables\DataTables;
 use App\Http\Requests\AdminRequest;
 use App\Http\Controllers\Controller;
-
 
 class AdminController extends Controller
 {
@@ -15,11 +15,21 @@ class AdminController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $admins = Admin::query()->get();
+        if($request->ajax()){
+            $query = Admin::query();
+
+            return DataTables::of($query)
+                       ->addColumn('action', function($admin){
+                        return view('backend.action.admin_action',['admin' => $admin]);
+                       })
+                       ->rawColumns(['action'])
+                       ->make(true);
+        }
         
-        return view('backend.admin.index',['admins' =>$admins]);
+        
+        return view('backend.admin.index');
     }
 
     /**

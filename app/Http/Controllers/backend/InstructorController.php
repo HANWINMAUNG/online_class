@@ -5,6 +5,7 @@ namespace App\Http\Controllers\backend;
 use App\Models\Instructor;
 
 use Illuminate\Http\Request;
+use Yajra\DataTables\DataTables;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\InstructorRequest;
 
@@ -15,11 +16,20 @@ class InstructorController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $instructors = Instructor::query()->get();
+        if($request->ajax()){
+            $query = Instructor::query();
+
+            return DataTables::of($query)
+                       ->addColumn('action', function($instructor){
+                        return view('backend.action.instructor_action',['instructor' => $instructor]);
+                       })
+                       ->rawColumns(['action'])
+                       ->make(true);
+        }
         
-        return view('backend.instructor.index',['instructors' =>$instructors]);
+        return view('backend.instructor.index');
     }
 
     /**

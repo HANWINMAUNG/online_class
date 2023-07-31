@@ -1,14 +1,17 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\backend\RoleController;
 use App\Http\Controllers\backend\UserController;
 use App\Http\Controllers\backend\AdminController;
+use App\Http\Controllers\backend\CourseController;
 use App\Http\Controllers\backend\CategoryController;
 use App\Http\Controllers\backend\auth\LoginController;
 use App\Http\Controllers\backend\InstructorController;
 use App\Http\Controllers\backend\auth\RegisterController;
 use App\Http\Controllers\backend\auth\ResetPasswordController;
 use App\Http\Controllers\backend\auth\ForgotPasswordController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -28,42 +31,65 @@ Route::get('/', function () {
 Route::get('/admin', function(){
     return view('backend/index');
 })->name('admin');
+
+Route::group([
+    'prefix'=>'admin/',
+    // 'middleware'=>'guest',
+    //  'namespace'=>'App\Http\Controllers\backend'
+],function(){
 //admin
-Route::get('admin/admin_account', [AdminController::class, 'index'])->name('admin.index');
-Route::get('admin/admin_account/create', [AdminController::class, 'create'])->name('admin.create');
-Route::post('admin/admin_account', [AdminController::class, 'store'])->name('admin.store');
-Route::delete('admin/admin_account/{admin:id}', [AdminController::class,'destroy'])->name('admin.destroy');
-Route::get('admin/admin_account/{admin:id}/edit', [AdminController::class,'edit'])->name('admin.edit');
-Route::patch('admin/admin_account/{admin:id}', [AdminController::class,'update'])->name('admin.update');
+Route::get('admin-account', [AdminController::class, 'index'])->name('admin.index');
+Route::get('admin-account/create', [AdminController::class, 'create'])->name('admin.create');
+Route::post('admin-account', [AdminController::class, 'store'])->name('admin.store');
+Route::delete('admin-account/{admin:id}', [AdminController::class,'destroy'])->name('admin.destroy');
+Route::get('admin-account/{admin:id}/edit', [AdminController::class,'edit'])->name('admin.edit');
+Route::patch('admin-account/{admin:id}', [AdminController::class,'update'])->name('admin.update');
 
 //user
 
-Route::get('admin/user_account', [UserController::class, 'index'])->name('user.index');
-Route::get('admin/user_account/create', [UserController::class, 'create'])->name('user.create');
-Route::post('admin/user_account', [UserController::class, 'store'])->name('user.store');
-Route::delete('admin/user_account/{user:id}', [UserController::class,'destroy'])->name('user.destroy');
-Route::get('admin/user_account/{user:id}/edit', [UserController::class,'edit'])->name('user.edit');
-Route::patch('admin/user_account/{user:id}', [UserController::class,'update'])->name('user.update');
+Route::get('user-account', [UserController::class, 'index'])->name('user.index');
+Route::get('user-account/create', [UserController::class, 'create'])->name('user.create');
+Route::post('user-account', [UserController::class, 'store'])->name('user.store');
+Route::delete('user-account/{user:id}', [UserController::class,'destroy'])->name('user.destroy');
+Route::get('user-account/{user:id}/edit', [UserController::class,'edit'])->name('user.edit');
+Route::patch('user-account/{user:id}', [UserController::class,'update'])->name('user.update');
 
 //instructor
 
-Route::get('admin/instructor_account', [InstructorController::class, 'index'])->name('instructor.index');
-Route::get('admin/instructor_account/create', [InstructorController::class, 'create'])->name('instructor.create');
-Route::post('admin/instructor_account', [InstructorController::class, 'store'])->name('instructor.store');
-Route::delete('admin/instructor_account/{instructor:id}', [InstructorController::class,'destroy'])->name('instructor.destroy');
-Route::get('admin/instructor_account/{instructor:id}/edit', [InstructorController::class,'edit'])->name('instructor.edit');
-Route::patch('admin/instructor_account/{instructor:id}', [InstructorController::class,'update'])->name('instructor.update');
+Route::get('instructor-account', [InstructorController::class, 'index'])->name('instructor.index');
+Route::get('instructor-account/create', [InstructorController::class, 'create'])->name('instructor.create');
+Route::post('instructor-account', [InstructorController::class, 'store'])->name('instructor.store');
+Route::delete('instructor-account/{instructor:id}', [InstructorController::class,'destroy'])->name('instructor.destroy');
+Route::get('instructor-account/{instructor:id}/edit', [InstructorController::class,'edit'])->name('instructor.edit');
+Route::patch('instructor-account/{instructor:id}', [InstructorController::class,'update'])->name('instructor.update');
 
 
 //category
 
-Route::get('admin/category_account', [CategoryController::class, 'index'])->name('category.index');
-Route::get('admin/category_account/create', [CategoryController::class, 'create'])->name('category.create');
-Route::post('admin/category_account', [CategoryController::class, 'store'])->name('category.store');
-Route::delete('admin/category_account/{category:id}', [CategoryController::class,'destroy'])->name('category.destroy');
-Route::get('admin/category_account/{category:id}/edit', [CategoryController::class,'edit'])->name('category.edit');
-Route::patch('admin/category_account/{category:id}', [CategoryController::class,'update'])->name('category.update');
+Route::get('category-account', [CategoryController::class, 'index'])->name('category.index');
+Route::get('category-account/create', [CategoryController::class, 'create'])->name('category.create');
+Route::post('category-account', [CategoryController::class, 'store'])->name('category.store');
+Route::delete('category-account/{category:id}', [CategoryController::class,'destroy'])->name('category.destroy');
+Route::get('category-account/{category:id}/edit', [CategoryController::class,'edit'])->name('category.edit');
+Route::patch('category-account/{category:id}', [CategoryController::class,'update'])->name('category.update');
 
+//course
+Route::get('course-account', [CourseController::class, 'index'])->name('course.index');
+Route::get('course-account/create', [CourseController::class, 'create'])->name('course.create');
+Route::post('course-account', [CourseController::class, 'store'])->name('course.store');
+Route::delete('course-account/{course:id}', [CourseController::class,'destroy'])->name('course.destroy');
+Route::get('course-account/{course:id}/edit', [CourseController::class,'edit'])->name('course.edit');
+Route::patch('course-account/{course:id}', [CourseController::class,'update'])->name('course.update');
+
+//
+Route::get('role-account', [RoleController::class, 'index'])->name('role.index');
+Route::get('role-account/create', [RoleController::class, 'create'])->name('role.create');
+Route::post('role-account', [RoleController::class, 'store'])->name('role.store');
+Route::delete('role-account/{role:id}', [RoleController::class,'destroy'])->name('role.destroy');
+Route::get('role-account/{role:id}/edit', [RoleController::class,'edit'])->name('role.edit');
+Route::patch('role-account/{role:id}', [RoleController::class,'update'])->name('role.update');
+
+});
 
 
 Route::get('admin/login', [LoginController::class, 'Login'])->name('admin_get.login');
