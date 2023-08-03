@@ -14,7 +14,7 @@
                 class="float-right p-4 mb-8 text-sm  text-purple-100 bg-purple-600 rounded-lg shadow-md focus:outline-none focus:shadow-outline-purple"
                 href="{{route('role.index')}}"
               >
-                Back&LeftArrow;
+                Back &LeftArrow;
               </a>
             </div>
         <form action="{{route('role.store')}}" method="post">
@@ -24,7 +24,7 @@
               class="px-4 py-3 mb-8 bg-white rounded-lg shadow-md dark:bg-gray-800"
             >
               <label class="block text-sm">
-                <span class="text-gray-700 dark:text-gray-400">Name *</span>
+                <span class="text-gray-700 dark:text-gray-400">Name<span style="color:red;">*</span></span>
                 <input type="text" name="name" class="block w-full mt-1 text-sm dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input"
                  
                 />
@@ -36,7 +36,7 @@
               
               <label class="block mt-4 text-sm">
                 <span class="text-gray-700 dark:text-gray-400">
-                 Permission *
+                 Permission<span style="color:red;">*</span>
                 </span>
                 <select name="permission[]" id="permission"
                   class="select2 block w-full mt-1 text-sm dark:text-gray-300 dark:border-gray-600 dark:bg-gray-700 form-select focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:focus:shadow-outline-gray"

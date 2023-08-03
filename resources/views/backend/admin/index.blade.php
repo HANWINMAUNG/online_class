@@ -12,7 +12,7 @@
                 class="float-right p-4 mb-8 text-sm  text-purple-100 bg-purple-600 rounded-lg shadow-md focus:outline-none focus:shadow-outline-purple"
                 href="{{route('admin.create')}}"
               >
-                Admin Create&RightArrow;
+                Admin Create &RightArrow;
               </a>
             </div>
             <h4
@@ -78,7 +78,23 @@
 
                 });     
               });
-
+              $(document).ready(function () {
+            $(".delete_admin").click(function (e) {   
+              e.preventDefault();
+              Swal.fire({
+                          title: 'Do you want to delete?',
+                          showDenyButton: true,
+                          showCancelButton: true,
+                        }).then((result) => {
+                          
+                          if (result.isConfirmed) {
+                            Swal.fire('Saved!', '', 'success')
+                          } else if (result.isDenied) {
+                            Swal.fire('Changes are not saved', '', 'info')
+                          }
+                        })
+                      });
+                    });
               </script>
 
 

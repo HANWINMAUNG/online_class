@@ -12,7 +12,7 @@
                 class="float-right p-4 mb-8 text-sm  text-purple-100 bg-purple-600 rounded-lg shadow-md focus:outline-none focus:shadow-outline-purple"
                 href="{{route('course.create')}}"
               >
-                Course Create&RightArrow;
+                Course Create &RightArrow;
               </a>
             </div>
             <!-- With actions -->

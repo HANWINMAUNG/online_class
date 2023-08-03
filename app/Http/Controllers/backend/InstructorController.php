@@ -50,7 +50,19 @@ class InstructorController extends Controller
      */
     public function store(InstructorRequest $request)
     {
-        Instructor::create($request->validated());
+       $attributes = $request->validated();
+       
+        Instructor::create([
+            'name' =>$attributes['name'],
+            'email' =>$attributes['email'],
+            'password' =>$attributes['password'],
+            'phone' =>$attributes['phone'],
+            'address' =>$attributes['address'],
+            'gender' =>$attributes['gender'],
+            'dob' =>$attributes['dob'],
+            'profile' =>$attributes['profile'],
+            'link' =>json_encode($attributes['link']),
+        ]);
         return redirect()->route('instructor.index')->with('success','Instructor is successfully created!');
     }
 
@@ -73,6 +85,10 @@ class InstructorController extends Controller
      */
     public function edit(Instructor $instructor)
     {
+        // $links = json_decode($instructor['link'],true);
+        // foreach(json_decode($instructor->link,true) as  $key => $link){
+        //     dd($link            ['icon']);
+        // }
         return view('backend.instructor.edit', ['instructor'=>$instructor]);
     }
 
@@ -85,7 +101,19 @@ class InstructorController extends Controller
      */
     public function update(InstructorRequest $request, Instructor $instructor)
     {
-        $instructor->update($request->validated());
+        
+        $attributes = $request->validated();
+       
+        Instructor::update([
+            'name' =>$attributes['name'],
+            'email' =>$attributes['email'],
+            'phone' =>$attributes['phone'],
+            'address' =>$attributes['address'],
+            'gender' =>$attributes['gender'],
+            'dob' =>$attributes['dob'],
+            'profile' =>$attributes['profile'],
+            'link' =>json_encode($attributes['link']),
+        ]);
         return redirect()->route('instructor.index')->with('success','Instructor is successfully updated!');
     }
 

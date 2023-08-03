@@ -10,8 +10,8 @@
 
 
  @if(session()->has('success'))
- <div class="text-green-500 w-full bg-green-800">
-  <h2> {{ session('success')}} </h2>
+ <div class="text-green-500  text-2xl text-center w-full mt-2"style="">
+  <h1 > {{ session('success')}} </h2>
  </div>
  @endif
 

@@ -17,7 +17,7 @@
                 class="float-right p-4 mb-8 text-sm  text-purple-100 bg-purple-600 rounded-lg shadow-md focus:outline-none focus:shadow-outline-purple"
                 href="{{route('admin.index')}}"
               >
-                Back&LeftArrow;
+                Back &LeftArrow;
               </a>
             </div>
         <form action="{{route('admin.update',$admin->id)}}" method="post">
@@ -28,7 +28,7 @@
               class="px-4 py-3 mb-8 bg-white rounded-lg shadow-md dark:bg-gray-800"
             >
               <label class="block text-sm">
-                <span class="text-gray-700 dark:text-gray-400">Name</span>
+                <span class="text-gray-700 dark:text-gray-400">Name<span style="color:red;">*</span></span>
                 <input type="text" name="name" value="{{$admin->name}}"class="block w-full mt-1 text-sm dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input"
                  
                 />
@@ -40,7 +40,7 @@
                  @enderror
               
               <label class="block text- sm mt-4">
-                <span class="text-gray-700 dark:text-gray-400">Email</span>
+                <span class="text-gray-700 dark:text-gray-400">Email<span style="color:red;">*</span></span>
                 <input type="email" name="email" value="{{$admin->email}}"
                   class="block w-full mt-1 text-sm dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input"
                  
@@ -50,20 +50,10 @@
                         <small style="color:red;">{{$message}}*</small>
                 @enderror
 
-                <label class="block mt-4 text-sm">
-                <span class="text-gray-700 dark:text-gray-400">Password</span>
-                <input type="password" name="password"
-                  class="block w-full mt-1 text-sm dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input"
-                 
-                />
-              </label>
-
-              @error('password')
-                        <small style="color:red;">{{$message}}*</small>
-                @enderror
+               
 
               <label class="block mt-4 text-sm">
-                <span class="text-gray-700 dark:text-gray-400">Phone</span>
+                <span class="text-gray-700 dark:text-gray-400">Phone<span style="color:red;">*</span></span>
                 <input type="text" name="phone" value="{{$admin->phone}}"
                   class="block w-full mt-1 text-sm dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input"
                   placeholder=""
@@ -75,7 +65,7 @@
                 @enderror
 
               <label class="block text- sm mt-4">
-                <span class="text-gray-700 dark:text-gray-400">Date Of Birth</span>
+                <span class="text-gray-700 dark:text-gray-400">Date Of Birth<span style="color:red;">*</span></span>
                 <input type="date" id="datePicker"  name="dob" value="{{$admin->dob}}"
                   class=" w-full mt-1 text-sm dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input"
                  
@@ -88,7 +78,7 @@
 
               <label class="block mt-4 text-sm">
                 <span class="text-gray-700 dark:text-gray-400">
-                 Gender
+                 Gender<span style="color:red;">*</span>
                 </span>
                 <select name="gender" value="{{$admin->gender}}"
                   class="block w-full mt-1 text-sm dark:text-gray-300 dark:border-gray-600 dark:bg-gray-700 form-select focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:focus:shadow-outline-gray"
@@ -105,7 +95,7 @@
                 @enderror
 
                 <label class="block mt-4 text-sm">
-                <span class="text-gray-700 dark:text-gray-400">Profile</span>
+                <span class="text-gray-700 dark:text-gray-400">Profile<span style="color:red;">*</span></span>
                 <input type="file" name="profile" value="{{$admin->profile}}"
                   class="block w-full mt-1 text-sm dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input"
                   placeholder=""
@@ -124,10 +114,7 @@
                 @enderror
               <div class="flex mt-6 text-sm  ">
                 <div class="flex justify-items-end">
-                <button type="submit"
-                  class="px-4 py-2  mr-2 text-sm font-medium leading-5 text-black  duration-150 bg-gray-600 border border-gray rounded-lg active:bg-gray-600 hover:bg-gray-700 focus:outline-none focus:shadow-outline-black">
-                  Cancel
-                </button>
+                
                 <button type="submit"
                   class="px-4 py-2 text-sm font-medium leading-5 text-black transition-colors duration-150 bg-purple-600 border border-transparent rounded-lg active:bg-purple-600 hover:bg-purple-700 focus:outline-none focus:shadow-outline-purple">
                   Submit

@@ -9,24 +9,19 @@
     
     <link rel="stylesheet" href="{{asset('assets/css/tailwind.output.css')}}" />
     
-    <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js"></script>
-
-    <script src="{{asset('assets/js/init-alpine.js')}}"></script>
+    
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.css"/>
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.js"></script>
-
-    <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
-
-    <script src="{{ asset('assets/js/charts-lines.js')}}"></script>
-
-    <script src="{{ asset('assets/js/charts-pie.js')}}"></script>
+    
 
     <link rel="stylesheet" href="//cdn.datatables.net/1.13.5/css/jquery.dataTables.min.css">
 
     <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
-    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+    
+    <link rel="stylesheet" href="{{asset('css/rte_theme_default.css')}}"/>
+    
+    <link rel="stylesheet" href="sweetalert2.min.css">
     
     @stack('header')
   </head>
@@ -44,7 +39,31 @@
 
          </div>
     </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+    <script src="sweetalert2.all.min.js"></script>
+
+    <script src="sweetalert2.min.js"></script>
+
+    <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js"></script>
+
+    <script src="{{asset('assets/js/init-alpine.js')}}"></script>
     
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.js"></script>
+
+    <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
+
+    <script src="{{ asset('assets/js/charts-lines.js')}}"></script>
+
+    <script src="{{ asset('assets/js/charts-pie.js')}}"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+
+    <script type="text/javascript" src="{{asset('js/rte.js')}}"></script>
+
+    <script type="text/javascript" src="{{asset('js/all_plugins.js')}}"></script>
+
     <script src="//cdn.datatables.net/1.13.5/js/jquery.dataTables.min.js"></script>
     <script>
                 
@@ -54,6 +73,14 @@
                             selected: new Date(),
 
                         });
+
+                        // setTimeout(() =>{
+
+                        //         $('#error_message').fadeOut(); 
+
+                        //     $('#success_message').fadeOut(); 
+
+                        //     },5000);
     </script>
     @stack('script')
 </body>

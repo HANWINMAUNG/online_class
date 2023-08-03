@@ -23,6 +23,19 @@ class InstructorRequest extends FormRequest
      */
     public function rules()
     {
+        if($this->method() == 'PATCH'){
+            return [
+                'name' =>'required',
+                'email' =>'required',
+                 'phone' =>'required',
+                 'password' =>'confirmed',
+                 'address' =>'nullable',
+                 'gender' =>'nullable',
+                 'dob' =>'nullable',
+                 'profile' =>'nullable',
+                 'link' =>'nullable'
+            ];
+        }else{
         return [
             'name' =>'required',
             'email' =>'required',
@@ -31,7 +44,9 @@ class InstructorRequest extends FormRequest
             'address' =>'nullable',
              'gender' =>'nullable',
              'dob' =>'nullable',
+             'link' =>'nullable',
              'profile' =>'nullable',
         ];
     }
+}
 }

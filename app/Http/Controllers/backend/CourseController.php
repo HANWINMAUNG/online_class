@@ -22,6 +22,9 @@ class CourseController extends Controller
             $query = Course::query();
 
             return DataTables::of($query)
+                       ->addColumn('instructor_id',function($course){
+                        return $course->Instructor->name;
+                       })
                        ->addColumn('action', function($course){
                         return view('backend.action.course_action',['course' => $course]);
                        })

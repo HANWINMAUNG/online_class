@@ -59,14 +59,14 @@
                     <form  action="{{route('admin_post.login')}}" method="POST">
                       @csrf
                         <label class="block text-sm">
-                          <span class="text-gray-700 dark:text-gray-400">Email</span>
+                          <span class="text-gray-700 dark:text-gray-400">Email<span style="color:red;">*</span></span>
                           <input type="text" name="email"class="block w-full mt-1 text-sm dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input"/>
                         </label>
                         @error('email')
                         <small style="color:red;">{{$message}}</small>
                         @enderror
                         <label class="block mt-4 text-sm">
-                          <span class="text-gray-700 dark:text-gray-400">Password</span>
+                          <span class="text-gray-700 dark:text-gray-400">Password<span style="color:red;">*</span></span>
                           <input type="password" name="password"class="block w-full mt-1 text-sm dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input" />
                         </label>
                         @error('password')

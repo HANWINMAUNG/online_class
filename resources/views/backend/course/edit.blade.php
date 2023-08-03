@@ -13,7 +13,7 @@
                 class="float-right p-4 mb-8 text-sm  text-purple-100 bg-purple-600 rounded-lg shadow-md focus:outline-none focus:shadow-outline-purple"
                 href="{{route('course.index')}}"
               >
-                Back&LeftArrow;
+                Back &LeftArrow;
               </a>
             </div>
         <form action="{{route('course.update',$course->id)}}" method="post">
@@ -23,7 +23,7 @@
               class="px-4 py-3 mb-8 bg-white rounded-lg shadow-md dark:bg-gray-800"
             >
               <label class="block text-sm">
-                <span class="text-gray-700 dark:text-gray-400">Title</span>
+                <span class="text-gray-700 dark:text-gray-400">Title<span style="color:red;">*</span></span>
                 <input type="text" name="title" value="{{$course->title}}" class="block w-full mt-1 text-sm dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input"
                 />
               </label>  
@@ -34,7 +34,7 @@
                  
                  <label class="block mt-4 text-sm">
                 <span class="text-gray-700 dark:text-gray-400">
-                Instructor Name
+                Instructor Name<span style="color:red;">*</span>
                 </span>
                 
                 <select name="instructor_id"
@@ -67,7 +67,7 @@
                 
               <label class="block mt-4 text-sm">
                 <span class="text-gray-700 dark:text-gray-400">Summary</span>
-                <textarea type="text" name="summary"
+                <textarea type="text" name="summary" id="inp_editor1"
                   class="block w-full mt-1 text-sm dark:text-gray-300 dark:border-gray-600 dark:bg-gray-700 form-textarea focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:focus:shadow-outline-gray"
                   rows="3"
                   placeholder="Enter your address."
@@ -93,4 +93,8 @@
 
 @endsection
 
-
+@push('script')
+<script>
+      var editor1 = new RichTextEditor("#inp_editor1");
+</script>
+@endpush

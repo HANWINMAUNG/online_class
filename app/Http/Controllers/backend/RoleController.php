@@ -80,9 +80,11 @@ class RoleController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Role $role)
     {
-        //
+        $permissions = Permission::toBase()->get()->pluck('name', 'id')->toArray();
+        
+        return view('backend.role.edit',['permissions'=>$permissions,'role'=>$role]);
     }
 
     /**
@@ -92,9 +94,17 @@ class RoleController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(RoleRequest $request, $id)
     {
-        //
+        $attributes = $request->validated();
+
+        $role = Role::update([
+            'name' =>$attributes['name'],
+            'guard_name' => 'admin'
+        ]);
+
+         $role->syncPermissions($attributes['permission']);
+        return redirect()->route('role.index')->with('success','Role is successfully Update!');
     }
 
     /**

@@ -13,7 +13,7 @@
                 class="float-right p-4 mb-8 text-sm  text-purple-100 bg-purple-600 rounded-lg shadow-md focus:outline-none focus:shadow-outline-purple"
                 href="{{route('role.create')}}"
               >
-               Role Create&RightArrow;
+               Role Create &RightArrow;
               </a>
             </div>
             <!-- With actions -->

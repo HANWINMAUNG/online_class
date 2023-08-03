@@ -23,6 +23,18 @@ class UserRequest extends FormRequest
      */
     public function rules()
     {
+        if($this->method() == 'PATCH'){
+            return [
+                'name' =>'required',
+                'email' =>'required',
+                 'phone' =>'required',
+                 'password' =>'confirmed',
+                 'address' =>'nullable',
+                 'gender' =>'nullable',
+                 'dob' =>'nullable',
+                 'profile' =>'nullable',
+            ];
+        }else{
         return [
             'name' =>'required',
             'email' =>'required',
@@ -34,4 +46,5 @@ class UserRequest extends FormRequest
              'profile' =>'nullable',
         ];
     }
+}
 }
