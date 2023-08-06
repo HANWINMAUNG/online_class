@@ -77,28 +77,21 @@
                     ]
 
                 });     
-              });
-              $(document).ready(function () {
-            $(".delete_admin").click(function (e) {   
+
+                $('.alear').on('click', '.delete_admin', function(e) {   
               e.preventDefault();
-              Swal.fire({
-                          title: 'Do you want to delete?',
-                          showDenyButton: true,
-                          showCancelButton: true,
-                        }).then((result) => {
-                          
-                          if (result.isConfirmed) {
-                            Swal.fire('Saved!', '', 'success')
-                          } else if (result.isDenied) {
-                            Swal.fire('Changes are not saved', '', 'info')
-                          }
-                        })
-                      });
-                    });
+              // Swal.fire(
+              //   'Good job!',
+              //   'You clicked the button!',
+              //   'success'
+              // )
+
+              console.log('ff');
+
+
+                                                
+                                            
+                                            });
+                                          });
               </script>
-
-
-
-
-
 @endpush

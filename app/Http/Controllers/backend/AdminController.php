@@ -63,7 +63,7 @@ class AdminController extends Controller
      */
     public function show(Admin $admin)
     {
-        //
+        return view('backend.detail.admin_detail',['admin' => $admin]);
     }
 
     /**

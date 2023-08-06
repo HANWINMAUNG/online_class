@@ -16,14 +16,14 @@
                 Back &LeftArrow;
               </a>
             </div>
-        <form action="{{route('course.store')}}" method="post">
+        <form action="{{route('course.store')}}" method="post" id="form">
             @csrf
             <div
               class="px-4 py-3 mb-8 bg-white rounded-lg shadow-md dark:bg-gray-800"
             >
               <label class="block text-sm">
                 <span class="text-gray-700 dark:text-gray-400">Title<span style="color:red;">*</span></span>
-                <input type="text" name="title" class="block w-full mt-1 text-sm dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input"
+                <input type="text" id="title" name="title" class="block w-full mt-1 text-sm dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input"
                 />
               </label>  
               @error('title')
@@ -54,7 +54,7 @@
                 <textarea type="text" name="description"
                   class="block w-full mt-1 text-sm dark:text-gray-300 dark:border-gray-600 dark:bg-gray-700 form-textarea focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:focus:shadow-outline-gray"
                   rows="3"
-                  placeholder="Enter your address."
+                  placeholder="Enter your address." id="description"
                 ></textarea>
               </label>
 
@@ -92,6 +92,31 @@
 @push('script')
 <script>
       var editor1 = new RichTextEditor("#inp_editor1");
+      const validation = new JustValidate('#form', {
+                                            errorFieldCssClass: 'is-invalid',
+                                      });
+                                      
+                                      validation
+                                        .addField('#title', [
+                                          {
+                                            rule: 'minLength',
+                                            value: 3,
+                                          },
+                                          {
+                                            rule: 'maxLength',
+                                            value: 30,
+                                          },
+                                        ])
+                                        .addField('#description', [
+                                              {
+                                               rule: 'required',
+                                              },
+                                                ])
+                                                .addField('#title', [
+                                              {
+                                               rule: 'required',
+                                              },
+                                                ])
 </script>
 @endpush
 

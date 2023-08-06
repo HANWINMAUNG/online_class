@@ -20,7 +20,7 @@
                 Back &LeftArrow;
               </a>
             </div>
-        <form action="{{route('admin.update',$admin->id)}}" method="post">
+        <form action="{{route('admin.update',$admin->id)}}" method="post" id="form">
              @method('PATCH') 
             @csrf
 
@@ -29,7 +29,7 @@
             >
               <label class="block text-sm">
                 <span class="text-gray-700 dark:text-gray-400">Name<span style="color:red;">*</span></span>
-                <input type="text" name="name" value="{{$admin->name}}"class="block w-full mt-1 text-sm dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input"
+                <input type="text" name="name" id="name" value="{{$admin->name}}"class="block w-full mt-1 text-sm dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input"
                  
                 />
               </label>
@@ -43,7 +43,7 @@
                 <span class="text-gray-700 dark:text-gray-400">Email<span style="color:red;">*</span></span>
                 <input type="email" name="email" value="{{$admin->email}}"
                   class="block w-full mt-1 text-sm dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input"
-                 
+                 id="email"
                 />
               </label>
                @error('email')
@@ -129,5 +129,42 @@
 
 
 @endsection
+@push('script')
+                  <script>
+                                      const validation = new JustValidate('#form', {
+                                            errorFieldCssClass: 'is-invalid',
+                                      });
+                                      
+                                      validation
+                                        .addField('#name', [
+                                          {
+                                            rule: 'minLength',
+                                            value: 3,
+                                          },
+                                          {
+                                            rule: 'maxLength',
+                                            value: 30,
+                                          },
+                                        ])
+                                        .addField('#email', [
+                                          {
+                                            rule: 'required',
+                                            errorMessage: 'Field is required',
+                                          },
+                                          {
+                                            rule: 'email',
+                                            errorMessage: 'Email is invalid!',
+                                          },
+                                        ])
+                                        .addField('#phone', [
+                                              {
+                                               rule: 'required',
+                                               errorMessage: 'Field is required',
+                                              },
+                                            ])
+                                       
+                                       
+                  </script>
+@endpush
 
 

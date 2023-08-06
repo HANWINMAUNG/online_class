@@ -17,7 +17,7 @@
                 Back &LeftArrow;
               </a>
             </div>
-        <form action="{{route('role.store')}}" method="post">
+        <form action="{{route('role.store')}}" method="post" id="form">
 
             @csrf
             <div
@@ -25,7 +25,7 @@
             >
               <label class="block text-sm">
                 <span class="text-gray-700 dark:text-gray-400">Name<span style="color:red;">*</span></span>
-                <input type="text" name="name" class="block w-full mt-1 text-sm dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input"
+                <input type="text" name="name" id="name" class="block w-full mt-1 text-sm dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input"
                  
                 />
               </label>
@@ -66,12 +66,31 @@
 
 @push('script')
     <script>
-      $(document).ready(function() {
-    $('.select2').select2({
-      theme:'classic',
-      placeholder: '--Please Chose--',
-      allowClear:true
-    });
-});
+                            $(document).ready(function() {
+                          $('.select2').select2({
+                            theme:'classic',
+                            placeholder: '--Please Chose--',
+                            allowClear:true
+                          });
+                      });
+
+                      const validation = new JustValidate('#form', {
+                                            errorFieldCssClass: 'is-invalid',
+                                      });
+                                      
+                                      validation
+                                        .addField('#name', [
+                                          {
+                                            rule: 'minLength',
+                                            value: 3,
+                                          },
+                                          {
+                                            rule: 'maxLength',
+                                            value: 30,
+                                          },
+                                          {
+                                            rule:'required'
+                                          },
+                                        ])
       </script>
 @endpush

@@ -74,7 +74,7 @@ class InstructorController extends Controller
      */
     public function show(Instructor $instructor)
     {
-        //
+        return view('backend.detail.instructor_detail',['instructor' => $instructor]);
     }
 
     /**
@@ -103,7 +103,7 @@ class InstructorController extends Controller
     {
         
         $attributes = $request->validated();
-       
+    //    dd(json_encode($attributes['link']));
         Instructor::update([
             'name' =>$attributes['name'],
             'email' =>$attributes['email'],

@@ -20,7 +20,7 @@
                 Back &LeftArrow;
               </a>
             </div>
-        <form action="{{route('user.store')}}" method="post">
+        <form action="{{route('user.store')}}" method="post" id="form">
 
             @csrf
             <div
@@ -28,7 +28,7 @@
             >
               <label class="block text-sm">
                 <span class="text-gray-700 dark:text-gray-400">Name<span style="color:red;">*</span></span>
-                <input type="text" name="name" class="block w-full mt-1 text-sm dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input"
+                <input type="text"id="name" name="name" class="block w-full mt-1 text-sm dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input"
                  
                 />
               </label>
@@ -40,7 +40,7 @@
               
               <label class="block text- sm mt-4">
                 <span class="text-gray-700 dark:text-gray-400">Email<span style="color:red;">*</span></span>
-                <input type="email" name="email"
+                <input type="email" name="email" id="email"
                   class="block w-full mt-1 text-sm dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input"
                  
                 />
@@ -51,7 +51,7 @@
 
               <label class="block mt-4 text-sm">
                 <span class="text-gray-700 dark:text-gray-400">Password<span style="color:red;">*</span></span>
-                <input type="password" name="password"
+                <input type="password" name="password" id="password"
                   class="block w-full mt-1 text-sm dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input"
                  
                 />
@@ -140,5 +140,49 @@
 
 
 @endsection
+@push('script')
+                  <script>
+                                      const validation = new JustValidate('#form', {
+                                            errorFieldCssClass: 'is-invalid',
+                                      });
+                                      
+                                      validation
+                                        .addField('#name', [
+                                          {
+                                            rule: 'minLength',
+                                            value: 3,
+                                          },
+                                          {
+                                            rule: 'maxLength',
+                                            value: 30,
+                                          },
+                                        ])
+                                        .addField('#email', [
+                                          {
+                                            rule: 'required',
+                                            errorMessage: 'Field is required',
+                                          },
+                                          {
+                                            rule: 'email',
+                                            errorMessage: 'Email is invalid!',
+                                          },
+                                        ])
+                                        .addField('#password', [
+                                          {
+                                            rule: 'password',
+                                          },
+                                        ])
+                                        .addField('#message', [
+                                          {
+                                            validator: (value) => {
+                                              return value[0] === '!';
+                                            },
+                                          },
+                                        ])
+                                        
+                                              
+                                       
+                  </script>
+@endpush
 
 
