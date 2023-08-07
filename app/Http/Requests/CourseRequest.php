@@ -26,6 +26,7 @@ class CourseRequest extends FormRequest
         return [
             'title'=>'required',
             'instructor_id' =>'required',
+            'category' =>'required',
             'description' =>'nullable',
             'summary' =>'nullable',
         ];

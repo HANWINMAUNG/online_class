@@ -3,8 +3,10 @@
 namespace App\Http\Controllers\backend;
 
 use App\Models\Course;
+use App\Models\Category;
 use App\Models\Instructor;
 use Illuminate\Http\Request;
+use App\Models\CategoryCourse;
 use Yajra\DataTables\DataTables;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\CourseRequest;
@@ -48,7 +50,8 @@ class CourseController extends Controller
     public function create()
     {
         $instructors = Instructor::query()->get();
-        return view('backend.course.create',['instructors' =>$instructors]);
+        $categories = Category::toBase()->get()->pluck('title', 'id')->toArray();
+        return view('backend.course.create',['instructors' =>$instructors,'categories' => $categories]);
     }
 
     /**
@@ -59,7 +62,19 @@ class CourseController extends Controller
      */
     public function store(CourseRequest $request)
     {
-        Course::create($request->validated());
+        
+        $attributes = $request->validated();
+            
+       $course = Course::create([
+            'title' =>$attributes['title'],
+            'instructor_id' =>$attributes['instructor_id'],
+            'description' =>$attributes['description'],
+            'summary' =>$attributes['summary']
+        ]);
+
+        $course->Category()->attach($attributes['category']);
+       
+        
         return redirect()->route('course.index')->with('success','Course is successfully created!');
     }
 
@@ -82,11 +97,25 @@ class CourseController extends Controller
      */
     public function edit(Course $course)
     {
+        $category_courses = $course->Category->toBase()->pluck('title', 'id')->toArray();
        
+        $categories = Category::toBase()->get()->pluck('title', 'id')->toArray();
         $instructors = Instructor::query()->get();
+
+        // foreach($categories as $key =>$category){
+        //     foreach($category_courses as $keys =>$category_course){
+        //         if($keys == $key){
+        //         dd($category);
+        //         }else{
+        //         }
+        //     }
+        // }
         return view('backend.course.edit',[
             'instructors' =>$instructors,
             'course' =>$course,
+            'categories'=>$categories,
+            'category_courses'=>$category_courses
+
         ]);
     }
 

@@ -51,6 +51,23 @@
                         <small style="color:red;">{{$message}}*</small>
                 @enderror
 
+                <label class="block mt-4 text-sm">
+                <span class="text-gray-700 dark:text-gray-400">
+                 Category Name<span style="color:red;">*</span>
+                </span>
+                <select name="category[]" id="category"
+                  class="select2 block w-full mt-1 text-sm dark:text-gray-300 dark:border-gray-600 dark:bg-gray-700 form-select focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:focus:shadow-outline-gray"
+                 multiple>
+                 @foreach($categories as $key =>$category)
+                  @foreach($category_courses as $keys =>$category_course)
+                    @if($keys == $key)
+                    <option value="{{$key}}" selected>{{$category}}</option>
+                      @endif
+                    @endforeach
+                  @endforeach
+                </select>
+              </label>
+
               <label class="block mt-4 text-sm">
                 <span class="text-gray-700 dark:text-gray-400">Description</span>
                 <textarea type="text" name="description"
@@ -95,6 +112,13 @@
 
 @push('script')
 <script>
+  $(document).ready(function() {
+                          $('.select2').select2({
+                            theme:'classic',
+                            placeholder: '--Please Chose--',
+                            allowClear:true
+                          });
+                      });
       var editor1 = new RichTextEditor("#inp_editor1");
       const validation = new JustValidate('#form', {
                                             errorFieldCssClass: 'is-invalid',

@@ -16,6 +16,7 @@ class CourseFactory extends Factory
         return [
             'title'=>$this->faker->company(),
             'instructor_id'=>$this->faker->numberBetween(1,20),
+            
             'description' => $this->faker->text(50),
             'summary' =>  $this->faker->text(70)
         ];

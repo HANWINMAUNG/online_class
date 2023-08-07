@@ -21,6 +21,7 @@ class CreateCoursesTable extends Migration
             $table->longText('summary')->nullable();
             $table->timestamps();
             $table->foreign('instructor_id')->references('id')->on('instructors')->onDelete('cascade');
+           
         });
        
     }

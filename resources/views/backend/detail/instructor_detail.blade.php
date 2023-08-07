@@ -92,26 +92,27 @@
                 <h4 class="mb-4 font-semibold text-gray-600 dark:text-gray-300">
                   Link
                 </h4>
-                
+               <br>
                 @foreach(json_decode($instructor->link,true) as $link)
                 <p class="text-gray-600 dark:text-gray-400 basis-1/2 ml-8">
                   Icon
                 </p>
-                <p class="ml-6 text-gray-600 dark:text-gray-400 basis-1/2 ">
-                  -{{$link->icon}} 
+                <p class="ml-6 text-gray-600 dark:text-gray-400 ">
+                  -{{$link['icon']}} 
                   </p>
-                  <p class="text-gray-600 dark:text-gray-400 basis-1/2 ml-8">
+                  <p class="text-gray-600 dark:text-gray-400 ml-8">
                   Url
                 </p>
-                <p class="ml-6 text-gray-600 dark:text-gray-400 basis-1/2 ">
-                  -{{$link->link}} 
+                <p class="ml-6 text-gray-600 dark:text-gray-400  ">
+                  -{{$link['link']}} 
                   </p>
-                  <p class="text-gray-600 dark:text-gray-400 basis-1/2 ml-8">
+                  <p class="text-gray-600 dark:text-gray-400 ml-8">
                   Label
                 </p>
-                <p class="ml-6 text-gray-600 dark:text-gray-400 basis-1/2 ">
-                  -{{$link->label}} 
+                <p class="ml-6 text-gray-600 dark:text-gray-400  ">
+                  -{{$link['label']}} 
                   </p>
+                  <br>
                   @endforeach
               </div>
 
