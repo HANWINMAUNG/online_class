@@ -25,6 +25,11 @@ class InstructorController extends Controller
                        ->addColumn('action', function($instructor){
                         return view('backend.action.instructor_action',['instructor' => $instructor]);
                        })
+                       ->order(function ($instructor){
+                        $instructor->orderBy('created_at','desc');
+                                 })->addColumn('created_at', function ($data) {
+                        return date('d-M-Y H:i:s', strtotime($data->created_at));
+                             })
                        ->rawColumns(['action'])
                        ->make(true);
         }

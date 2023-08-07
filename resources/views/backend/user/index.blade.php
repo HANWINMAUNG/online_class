@@ -34,6 +34,7 @@
                       <th class="px-4 py-3">Date Of Birth</th>
                       <th class="px-4 py-3">Gender</th>
                       <th class="px-4 py-3">Address</th>
+                      <th class="px-4 py-3">Joined Date</th>
                       <th class="px-4 py-3">Actions</th>
                     </tr>
                   </thead>
@@ -76,6 +77,8 @@
                         {data: 'gender', name: 'gender',class:'text-center'},
 
                         {data: 'address', name: 'address',class:'text-center'},
+
+                        {data: 'created_at', name: 'created_at',class:'text-center'},
 
                         {data: 'action', name: 'action',class:'text-center'},
 

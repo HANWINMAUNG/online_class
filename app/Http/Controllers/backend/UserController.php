@@ -29,6 +29,11 @@ class UserController extends Controller
                        ->addColumn('action', function($user){
                         return view('backend.action.user_action',['user' => $user]);
                        })
+                       ->order(function ($user){
+                        $user->orderBy('created_at','desc');
+                                 })->addColumn('created_at', function ($data) {
+                        return date('d-M-Y H:i:s', strtotime($data->created_at));
+                             })
                        ->rawColumns(['action'])
                        ->make(true);
         }

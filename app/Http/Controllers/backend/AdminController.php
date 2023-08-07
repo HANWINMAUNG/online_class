@@ -19,11 +19,17 @@ class AdminController extends Controller
     {
         if($request->ajax()){
             $query = Admin::query();
-
+             
             return DataTables::of($query)
                        ->addColumn('action', function($admin){
                         return view('backend.action.admin_action',['admin' => $admin]);
                        })
+                       ->order(function ($admin){
+                        $admin->orderBy('created_at','desc');
+                                 })->addColumn('created_at', function ($data) {
+                        return date('d-M-Y H:i:s', strtotime($data->created_at));
+                             })
+                       
                        ->rawColumns(['action'])
                        ->make(true);
         }

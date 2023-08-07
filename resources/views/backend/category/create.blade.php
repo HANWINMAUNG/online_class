@@ -69,7 +69,9 @@
                                           },
                                         ])
                                       
-                                       
+                                        .onSuccess((event) => {
+                                            $('#form').submit();
+                                           });
                   </script>
 @endpush
 

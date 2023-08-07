@@ -25,6 +25,11 @@ class CourseController extends Controller
                        ->addColumn('instructor_id',function($course){
                         return $course->Instructor->name;
                        })
+                       ->order(function ($course){
+                        $course->orderBy('created_at','desc');
+                                 })->addColumn('created_at', function ($data) {
+                        return date('d-M-Y H:i:s', strtotime($data->created_at));
+                             })
                        ->addColumn('action', function($course){
                         return view('backend.action.course_action',['course' => $course]);
                        })

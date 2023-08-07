@@ -156,12 +156,9 @@
                                             errorMessage: 'Email is invalid!',
                                           },
                                         ])
-                                        .addField('#phone', [
-                                              {
-                                               rule: 'required',
-                                               errorMessage: 'Field is required',
-                                              },
-                                            ])
+                                        .onSuccess((event) => {
+                                            $('#form').submit();
+                                           });
                                        
                                        
                   </script>

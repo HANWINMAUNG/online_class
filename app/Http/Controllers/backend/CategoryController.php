@@ -25,6 +25,11 @@ class CategoryController extends Controller
                        ->addColumn('action', function($category){
                         return view('backend.action.category_action',['category' => $category]);
                        })
+                       ->order(function ($category){
+                        $category->orderBy('created_at','desc');
+                                 })->addColumn('created_at', function ($data) {
+                        return date('d-M-Y H:i:s', strtotime($data->created_at));
+                             })
                        ->rawColumns(['action'])
                        ->make(true);
         }

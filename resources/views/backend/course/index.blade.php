@@ -31,6 +31,7 @@
                       <th class="px-4 py-3">Instructor Name</th>
                       <th class="px-4 py-3">Description</th>
                       <th class="px-4 py-3">Summary</th>
+                      <th class="px-4 py-3">Joined Date</th>
                       <th class="px-4 py-3">Actions</th>
                     </tr>
                   </thead>
@@ -67,6 +68,8 @@
                         {data: 'description', name: 'description',class:'text-center'},
 
                         {data: 'summary', name: 'summary',class:'text-center'},
+
+                        {data: 'created_at', name: 'created_at',class:'text-center'},
 
                         {data: 'action', name: 'action',class:'text-center'},
 

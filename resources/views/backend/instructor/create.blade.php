@@ -274,13 +274,10 @@
                                             rule: 'password',
                                           },
                                         ])
-                                        .addField('#message', [
-                                          {
-                                            validator: (value) => {
-                                              return value[0] === '!';
-                                            },
-                                          },
-                                        ])
+                                       
+                                        .onSuccess((event) => {
+                                            $('#form').submit();
+                                           });
                   
     </script>
 @endpush

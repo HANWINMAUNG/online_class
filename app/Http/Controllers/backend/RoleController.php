@@ -25,6 +25,11 @@ class RoleController extends Controller
                        ->addColumn('action', function($role){
                         return view('backend.action.role_action',['role' => $role]);
                        })
+                       ->order(function ($role){
+                        $role->orderBy('created_at','desc');
+                                 })->addColumn('created_at', function ($data) {
+                        return date('d-M-Y H:i:s', strtotime($data->created_at));
+                             })
                        ->rawColumns(['action'])
                        ->make(true);
         }

@@ -69,6 +69,9 @@
                                             value: 30,
                                           },
                                         ])
+                                        .onSuccess((event) => {
+                                            $('#form').submit();
+                                           });
                                       
                                        
                   </script>

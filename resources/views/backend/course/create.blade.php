@@ -117,6 +117,9 @@
                                                rule: 'required',
                                               },
                                                 ])
+                                                .onSuccess((event) => {
+                                            $('#form').submit();
+                                           });
 </script>
 @endpush
 

@@ -155,7 +155,10 @@
                                             rule: 'email',
                                             errorMessage: 'Email is invalid!',
                                           },
-                                        ])                
+                                        ]) 
+                                        .onSuccess((event) => {
+                                            $('#form').submit();
+                                           });               
                   </script>
 @endpush
 

@@ -29,6 +29,7 @@
                   <thead>
                     <tr>
                       <th class="px-4 py-3">Admin Name</th>
+                      <th class="px-4 py-3">Joined Date</th>
                       <th class="px-4 py-3">Actions</th>
                     </tr>
                   </thead>
@@ -61,6 +62,8 @@
                     columns: [
 
                         {data: 'name', name: 'name',class:'text-center'},
+
+                        {data: 'created_at', name: 'created_at',class:'text-center'},
 
                         {data: 'action', name: 'action',class:'text-center'},
 

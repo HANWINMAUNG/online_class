@@ -30,6 +30,7 @@
                     <tr>
                       <th class="px-4 py-3">Title</th>
                       <th class="px-4 py-3">Slug</th>
+                      <th class="px-4 py-3">Joined Date</th>
                       <th class="px-4 py-3">Actions</th>
                     </tr>
                   </thead>
@@ -62,6 +63,8 @@
                         {data: 'title', name: 'title',class:'text-center'},
 
                         {data: 'slug', name: 'slug',class:'text-center'},
+                        
+                        {data: 'created_at', name: 'created_at',class:'text-center'},
 
                         {data: 'action', name: 'action',class:'text-center'},
 
