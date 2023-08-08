@@ -28,15 +28,34 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/admin', function(){
-    return view('backend/index');
-})->name('admin');
+Route::group([
+    
+     'middleware'=>'guest',
+   
+],function(){
+
+Route::get('admin/', function(){return view('backend/index');})->name('admin');
+
+Route::get('admin/login', [LoginController::class, 'Login'])->name('admin_get.login');
+Route::post('admin/login', [LoginController::class, 'postLogin'])->name('admin_post.login');
+Route::get('admin/logout', [LoginController::class, 'Logout'])->name('admin.logout');
+
+Route::get('admin/forgot-password' ,[ForgotPasswordController::class, 'index'])->name('forgot-password.index');
+Route::post('admin/forgot-password' ,[ForgotPasswordController::class, 'sendEmail'])->name('forgot-password.send-email');
+
+Route::get('admin/reset-password', [ResetPasswordController::class, 'index'])->name('reset-password.index'); 
+Route::post('admin/reset-password', [ResetPasswordController::class, 'reset'])->name('reset-password.reset');
+
+});
+
 
 Route::group([
     'prefix'=>'admin/',
-    // 'middleware'=>'guest',
+     'middleware'=>'auth:admin',
     //  'namespace'=>'App\Http\Controllers\backend'
 ],function(){
+
+   
 //admin
 Route::get('admin-account', [AdminController::class, 'index'])->name('admin.index');
 Route::get('admin-account/create', [AdminController::class, 'create'])->name('admin.create');
@@ -98,13 +117,5 @@ Route::patch('role-account/{role:id}', [RoleController::class,'update'])->name('
 });
 
 
-Route::get('admin/login', [LoginController::class, 'Login'])->name('admin_get.login');
-Route::post('admin/login', [LoginController::class, 'postLogin'])->name('admin_post.login');
-Route::get('admin/logout', [LoginController::class, 'Logout'])->name('admin.logout');
-
-Route::get('admin/forgot-password' ,[ForgotPasswordController::class, 'index'])->name('forgot-password.index');
-Route::post('admin/forgot-password' ,[ForgotPasswordController::class, 'sendEmail'])->name('forgot-password.send-email');
-
-Route::get('admin/reset-password', [ResetPasswordController::class, 'index'])->name('reset-password.index'); 
-Route::post('admin/reset-password', [ResetPasswordController::class, 'reset'])->name('reset-password.reset'); 
+ 
 
