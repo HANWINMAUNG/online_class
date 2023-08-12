@@ -8,25 +8,45 @@ use App\Http\Controllers\backend\CourseController;
 use App\Http\Controllers\backend\CategoryController;
 use App\Http\Controllers\backend\auth\LoginController;
 use App\Http\Controllers\backend\InstructorController;
-use App\Http\Controllers\backend\auth\RegisterController;
+use App\Http\Controllers\Frontend\Auth\RegisterController;
+use App\Http\Controllers\frontend\Auth\UserLoginController;
 use App\Http\Controllers\backend\auth\ResetPasswordController;
 use App\Http\Controllers\backend\auth\ForgotPasswordController;
+use App\Http\Controllers\frontend\Auth\EmailVerificationController;
+use App\Http\Controllers\frontend\Auth\UserResetPasswordController;
+use App\Http\Controllers\frontend\Auth\UserForgotPasswordController;
 
 
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
-|
-*/
 
-Route::get('/', function () {
-    return view('welcome');
+
+Route::get('/', function () {return view('frontend/home');})->name('home');
+
+Route::get('register', [RegisterController::class, 'index'])->name('get.register');
+Route::post('register', [RegisterController::class, 'postRegister'])->name('post.register');
+
+Route::get('login', [UserLoginController::class, 'Login'])->name('get.login');
+Route::post('login', [UserLoginController::class, 'postLogin'])->name('post.login');
+Route::get('logout', [UserLoginController::class, 'Logout'])->name('logout');
+
+
+
+Route::prefix('email/verify')->group(function(){
+    Route::get('/', [EmailVerificationController::class, 'verify'])->name('verification.verify');
+    Route::get('notice', [EmailVerificationController::class, 'notice'])->name('verification.notice');
+    Route::get('resend', [EmailVerificationController::class, 'resend'])->name('verification.resend');
+    Route::get('sent', [EmailVerificationController::class, 'sent'])->name('verification.sent');
+    Route::get('success', [EmailVerificationController::class, 'success'])->name('verification.success');
 });
+
+Route::get('forgot-password' ,[UserForgotPasswordController::class, 'index'])->name('forgotPassword.index');
+Route::post('forgot-password' ,[UserForgotPasswordController::class, 'sendEmail'])->name('forgotPassword.send-email');
+
+Route::get('reset-password', [UserResetPasswordController::class, 'index'])->name('resetPassword.index'); 
+Route::post('reset-password', [UserResetPasswordController::class, 'reset'])->name('resetPassword.reset');
+
+
+
+
 
 Route::group([
     
