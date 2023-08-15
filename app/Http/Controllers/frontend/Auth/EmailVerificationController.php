@@ -5,6 +5,7 @@ namespace App\Http\Controllers\frontend\Auth;
 use App\Models\User;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Notifications\RegisterNotification;
 
 class EmailVerificationController extends Controller
 {
