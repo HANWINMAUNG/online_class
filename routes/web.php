@@ -5,6 +5,7 @@ use App\Http\Controllers\backend\RoleController;
 use App\Http\Controllers\backend\UserController;
 use App\Http\Controllers\backend\AdminController;
 use App\Http\Controllers\backend\CourseController;
+use App\Http\Controllers\backend\EpisodeController;
 use App\Http\Controllers\backend\CategoryController;
 use App\Http\Controllers\backend\auth\LoginController;
 use App\Http\Controllers\backend\InstructorController;
@@ -20,6 +21,9 @@ use App\Http\Controllers\frontend\Auth\UserForgotPasswordController;
 
 
 Route::get('/', function () {return view('frontend/home');})->name('home');
+Route::get('/courses', function () {return view('frontend/courses');})->name('courses');
+Route::get('/about', function () {return view('frontend/about');})->name('about');
+Route::get('/contact', function () {return view('frontend/contact');})->name('contact');
 
 Route::get('register', [RegisterController::class, 'index'])->name('get.register');
 Route::post('register', [RegisterController::class, 'postRegister'])->name('post.register');
@@ -134,7 +138,18 @@ Route::delete('role-account/{role:id}', [RoleController::class,'destroy'])->name
 Route::get('role-account/{role:id}/edit', [RoleController::class,'edit'])->name('role.edit');
 Route::patch('role-account/{role:id}', [RoleController::class,'update'])->name('role.update');
 
+//episode
+Route::get('episode-account', [EpisodeController::class, 'index'])->name('episode.index');
+Route::get('episode-account/create', [EpisodeController::class, 'create'])->name('episode.create');
+Route::post('episode-account', [EpisodeController::class, 'store'])->name('episode.store');
+Route::get('episode-account/{episode:id}', [EpisodeController::class,'show'])->name('episode.show');
+Route::delete('episode-account/{episode:id}', [EpisodeController::class,'destroy'])->name('episode.destroy');
+Route::get('episode-account/{episode:id}/edit', [EpisodeController::class,'edit'])->name('episode.edit');
+Route::patch('episode-account/{episode:id}', [EpisodeController::class,'update'])->name('episode.update');
+
 });
+
+
 
 
  

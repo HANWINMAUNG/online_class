@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Models\Episode;
 use App\Models\Category;
 use App\Models\Instructor;
 use Illuminate\Database\Eloquent\Model;
@@ -19,5 +20,10 @@ class Course extends Model
 
     public function Category(){ 
         return $this->belongsToMany(Category::class);
+    }
+
+    public function Episode()
+    {
+        return $this->hasMany(Episode::class);
     }
 }

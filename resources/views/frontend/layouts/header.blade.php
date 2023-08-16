@@ -19,9 +19,9 @@
                                     <div class="main-menu d-none d-lg-block">
                                         <nav>
                                             <ul id="navigation">                                                                                          
-                                                <li class="active" ><a href="index.html">Home</a></li>
-                                                <li><a href="courses.html">Courses</a></li>
-                                                <li><a href="about.html">About</a></li>
+                                                <li class="active" ><a href="{{route('home')}}">Home</a></li>
+                                                <li><a href="{{route('courses')}}">Courses</a></li>
+                                                <li><a href="{{route('about')}}">About</a></li>
                                                 <li><a href="#">Blog</a>
                                                     <ul class="submenu">
                                                         <li><a href="blog.html">Blog</a></li>
@@ -29,7 +29,7 @@
                                                         <li><a href="elements.html">Element</a></li>
                                                     </ul>
                                                 </li>
-                                                <li><a href="contact.html">Contact</a></li>
+                                                <li><a href="{{route('contact')}}">Contact</a></li>
                                                 <!-- Button -->
                                                 <li class="button-header margin-left "><a href="{{route('get.register')}}" class="btn">Register</a></li>
                                                 <li class="button-header"><a href="{{route('get.login')}}" class="btn btn3">Log in</a></li>
