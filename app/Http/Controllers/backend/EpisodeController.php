@@ -33,7 +33,7 @@ class EpisodeController extends Controller
                        ->addColumn('action', function($episode){
                         return view('backend.action.episode_action',['episode' => $episode]);
                        })
-                       ->rawColumns(['action'])
+                       ->rawColumns(['action', 'course_id'])
                        ->make(true);
         }
         
