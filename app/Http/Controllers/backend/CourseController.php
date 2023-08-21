@@ -128,7 +128,7 @@ class CourseController extends Controller
             'instructor_id' =>$attributes['instructor_id'],
             'price' =>$attributes['price'],
             'image' =>$attributes['image'],
-            'cover_photo' =>$attributes['cover_photo'],
+            'cover_photo' =>$attributes['cover_photo'], 
             'description' =>$attributes['description'],
             'summary' =>$attributes['summary']
         ]);
