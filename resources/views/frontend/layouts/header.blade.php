@@ -10,7 +10,7 @@
                             <!-- Logo -->
                             <div class="col-xl-2 col-lg-2">
                                 <div class="logo">
-                                    <a href="index.html"><img src="{{asset('frontend/assets/img/logo/logo.png')}}" alt=""></a>
+                                    <img style="width:60px;height:60px;" src="{{asset('frontend/assets/img/logo/logo.png')}}" alt=""><span class="pl-4 font-weight-bold h2">Oline Course</span>
                                 </div>
                             </div>
                             <div class="col-xl-10 col-lg-10">

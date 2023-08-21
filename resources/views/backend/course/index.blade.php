@@ -27,12 +27,12 @@
                 <table class="display p-4 data-table">
                   <thead>
                     <tr>
-                      <th class="px-4 py-3">Title</th>
-                      <th class="px-4 py-3">Instructor Name</th>
-                      <th class="px-4 py-3">Description</th>
-                      <th class="px-4 py-3">Summary</th>
-                      <th class="px-4 py-3">Joined Date</th>
-                      <th class="px-4 py-3">Actions</th>
+                      <th style="text-align:center;">Title</th>
+                      <th style="text-align:center;">Instructor Name</th>
+                      <th style="text-align:center;">Description</th>
+                      <th style="text-align:center;">Summary</th>
+                      <th style="text-align:center;">Joined Date</th>
+                      <th style="text-align:center;">Actions</th>
                     </tr>
                   </thead>
                   <tbody class="p-2"> 

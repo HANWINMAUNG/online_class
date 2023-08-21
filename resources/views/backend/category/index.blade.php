@@ -28,10 +28,10 @@
                 <table class="display p-4 data-table">
                   <thead>
                     <tr>
-                      <th class="px-4 py-3">Title</th>
-                      <th class="px-4 py-3">Slug</th>
-                      <th class="px-4 py-3">Joined Date</th>
-                      <th class="px-4 py-3">Actions</th>
+                      <th style="text-align:center;">Title</th>
+                      <th style="text-align:center;">Slug</th>
+                      <th style="text-align:center;">Joined Date</th>
+                      <th style="text-align:center;">Actions</th>
                     </tr>
                   </thead>
                   <tbody class="p-2">   

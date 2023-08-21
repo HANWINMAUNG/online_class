@@ -28,14 +28,14 @@
                 <table class="display p-4 data-table">
                   <thead>
                     <tr>
-                      <th class="px-4 py-3">User Name</th>
-                      <th class="px-4 py-3">Email</th>
-                      <th class="px-4 py-3">Phone</th>
-                      <th class="px-4 py-3">Date Of Birth</th>
-                      <th class="px-4 py-3">Gender</th>
-                      <th class="px-4 py-3">Address</th>
-                      <th class="px-4 py-3">Joined Date</th>
-                      <th class="px-4 py-3">Actions</th>
+                      <th style="text-align:center;">User Name</th>
+                      <th style="text-align:center;">Email</th>
+                      <th style="text-align:center;">Phone</th>
+                      <th style="text-align:center;">Date Of Birth</th>
+                      <th style="text-align:center;">Gender</th>
+                      <th style="text-align:center;">Address</th>
+                      <th style="text-align:center;">Joined Date</th>
+                      <th style="text-align:center;">Actions</th>
                     </tr>
                   </thead>
                   <tbody class="p-2">

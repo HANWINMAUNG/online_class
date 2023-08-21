@@ -17,7 +17,9 @@ class CreateEpisodesTable extends Migration
             $table->id();
             $table->string('title')->unique();
             $table->unsignedBigInteger('course_id');
+            $table->enum('privacy', ['public', 'private'])->default('private');
             $table->Text('cover')->nullable();
+            $table->string('image')->nullable();
             $table->Text('video')->nullable();
             $table->longText('summary')->nullable();
             $table->timestamps();

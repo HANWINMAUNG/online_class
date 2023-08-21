@@ -3,7 +3,7 @@
             <div class="preloader-inner position-relative">
                 <div class="preloader-circle"></div>
                 <div class="preloader-img pere-text">
-                    <img src="{{asset('frontend/assets/img/logo/loder.png')}}" alt="">
+                    <img src="{{asset('frontend/assets/img/logo/logo.png')}}" alt="">
                 </div>
             </div>
         </div>

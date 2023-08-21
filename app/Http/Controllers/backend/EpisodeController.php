@@ -16,28 +16,36 @@ class EpisodeController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(Request $request)
+    public function index(Request $request,Course $course)
     {
+       
         if($request->ajax()){
-            $query = Episode::query();
-             
+            $query = Course::query();
+            
             return DataTables::of($query)
-                       ->addColumn('course_id',function($episode){
-                        return $episode->Course->title;
+                       ->addColumn('course_id',function($course){
+                        return $course->title;
                        })
-                       ->order(function ($episode){
-                        $course->orderBy('created_at','desc');
-                                 })->addColumn('created_at', function ($data) {
-                        return date('d-M-Y H:i:s', strtotime($data->created_at));
-                             })
-                       ->addColumn('action', function($episode){
-                        return view('backend.action.episode_action',['episode' => $episode]);
+                       ->addColumn('title',function($course){
+                        return $course->Episode->title;
                        })
-                       ->rawColumns(['action', 'course_id'])
+                       ->addColumn('cover',function($course){
+                        return $course->Episode->cover;
+                       })
+                       ->addColumn('video',function($course){
+                        return $course->Episode->video;
+                       })
+                       ->addColumn('summary',function($course){
+                        return $course->Episode->summary;
+                       })
+                       ->addColumn('action', function($course){
+                        return view('backend.action.episode_action',['episode' =>$course->Episode->id]);
+                       })
+                       ->rawColumns(['action'])
                        ->make(true);
         }
         
-        return view('backend.episode.index');
+        return view('backend.episode.index',['course'=>$course]);
     }
 
     /**
