@@ -68,6 +68,9 @@ class CourseController extends Controller
        $course = Course::create([
             'title' =>$attributes['title'],
             'instructor_id' =>$attributes['instructor_id'],
+            'price' =>$attributes['price'],
+            'image' =>$attributes['image'],
+            'cover_photo' =>$attributes['cover_photo'],
             'description' =>$attributes['description'],
             'summary' =>$attributes['summary']
         ]);
@@ -98,18 +101,8 @@ class CourseController extends Controller
     public function edit(Course $course)
     {
         $category_courses = $course->Category->toBase()->pluck('title', 'id')->toArray();
-       
         $categories = Category::toBase()->get()->pluck('title', 'id')->toArray();
         $instructors = Instructor::query()->get();
-
-        // foreach($categories as $key =>$category){
-        //     foreach($category_courses as $keys =>$category_course){
-        //         if($keys == $key){
-        //         dd($category);
-        //         }else{
-        //         }
-        //     }
-        // }
         return view('backend.course.edit',[
             'instructors' =>$instructors,
             'course' =>$course,
@@ -128,7 +121,19 @@ class CourseController extends Controller
      */
     public function update(CourseRequest $request, Course $course)
     {
-        $course->update($request->validated());
+        $attributes = $request->validated();
+            
+       $course = Course::update([
+            'title' =>$attributes['title'],
+            'instructor_id' =>$attributes['instructor_id'],
+            'price' =>$attributes['price'],
+            'image' =>$attributes['image'],
+            'cover_photo' =>$attributes['cover_photo'],
+            'description' =>$attributes['description'],
+            'summary' =>$attributes['summary']
+        ]);
+
+        $course->Category()->sync($attributes['category']);
 
         return redirect()->route('course.index')->with('success','Course is successfully updated!');
     }

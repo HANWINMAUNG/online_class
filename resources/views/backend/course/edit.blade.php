@@ -69,6 +69,40 @@
               </label>
 
               <label class="block mt-4 text-sm">
+                <span class="text-gray-700 dark:text-gray-400">Price<span style="color:red;">*</span></span>
+                <input type="number" name="price" value="{{$course->price}}"
+                  class="block w-full mt-1 text-sm dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input"
+                  placeholder=""
+                />
+              </label>
+
+              @error('price')
+                        <small style="color:red;">{{$message}}*</small>
+              @enderror
+
+              <label class="block mt-4 text-sm">
+                <span class="text-gray-700 dark:text-gray-400">Image<span style="color:red;">*</span></span>
+                <input type="file" name="image" value="{{$course->image}}"
+                  class="block w-full mt-1 text-sm dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input"
+                  placeholder=""
+                />
+              </label>
+              @error('image')
+                        <small style="color:red;">{{$message}}*</small>
+               @enderror
+
+                <label class="block mt-4 text-sm">
+                <span class="text-gray-700 dark:text-gray-400">Cover Photo<span style="color:red;">*</span></span>
+                <input type="file" name="cover_photo" value="{{$course->cover_photo}}"
+                  class="block w-full mt-1 text-sm dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input"
+                  placeholder=""
+                />
+              </label>
+              @error('cover_photo')
+                        <small style="color:red;">{{$message}}*</small>
+              @enderror
+
+              <label class="block mt-4 text-sm">
                 <span class="text-gray-700 dark:text-gray-400">Description</span>
                 <textarea type="text" name="description"
                   class="block w-full mt-1 text-sm dark:text-gray-300 dark:border-gray-600 dark:bg-gray-700 form-textarea focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:focus:shadow-outline-gray"

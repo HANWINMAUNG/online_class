@@ -30,7 +30,6 @@
                         <small style="color:red;">{{$message}}*</small>
                  @enderror
 
-                 
                  <label class="block mt-4 text-sm">
                 <span class="text-gray-700 dark:text-gray-400">
                 Instructor Name <span style="color:red;">*</span>
@@ -57,11 +56,44 @@
                   class="select2 block w-full mt-1 text-sm dark:text-gray-300 dark:border-gray-600 dark:bg-gray-700 form-select focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:focus:shadow-outline-gray"
                  multiple>
                   @foreach($categories as $key =>$category)
-                  
                   <option value="{{$key}}">{{$category}}</option>
                   @endforeach
                 </select>
               </label>
+
+              <label class="block mt-4 text-sm">
+                <span class="text-gray-700 dark:text-gray-400">Price<span style="color:red;">*</span></span>
+                <input type="number" name="price"
+                  class="block w-full mt-1 text-sm dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input"
+                  placeholder=""
+                />
+              </label>
+
+              @error('price')
+                        <small style="color:red;">{{$message}}*</small>
+              @enderror
+
+              <label class="block mt-4 text-sm">
+                <span class="text-gray-700 dark:text-gray-400">Image<span style="color:red;">*</span></span>
+                <input type="file" name="image"
+                  class="block w-full mt-1 text-sm dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input"
+                  placeholder=""
+                />
+              </label>
+              @error('image')
+                        <small style="color:red;">{{$message}}*</small>
+               @enderror
+
+                <label class="block mt-4 text-sm">
+                <span class="text-gray-700 dark:text-gray-400">Cover Photo<span style="color:red;">*</span></span>
+                <input type="file" name="cover_photo"
+                  class="block w-full mt-1 text-sm dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input"
+                  placeholder=""
+                />
+              </label>
+              @error('cover_photo')
+                        <small style="color:red;">{{$message}}*</small>
+              @enderror
 
               <label class="block mt-4 text-sm">
                 <span class="text-gray-700 dark:text-gray-400">Description</span>
@@ -71,12 +103,10 @@
                   placeholder="Enter your address." id="description"
                 ></textarea>
               </label>
-
               @error('description')
                         <small style="color:red;">{{$message}}*</small>
                 @enderror
 
-                
               <label class="block mt-4 text-sm">
                 <span class="text-gray-700 dark:text-gray-400">Summary</span>
                 <textarea  name="summary" id="inp_editor1"
@@ -89,7 +119,6 @@
                 @enderror
               <div class="flex mt-6 text-sm  ">
                 <div class="flex justify-items-end">
-                
                 <button type="submit"
                   class="px-4 py-2 text-sm font-medium leading-5 text-black transition-colors duration-150 bg-purple-600 border border-transparent rounded-lg active:bg-purple-600 hover:bg-purple-700 focus:outline-none focus:shadow-outline-purple">
                   Submit

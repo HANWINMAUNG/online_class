@@ -31,6 +31,7 @@
                       <th style="text-align:center;">Instructor Name</th>
                       <th style="text-align:center;">Description</th>
                       <th style="text-align:center;">Summary</th>
+                      <th style="text-align:center;">Price</th>
                       <th style="text-align:center;">Joined Date</th>
                       <th style="text-align:center;">Actions</th>
                     </tr>
@@ -68,6 +69,8 @@
                         {data: 'description', name: 'description',class:'text-center'},
 
                         {data: 'summary', name: 'summary',class:'text-center'},
+
+                        {data: 'price', name: 'price',class:'text-center'},
 
                         {data: 'created_at', name: 'created_at',class:'text-center'},
 
