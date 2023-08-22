@@ -6,7 +6,7 @@
           <div class="flex justify-items-end">
               <a
                 class="float-right p-4 mb-8 text-sm  text-purple-100 bg-purple-600 rounded-lg shadow-md focus:outline-none focus:shadow-outline-purple"
-                href="{{route('episode.index')}}"
+                href="{{route('episode.index',[$episode->Course->id])}}"
               >
                 Back &LeftArrow;
               </a>
@@ -37,6 +37,14 @@
                 </p>
                 <p class="ml-6 text-gray-600 dark:text-gray-400 basis-1/2 ">
                   -{{$episode->Course->title}} 
+              </div>
+
+              <div class="flex flex-row mt-4">
+                <p class="text-gray-600 dark:text-gray-400 basis-1/2 ml-8">
+                  Privacy
+                </p>
+                <p class="ml-6 text-gray-600 dark:text-gray-400 basis-1/2 ">
+                  -{{$episode->privacy}} 
               </div>
 
 

@@ -10,7 +10,7 @@
             <div class="justify-items-end my-6 text-2xl font-semibold text-gray-700 dark:text-gray-200">
               <a
                 class="float-right p-4 mb-8 text-sm  text-purple-100 bg-purple-600 rounded-lg shadow-md focus:outline-none focus:shadow-outline-purple"
-                href="{{route('episode.create',$course->id )}}"
+                href="{{route('episode.create',[$course->id] )}}"
               >
                 Episode Create &RightArrow;
               </a>
@@ -30,7 +30,7 @@
                       <th style="text-align:center;">Title</th>
                       <th style="text-align:center;">Course Name</th>
                       <th style="text-align:center;">Cover</th>
-                      <th style="text-align:center;">Video</th>
+                      <th style="text-align:center;">Privacy</th>
                       <th style="text-align:center;">Summary</th>
                       <th style="text-align:center;">Actions</th>
                     </tr>
@@ -57,7 +57,7 @@
 
                     serverSide: true,
 
-                    ajax: "{{ route('episode.index') }}",
+                    ajax: "{{ route('episode.index',[$course->id]) }}",
 
                     columns: [
 
@@ -67,11 +67,9 @@
 
                         {data: 'cover', name: 'cover',class:'text-center'},
 
-                        {data: 'video', name: 'video',class:'text-center'},
+                        {data: 'privacy', name: 'privacy',class:'text-center'},
 
                         {data: 'summary', name: 'summary',class:'text-center'},
-
-                       
 
                         {data: 'action', name: 'action',class:'text-center'},
 

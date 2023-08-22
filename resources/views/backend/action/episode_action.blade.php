@@ -1,5 +1,5 @@
 <div class="flex items-center space-x-4 text-sm">
-                          <a href="{{ route('episode.edit' ,$episode->id )}}">
+                          <a href="{{ route('episode.edit',[$episode->Course->id,$episode->id])}}">
                           <button
                             class="flex items-center justify-between px-2 py-2 text-sm font-medium leading-5 text-purple-600 rounded-lg dark:text-gray-400 focus:outline-none focus:shadow-outline-gray"
                             aria-label="Edit"
@@ -17,7 +17,7 @@
                           </button>
                           </a>
 
-                          <form action="{{ route('episode.destroy',$episode->id)}}" method="POST" class="d-inline-block">
+                          <form action="{{ route('episode.destroy',[$episode->Course->id,$episode->id])}}" method="POST" class="d-inline-block">
                                   @csrf
                                    @method('DELETE')
                               <button
@@ -39,7 +39,7 @@
                               </button>
                           </form
                           </a>
-                          <a href="{{ route('episode.show' ,$episode->id )}}"
+                          <a href="{{ route('episode.show',[$episode->Course->id,$episode->id] )}}"
                           <button
                             class="flex items-center justify-between px-2 py-2 text-sm font-medium leading-5 text-purple-600 rounded-lg dark:text-gray-400 focus:outline-none focus:shadow-outline-gray"
                             aria-label="view"

@@ -16,35 +16,29 @@ class EpisodeController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(Request $request,Course $course)
+    public function index(Request $request ,Course $course)
     {
        
         if($request->ajax()){
-            $query = Course::query();
-            
+
+            $query = Episode::where('course_id',$course->id);
+           
             return DataTables::of($query)
-                       ->addColumn('course_id',function($course){
-                        return $course->title;
+                       ->addColumn('course_id',function($episode){
+                        return $episode->Course->title;
                        })
-                       ->addColumn('title',function($course){
-                        return $course->Episode->title;
-                       })
-                       ->addColumn('cover',function($course){
-                        return $course->Episode->cover;
-                       })
-                       ->addColumn('video',function($course){
-                        return $course->Episode->video;
-                       })
-                       ->addColumn('summary',function($course){
-                        return $course->Episode->summary;
-                       })
-                       ->addColumn('action', function($course){
-                        return view('backend.action.episode_action',['episode' =>$course->Episode->id]);
+                       ->order(function ($episode){
+                        $episode->orderBy('created_at','desc');
+                                 })->addColumn('created_at', function ($data) {
+                        return date('d-M-Y H:i:s', strtotime($data->created_at));
+                             })
+                       ->addColumn('action', function($episode){
+                        return view('backend.action.episode_action',['episode' => $episode]);
                        })
                        ->rawColumns(['action'])
                        ->make(true);
         }
-        
+    
         return view('backend.episode.index',['course'=>$course]);
     }
 
@@ -53,11 +47,9 @@ class EpisodeController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Course $course)
     {
-        $courses = Course::query()->get();
-       
-        return view('backend.episode.create',['courses' =>$courses]);
+        return view('backend.episode.create',['course' =>$course]);
     }
 
     /**
@@ -66,18 +58,18 @@ class EpisodeController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(EpisodeRequest $request)
+    public function store(EpisodeRequest $request,Course $course)
     {
         $attributes = $request->validated();
-            
+           
        $episode = Episode::create([
             'title' =>$attributes['title'],
-            'course_id' =>$attributes['course_id'],
+            'course_id' =>$course->id,
             'cover' =>$attributes['cover'],
             'video' =>$attributes['video'],
             'summary' =>$attributes['summary']
         ]);
-        return redirect()->route('episode.index')->with('success','Episode is successfully created!');
+        return redirect()->route('episode.index',[$course->id])->with('success','Episode is successfully created!');
     }
 
     /**
@@ -86,7 +78,7 @@ class EpisodeController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(Episode $episode)
+    public function show(Course $course,Episode $episode)
     {
         return view('backend.detail.episode_detail',['episode' => $episode]);
     }
@@ -97,14 +89,10 @@ class EpisodeController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(Episode $episode)
+    public function edit(Course $course,Episode $episode)
     {
-
-        $courses = Course::query()->get();
-
         return view('backend.episode.edit',[
             'episode' =>$episode,
-            'courses' =>$courses,
         ]);
     }
 
@@ -115,11 +103,19 @@ class EpisodeController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(EpisodeRequest $request, Episode $episode)
+    public function update(EpisodeRequest $request,Course $course, Episode $episode)
     {
-        $episode->update($request->validated());
+        $attributes = $request->validated();
+           
+        $episode->update([
+             'title' =>$attributes['title'],
+             'course_id' =>$episode->Course->id,
+             'cover' =>$attributes['cover'],
+             'video' =>$attributes['video'],
+             'summary' =>$attributes['summary']
+         ]);
 
-        return redirect()->route('episode.index')->with('success','Episode is successfully updated!');    }
+        return redirect()->route('episode.index',[$episode->Course->id])->with('success','Episode is successfully updated!');    }
 
     /**
      * Remove the specified resource from storage.
@@ -127,9 +123,9 @@ class EpisodeController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Episode $episode)
+    public function destroy(Course $course,Episode $episode)
     {
         $episode->delete();
-        return redirect()->route('episode.index')->with('success','Episode is successfully deleted!');
+        return redirect()->route('episode.index',[$episode->Course->id])->with('success','Episode is successfully deleted!');
     }
 }

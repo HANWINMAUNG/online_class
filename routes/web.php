@@ -84,30 +84,30 @@ Route::group([
 Route::get('admin-account', [AdminController::class, 'index'])->name('admin.index');
 Route::get('admin-account/create', [AdminController::class, 'create'])->name('admin.create');
 Route::post('admin-account', [AdminController::class, 'store'])->name('admin.store');
-Route::get('admin-account/{admin:id}', [AdminController::class,'show'])->name('admin.show');
-Route::delete('admin-account/{admin:id}', [AdminController::class,'destroy'])->name('admin.destroy');
-Route::get('admin-account/{admin:id}/edit', [AdminController::class,'edit'])->name('admin.edit');
-Route::patch('admin-account/{admin:id}', [AdminController::class,'update'])->name('admin.update');
+Route::get('admin-account/{admin}', [AdminController::class,'show'])->name('admin.show');
+Route::delete('admin-account/{admin}', [AdminController::class,'destroy'])->name('admin.destroy');
+Route::get('admin-account/{admin}/edit', [AdminController::class,'edit'])->name('admin.edit');
+Route::patch('admin-account/{admin}', [AdminController::class,'update'])->name('admin.update');
 
 //user
 
 Route::get('user', [UserController::class, 'index'])->name('user.index');
 Route::get('user/create', [UserController::class, 'create'])->name('user.create');
 Route::post('user', [UserController::class, 'store'])->name('user.store');
-Route::get('user/{user:id}', [UserController::class,'show'])->name('user.show');
-Route::delete('user/{user:id}', [UserController::class,'destroy'])->name('user.destroy');
-Route::get('user/{user:id}/edit', [UserController::class,'edit'])->name('user.edit');
-Route::patch('user/{user:id}', [UserController::class,'update'])->name('user.update');
+Route::get('user/{user}', [UserController::class,'show'])->name('user.show');
+Route::delete('user/{user}', [UserController::class,'destroy'])->name('user.destroy');
+Route::get('user/{user}/edit', [UserController::class,'edit'])->name('user.edit');
+Route::patch('user/{user}', [UserController::class,'update'])->name('user.update');
 
 //instructor
 
 Route::get('instructor', [InstructorController::class, 'index'])->name('instructor.index');
 Route::get('instructor/create', [InstructorController::class, 'create'])->name('instructor.create');
 Route::post('instructor', [InstructorController::class, 'store'])->name('instructor.store');
-Route::get('instructor/{instructor:id}', [InstructorController::class,'show'])->name('instructor.show');
-Route::delete('instructor/{instructor:id}', [InstructorController::class,'destroy'])->name('instructor.destroy');
-Route::get('instructor/{instructor:id}/edit', [InstructorController::class,'edit'])->name('instructor.edit');
-Route::patch('instructor/{instructor:id}', [InstructorController::class,'update'])->name('instructor.update');
+Route::get('instructor/{instructor}', [InstructorController::class,'show'])->name('instructor.show');
+Route::delete('instructor/{instructor}', [InstructorController::class,'destroy'])->name('instructor.destroy');
+Route::get('instructor/{instructor}/edit', [InstructorController::class,'edit'])->name('instructor.edit');
+Route::patch('instructor/{instructor}', [InstructorController::class,'update'])->name('instructor.update');
 
 
 //category
@@ -115,28 +115,28 @@ Route::patch('instructor/{instructor:id}', [InstructorController::class,'update'
 Route::get('category', [CategoryController::class, 'index'])->name('category.index');
 Route::get('category/create', [CategoryController::class, 'create'])->name('category.create');
 Route::post('category', [CategoryController::class, 'store'])->name('category.store');
-Route::get('category/{category:id}', [CategoryController::class,'show'])->name('category.show');
-Route::delete('category/{category:id}', [CategoryController::class,'destroy'])->name('category.destroy');
-Route::get('category/{category:id}/edit', [CategoryController::class,'edit'])->name('category.edit');
-Route::patch('category/{category:id}', [CategoryController::class,'update'])->name('category.update');
+Route::get('category/{category}', [CategoryController::class,'show'])->name('category.show');
+Route::delete('category/{category}', [CategoryController::class,'destroy'])->name('category.destroy');
+Route::get('category/{category}/edit', [CategoryController::class,'edit'])->name('category.edit');
+Route::patch('category/{category}', [CategoryController::class,'update'])->name('category.update');
 
 //course
 Route::get('course', [CourseController::class, 'index'])->name('course.index');
 Route::get('course/create', [CourseController::class, 'create'])->name('course.create');
 Route::post('course', [CourseController::class, 'store'])->name('course.store');
-Route::get('course/{course:id}', [CourseController::class,'show'])->name('course.show');
-Route::delete('course/{course:id}', [CourseController::class,'destroy'])->name('course.destroy');
-Route::get('course/{course:id}/edit', [CourseController::class,'edit'])->name('course.edit');
-Route::patch('course/{course:id}', [CourseController::class,'update'])->name('course.update');
+Route::get('course/{course}', [CourseController::class,'show'])->name('course.show');
+Route::delete('course/{course}', [CourseController::class,'destroy'])->name('course.destroy');
+Route::get('course/{course}/edit', [CourseController::class,'edit'])->name('course.edit');
+Route::patch('course/{course}', [CourseController::class,'update'])->name('course.update');
 
 //episode
-Route::get('course/{course:id}/episode', [EpisodeController::class, 'index'])->name('episode.index');
-Route::get('episode/create', [EpisodeController::class, 'create'])->name('episode.create');
-Route::post('episode', [EpisodeController::class, 'store'])->name('episode.store');
-Route::get('episode/{episode:id}', [EpisodeController::class,'show'])->name('episode.show');
-Route::delete('episode/{episode:id}', [EpisodeController::class,'destroy'])->name('episode.destroy');
-Route::get('episode/{episode:id}/edit', [EpisodeController::class,'edit'])->name('episode.edit');
-Route::patch('episode/{episode:id}', [EpisodeController::class,'update'])->name('episode.update');
+Route::get('course/{course}/episode', [EpisodeController::class, 'index'])->name('episode.index');
+Route::get('course/{course}/episode/create', [EpisodeController::class, 'create'])->name('episode.create');
+Route::post('course/{course}/episode', [EpisodeController::class, 'store'])->name('episode.store');
+Route::get('course/{course}/episode/{episode}', [EpisodeController::class,'show'])->name('episode.show');
+Route::delete('course/{course}/episode/{episode}', [EpisodeController::class,'destroy'])->name('episode.destroy');
+Route::get('course/{course}/episode/{episode}/edit', [EpisodeController::class,'edit'])->name('episode.edit');
+Route::patch('course/{course}/episode/{episode}', [EpisodeController::class,'update'])->name('episode.update');
 
 //role
 Route::get('role', [RoleController::class, 'index'])->name('role.index');

@@ -109,7 +109,7 @@ class InstructorController extends Controller
         
         $attributes = $request->validated();
     //    dd(json_encode($attributes['link']));
-        Instructor::update([
+        $instructor->update([
             'name' =>$attributes['name'],
             'email' =>$attributes['email'],
             'phone' =>$attributes['phone'],

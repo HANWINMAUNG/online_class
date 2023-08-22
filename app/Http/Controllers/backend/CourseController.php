@@ -123,7 +123,7 @@ class CourseController extends Controller
     {
         $attributes = $request->validated();
             
-       $course = Course::update([
+       $course->update([
             'title' =>$attributes['title'],
             'instructor_id' =>$attributes['instructor_id'],
             'price' =>$attributes['price'],

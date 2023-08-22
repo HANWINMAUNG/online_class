@@ -11,12 +11,12 @@
             <div class="flex justify-items-end">
               <a
                 class="float-right p-4 mb-8 text-sm  text-purple-100 bg-purple-600 rounded-lg shadow-md focus:outline-none focus:shadow-outline-purple"
-                href="{{route('episode.index')}}"
+                href="{{route('episode.index',[$course->id])}}"
               >
                 Back &LeftArrow;
               </a>
             </div>
-        <form action="{{route('episode.store')}}" method="post" id="form">
+        <form action="{{route('episode.store',[$course->id])}}" method="post" id="form">
             @csrf
             <div
               class="px-4 py-3 mb-8 bg-white rounded-lg shadow-md dark:bg-gray-800"
@@ -35,19 +35,39 @@
                 <span class="text-gray-700 dark:text-gray-400">
                 Course Name <span style="color:red;">*</span>
                 </span>
-                
-                <select name="course_id"
-                  class="block w-full mt-1 text-sm dark:text-gray-300 dark:border-gray-600 dark:bg-gray-700 form-select focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:focus:shadow-outline-gray"
-                >
-                @foreach($courses  as $course )
-                  <option value="{{$course->id}}">{{$course->title}}</option>
-                  @endforeach
-                </select>
+                <input type="text" name="course_id" value="{{$course->title}}"
+                  class="block w-full mt-1 text-sm dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input"
+                  placeholder=""
+                />
               </label>
              
                @error('course_id')
                         <small style="color:red;">{{$message}}*</small>
                 @enderror
+
+                <label class="block mt-4 text-sm">
+                <span class="text-gray-700 dark:text-gray-400">
+                 Privacy<span style="color:red;">*</span>
+                </span>
+                <select name="privacy" 
+                  class=" block w-full mt-1 text-sm dark:text-gray-300 dark:border-gray-600 dark:bg-gray-700 form-select focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:focus:shadow-outline-gray"
+                 >
+                    <option>Public</option>
+                    <option>Private</option> 
+                </select>
+              </label> 
+
+                <label class="block mt-4 text-sm">
+                <span class="text-gray-700 dark:text-gray-400">image<span style="color:red;">*</span></span>
+                <input type="file" name="image"
+                  class="block w-full mt-1 text-sm dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input"
+                  placeholder=""
+                />
+              </label>
+
+              @error('image')
+                        <small style="color:red;">{{$message}}*</small>
+               @enderror
 
                 <label class="block mt-4 text-sm">
                 <span class="text-gray-700 dark:text-gray-400">Cover<span style="color:red;">*</span></span>
