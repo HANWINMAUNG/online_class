@@ -4,9 +4,11 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\backend\RoleController;
 use App\Http\Controllers\backend\UserController;
 use App\Http\Controllers\backend\AdminController;
+use App\Http\Controllers\frontend\HomeController;
 use App\Http\Controllers\backend\CourseController;
 use App\Http\Controllers\backend\EpisodeController;
 use App\Http\Controllers\backend\CategoryController;
+use App\Http\Controllers\frontend\CoursesController;
 use App\Http\Controllers\backend\auth\LoginController;
 use App\Http\Controllers\backend\InstructorController;
 use App\Http\Controllers\Frontend\Auth\RegisterController;
@@ -20,8 +22,10 @@ use App\Http\Controllers\frontend\Auth\UserForgotPasswordController;
 
 
 
-Route::get('/', function () {return view('frontend/home');})->name('home');
-Route::get('/courses', function () {return view('frontend/courses');})->name('courses');
+
+Route::get('/', [HomeController::class, 'index'])->name('home');
+Route::get('/courses',[CoursesController::class, 'index'])->name('courses');
+Route::get('/courses/course/{course}',[CoursesController::class, 'show'])->name('course-detail');
 Route::get('/about', function () {return view('frontend/about');})->name('about');
 Route::get('/contact', function () {return view('frontend/contact');})->name('contact');
 
