@@ -112,7 +112,7 @@
                     <div class="col-lg-3 col-md-4 col-sm-6">
                         <div class="single-topic text-center mb-30">
                             <div class="topic-img">
-                                <img src="assets/img/gallery/topic1.png" alt="">
+                                <img src="{{asset('frontend/assets/img/gallery/topic1.png')}}" alt="">
                                 <div class="topic-content-box">
                                     <div class="topic-content">
                                         <h3><a href="#">Programing</a></h3>
@@ -124,7 +124,7 @@
                     <div class="col-lg-3 col-md-4 col-sm-6">
                         <div class="single-topic text-center mb-30">
                             <div class="topic-img">
-                                <img src="assets/img/gallery/topic2.png" alt="">
+                                <img src="{{asset('frontend/assets/img/gallery/topic2.png')}}" alt="">
                                 <div class="topic-content-box">
                                     <div class="topic-content">
                                         <h3><a href="#">Programing</a></h3>
@@ -136,7 +136,7 @@
                     <div class="col-lg-3 col-md-4 col-sm-6">
                         <div class="single-topic text-center mb-30">
                             <div class="topic-img">
-                                <img src="assets/img/gallery/topic3.png" alt="">
+                                <img src="{{asset('frontend/assets/img/gallery/topic3.png')}}" alt="">
                                 <div class="topic-content-box">
                                     <div class="topic-content">
                                         <h3><a href="#">Programing</a></h3>
@@ -148,7 +148,7 @@
                     <div class="col-lg-3 col-md-4 col-sm-6">
                         <div class="single-topic text-center mb-30">
                             <div class="topic-img">
-                                <img src="assets/img/gallery/topic4.png" alt="">
+                                <img src="{asset('frontend/assets/img/gallery/topic2.png')}}" alt="">
                                 <div class="topic-content-box">
                                     <div class="topic-content">
                                         <h3><a href="#">Programing</a></h3>
@@ -160,7 +160,7 @@
                     <div class="col-lg-3 col-md-4 col-sm-6">
                         <div class="single-topic text-center mb-30">
                             <div class="topic-img">
-                                <img src="assets/img/gallery/topic5.png" alt="">
+                                <img src="{{asset('frontend/assets/img/gallery/topic7.')}}'" alt="">
                                 <div class="topic-content-box">
                                     <div class="topic-content">
                                         <h3><a href="#">Programing</a></h3>
@@ -172,7 +172,7 @@
                     <div class="col-lg-3 col-md-4 col-sm-6">
                         <div class="single-topic text-center mb-30">
                             <div class="topic-img">
-                                <img src="assets/img/gallery/topic6.png" alt="">
+                                <img src="{{asset('frontend/assets/img/gallery/topic6.png')}}" alt="">
                                 <div class="topic-content-box">
                                     <div class="topic-content">
                                         <h3><a href="#">Programing</a></h3>
@@ -184,7 +184,7 @@
                     <div class="col-lg-3 col-md-4 col-sm-6">
                         <div class="single-topic text-center mb-30">
                             <div class="topic-img">
-                                <img src="assets/img/gallery/topic7.png" alt="">
+                                <img src="{{asset('frontend/assets/img/gallery/topic7.png')}}" alt="">
                                 <div class="topic-content-box">
                                     <div class="topic-content">
                                         <h3><a href="#">Programing</a></h3>
@@ -196,7 +196,7 @@
                     <div class="col-lg-3 col-md-4 col-sm-6">
                         <div class="single-topic text-center mb-30">
                             <div class="topic-img">
-                                <img src="assets/img/gallery/topic8.png" alt="">
+                                <img src="{{asset('frontend/assets/img/gallery/topic8.png')}}" alt="">
                                 <div class="topic-content-box">
                                     <div class="topic-content">
                                         <h3><a href="#">Programing</a></h3>

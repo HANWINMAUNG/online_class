@@ -30,44 +30,61 @@
 <body style="background-image:url({{asset('frontend/assets/img/gallery/login.jpg')}});" >
 
 @include('frontend.layouts.preloader')
-<main class="login-body">
-        <!-- Login Admin -->
-        <form class="form-default" action="{{route('post.login')}}" method="POST" id="form">
+<section class="vh-100 gradient-custom mt-6">
+  <div class="container mt-6 py-5 h-100">
+    <div class="row justify-content-center align-items-center h-100">
+      <div class="col-12 col-lg-9 col-xl-6" style="margin-top: 100px;">
+        <div class="card shadow-2-strong card-registration" style="border-radius: 15px;">
+          <div class="card-body p-4 p-md-5 mt-6">
+            <h2 class="mb-4 pb-2 pb-md-0 mb-md-5 text-center">Login Form</h3>
+            <form class="form-default" action="{{route('post.login')}}" method="POST" id="form">
             @csrf
-            <div class="login-form">
-                
-                
-                <h2>Login Here</h2>
-                <div class="form-input">
-                    <label for="name">Email</label>
-                    <input  type="email" name="email" placeholder="Email" id="email">
-                </div>
-                @error('email')
+              <div class="row">
+                <div class="col-md-12 mb-4">
+                  <div class="form-outline">
+                  <label class="form-label" >Email</label>
+                    <input type="email"name="email"  id="email" class="form-control form-control-lg" />
+                  </div>
+                  @error('email')
                         <small style="color:red;">{{$message}}*</small>
-                @enderror
-                <div class="form-input">
-                    <label for="name">Password</label>
-                    <input type="password" name="password" placeholder="Password" id="password">
+                  @enderror
                 </div>
-                 @error('password')
+              </div>
+              
+              <div class="row">
+                <div class="col-md-12 mb-4 ">
+                  <div class="form-outline ">
+                    <label class="form-label">Password</label>
+                    <input type="password" name="password" class="form-control form-control-lg" id="password" />
+                  </div>
+                  @error('password')
                         <small style="color:red;">{{$message}}*</small>
                  @enderror
-                 <div class="form-check">
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="col-md-6 mb-4 pb-2">
+                <div class="form-check">
                  <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" name="remember">
-                <label class="form-check-label text-light" for="flexCheckDefault">Remember</label>
+                <label class="form-check-label text-primary ml-2" for="flexCheckDefault">Remember</label>
                 </div>
-                <div class="form-input pt-20">
-                    <input type="submit" name="submit" value="login">
                 </div>
-                
-                <!-- Forget Password -->
-                <a href="{{route('forgotPassword.index')}}" class="forget">Forget Password</a>
-                <!-- Forget Password -->
-                <a href="register.html" class="registration">Registration</a>
-            </div>
-        </form>
-        <!-- /end login form -->
-    </main>
+                <div class="col-md-6 mb-4 pb-2">
+                <a href="{{route('forgotPassword.index')}}" class="text-primary">Forget Password?</a>
+                </div>
+              </div>
+              <div class="mt-4 pt-2">
+                <input class="btn btn-primary btn-lg" type="submit" value="Submit" />
+              </div>
+
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
 
 
 <script src="{{asset('frontend/assets/js/vendor/modernizr-3.5.0.min.js')}}"></script>
