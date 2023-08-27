@@ -31,12 +31,15 @@
 <section class="blog_area single-post-area section-padding">
    <div class="container">
       <div class="row">
-         <div class="col-lg-12 posts-list">
+         <div class="col-lg-6 posts-list">
             <div class="single-post">
                <div class="feature-img">
-                  <img class="img-fluid" src="{{asset('frontend/assets/img/blog/single_blog_2.png')}}" alt="">
+                  <img class="image-fluid" src="{{asset('frontend/assets/img/blog/single_blog_2.png')}}" alt="" style="width:550px;height:auto">
                </div>
-               <div class="blog_details">
+            </div>
+         </div>
+         <div class="col-lg-6">
+            <div class="blog_details">
                   <h2 style="color: #2d2d2d;">{{$course->title}}</h2>
                   <ul class="blog-info-link mt-3 mb-4">
                      <li><a href="#"><i class="fa fa-user"></i> Instructor Name:{{$course->Instructor->name}}</a></li>
@@ -46,7 +49,13 @@
                   <p class="excert">
                     {{$course->description}}
                   </p>
-                   <h4>
+               </div>
+            </div>
+      </div>
+       
+      <div class="row">
+         <div class="col-lg-12">
+         <h4 class="mt-4">
                     Summary
                    </h4>
                   <div class="quote-wrapper">
@@ -54,9 +63,11 @@
                        {{$course->summary}}
                      </div>
                   </div>
-               </div>
-            </div>
-            <div class="text-center mb-2">
+         </div>
+      </div>
+      <div class="row">
+         <div class="col-lg-12">
+         <div class="text-center mb-2">
                <h1>Related Episodes</h1>
             </div>
             @foreach($episodes as $episode)
@@ -74,7 +85,7 @@
             </div>
             @endforeach
          </div>
-      </div>     
+      </div>    
 </div>
   
 </div>
