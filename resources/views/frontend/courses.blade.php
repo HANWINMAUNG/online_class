@@ -39,19 +39,20 @@
                 </div>
                 <div class="row">
                     <div class="col-lg-8">
-                    <select class="pl-3 m-4 w-50 category_select">
-                        <option  disabled selected>Category
-                        </option>
-                        @foreach($categories as $category)
-                        <option value="{{ $category->id }}" {{ request('category_id') == $category->id ? 'selected' : '' }}>{{ $category->title }}</option>
+                    <select class="pl-3 py-4 m-4 w-50 category_select">
+                        <option  disabled selected>Category</option>
+                        @foreach($categories as $key => $category)
+                            <option value="{{ $key }}" {{ request('category_id') == $key ? 'selected' : '' }}>{{ $category }}</option>
                         @endforeach
                     </select>
                     </div>
                     <div class="col-lg-3">
+                    <div class="text-lg-right">
                     <form method="GET" action="{{ route('courses')}}">
                         <input type="text" name="search" value="{{request('search') ?? ''}}" placeholder="Find something"
-                               class="p-3 m-4 w-100 ">
+                               class="p-4 m-4 w-100 ">
                     </form>
+                    </div>
                     </div>
                 </div>
                 <div class="row">
@@ -68,21 +69,11 @@
                                     <h3><a href="#">{{$course->title}}</a></h3>
                                     <p>{{Str::limit($course->description,30,'...')}}</p>
                                     <div class="properties__footer d-flex justify-content-between align-items-center">
-                                        <div class="restaurant-name">
-                                            <div class="rating">
-                                                <i class="fas fa-star"></i>
-                                                <i class="fas fa-star"></i>
-                                                <i class="fas fa-star"></i>
-                                                <i class="fas fa-star"></i>
-                                                <i class="fas fa-star-half"></i>
-                                            </div>
-                                            <p><span>(Upload Time)</span>{{ $course->created_at->diffForHumans()}}</p>
-                                        </div>
                                         <div class="price">
                                             <span>${{$course->price}}</span>
                                         </div>
                                     </div>
-                                    <a href="{{route('course-detail',[$course->id])}}" class="border-btn border-btn2">Find out more</a>
+                                    <a href="{{route('course-detail',[$course->slug])}}" class="border-btn border-btn2">Find out more</a>
                                 </div>
                             </div>
                         </div>
@@ -104,7 +95,7 @@
                 <div class="row justify-content-center">
                     <div class="col-xl-7 col-lg-8">
                         <div class="section-tittle text-center mb-55">
-                            <h2>Explore top subjects</h2>
+                            <h2>Explore top Categories</h2>
                         </div>
                     </div>
                 </div>
@@ -206,56 +197,11 @@
                         </div>
                     </div>
                 </div>
-                <div class="row justify-content-center">
-                    <div class="col-xl-12">
-                        <div class="section-tittle text-center mt-20">
-                            <a href="courses.html" class="border-btn">View More Subjects</a>
-                        </div>
-                    </div>
-                </div>
             </div>
         </div>
         <!-- top subjects End -->  
         <!-- ? services-area -->
-        <div class="services-area services-area2 section-padding40">
-            <div class="container">
-                <div class="row justify-content-sm-center">
-                    <div class="col-lg-4 col-md-6 col-sm-8">
-                        <div class="single-services mb-30">
-                            <div class="features-icon">
-                                <img src="assets/img/icon/icon1.svg" alt="">
-                            </div>
-                            <div class="features-caption">
-                                <h3>60+ UX courses</h3>
-                                <p>The automated process all your website tasks.</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-4 col-md-6 col-sm-8">
-                        <div class="single-services mb-30">
-                            <div class="features-icon">
-                                <img src="assets/img/icon/icon2.svg" alt="">
-                            </div>
-                            <div class="features-caption">
-                                <h3>Expert instructors</h3>
-                                <p>The automated process all your website tasks.</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-4 col-md-6 col-sm-8">
-                        <div class="single-services mb-30">
-                            <div class="features-icon">
-                                <img src="assets/img/icon/icon3.svg" alt="">
-                            </div>
-                            <div class="features-caption">
-                                <h3>Life time access</h3>
-                                <p>The automated process all your website tasks.</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+       
     </main>
 @endsection
 @push('script')

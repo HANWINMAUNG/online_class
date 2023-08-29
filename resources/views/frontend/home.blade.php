@@ -85,26 +85,36 @@
                                 <h3><a href="#">{{$course->title}}</a></h3>
                                 <p>{{Str::limit($course->description,30,'...')}}</p>
                                 <div class="properties__footer d-flex justify-content-between align-items-center">
-                                    <div class="restaurant-name">
-                                        <div class="rating">
-                                            <i class="fas fa-star"></i>
-                                            <i class="fas fa-star"></i>
-                                            <i class="fas fa-star"></i>
-                                            <i class="fas fa-star"></i>
-                                            <i class="fas fa-star-half"></i>
-                                        </div>
-                                        <p><span>(4.5)</span> based on 120</p>
-                                    </div>
                                     <div class="price">
                                         <span>${{$course->price}}</span>
                                     </div>
                                 </div>
-                                <a href="#" class="border-btn border-btn2">Find out more</a>
+                                <a href="{{route('course-detail',[$course->slug])}}" class="border-btn border-btn2">Find out more</a>
                             </div>
 
                         </div>
                     </div>
                     @endforeach
+                    @foreach($courses->skip(3) as $course_second)
+                    <div class="properties pb-20">
+                        <div class="properties__card">
+                            <div class="properties__img overlay1">
+                                <a href="#"><img src="{{asset('frontend/assets/img/gallery/featured2.png')}}" alt=""></a>
+                            </div>
+                            <div class="properties__caption">
+                                <p>Instructor Name - {{Str::limit($course_second->Instructor->name,15,'...')}}</p>
+                                <h3><a href="#">{{$course_second->title}}</a></h3>
+                                <p>{{Str::limit($course_second->description,30,'...')}}</p>
+                                <div class="properties__footer d-flex justify-content-between align-items-center">
+                                    <div class="price">
+                                        <span>${{$course_second->price}}</span>
+                                    </div>
+                                </div>
+                                <a href="{{route('course-detail',[$course_second->slug])}}" class="border-btn border-btn2">Find out more</a>
+                            </div>
+                        </div>
+                    </div>
+                     @endforeach
                 </div>
             </div>
             <div class="row justify-content-center">
@@ -177,114 +187,39 @@
                 <div class="row justify-content-center">
                     <div class="col-xl-7 col-lg-8">
                         <div class="section-tittle text-center mb-55">
-                            <h2>Explore top subjects</h2>
+                            <h2>Explore top Categories</h2>
                         </div>
                     </div>
                 </div>
-                <div class="row">
-                    <div class="col-lg-3 col-md-4 col-sm-6">
+                <div class="courses-actives">
+                @foreach($categories->take(8) as $category)
+                    <div class="col-lg-3 ">
                         <div class="single-topic text-center mb-30">
                             <div class="topic-img">
                                 <img src="{{asset('frontend/assets/img/gallery/topic1.png')}}" alt="">
                                 <div class="topic-content-box">
                                     <div class="topic-content">
-                                        <h3><a href="#">Programing</a></h3>
+                                        <h3><a href="#">{{$category->title}}</a></h3>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <div class="col-lg-3 col-md-4 col-sm-6">
+                @endforeach
+                @foreach($categories->skip(8) as $category_second)
+                    <div class="col-lg-3 ">
                         <div class="single-topic text-center mb-30">
                             <div class="topic-img">
                                 <img src="{{asset('frontend/assets/img/gallery/topic2.png')}}" alt="">
                                 <div class="topic-content-box">
                                     <div class="topic-content">
-                                        <h3><a href="#">Programing</a></h3>
+                                        <h3><a href="#">{{$category_second->title}}</a></h3>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <div class="col-lg-3 col-md-4 col-sm-6">
-                        <div class="single-topic text-center mb-30">
-                            <div class="topic-img">
-                                <img src="{{asset('frontend/assets/img/gallery/topic3.png')}}" alt="">
-                                <div class="topic-content-box">
-                                    <div class="topic-content">
-                                        <h3><a href="#">Programing</a></h3>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-3 col-md-4 col-sm-6">
-                        <div class="single-topic text-center mb-30">
-                            <div class="topic-img">
-                                <img src="{{asset('frontend/assets/img/gallery/topic4.png')}}" alt="">
-                                <div class="topic-content-box">
-                                    <div class="topic-content">
-                                        <h3><a href="#">Programing</a></h3>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-3 col-md-4 col-sm-6">
-                        <div class="single-topic text-center mb-30">
-                            <div class="topic-img">
-                                <img src="{{asset('frontend/assets/img/gallery/topic5.png')}}" alt="">
-                                <div class="topic-content-box">
-                                    <div class="topic-content">
-                                        <h3><a href="#">Programing</a></h3>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-3 col-md-4 col-sm-6">
-                        <div class="single-topic text-center mb-30">
-                            <div class="topic-img">
-                                <img src="{{asset('frontend/assets/img/gallery/topic6.png')}}" alt="">
-                                <div class="topic-content-box">
-                                    <div class="topic-content">
-                                        <h3><a href="#">Programing</a></h3>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-3 col-md-4 col-sm-6">
-                        <div class="single-topic text-center mb-30">
-                            <div class="topic-img">
-                                <img src="{{asset('frontend/assets/img/gallery/topic7.png')}}" alt="">
-                                <div class="topic-content-box">
-                                    <div class="topic-content">
-                                        <h3><a href="#">Programing</a></h3>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-3 col-md-4 col-sm-6">
-                        <div class="single-topic text-center mb-30">
-                            <div class="topic-img">
-                                <img src="{{asset('frontend/assets/img/gallery/topic8.png')}}" alt="">
-                                <div class="topic-content-box">
-                                    <div class="topic-content">
-                                        <h3><a href="#">Programing</a></h3>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="row justify-content-center">
-                    <div class="col-xl-12">
-                        <div class="section-tittle text-center mt-20">
-                            <a href="courses.html" class="border-btn">View More Subjects</a>
-                        </div>
-                    </div>
+                @endforeach
                 </div>
             </div>
         </div>
@@ -341,56 +276,33 @@
                 <div class="row justify-content-center">
                     <div class="col-xl-7 col-lg-8">
                         <div class="section-tittle text-center mb-55">
-                            <h2>Community experts</h2>
+                            <h2>Instructor Categories</h2>
                         </div>
                     </div>
                 </div>
                 <div class="team-active">
+                @foreach($instructors->take(4) as $instructor)
                     <div class="single-cat text-center">
                         <div class="cat-icon">
                             <img src="{{asset('frontend/assets/img/gallery/team1.png')}}" alt="">
                         </div>
                         <div class="cat-cap">
-                            <h5><a href="services.html">Mr. Urela</a></h5>
-                            <p>The automated process all your website tasks.</p>
+                            <h5><a href="services.html">{{$instructor->name}}</a></h5>
+                            <p>{{Str::limit($instructor->bio,40,'...')}}</p>
                         </div>
                     </div>
+                @endforeach
+                @foreach($instructors->skip(4) as $instructor_second)
                     <div class="single-cat text-center">
                         <div class="cat-icon">
                             <img src="{{asset('frontend/assets/img/gallery/team2.png')}}" alt="">
                         </div>
                         <div class="cat-cap">
-                            <h5><a href="services.html">Mr. Uttom</a></h5>
-                            <p>The automated process all your website tasks.</p>
+                            <h5><a href="services.html">{{$instructor_second->name}}</a></h5>
+                            <p>{{Str::limit($instructor_second->bio,40,'...')}}</p>
                         </div>
                     </div>
-                    <div class="single-cat text-center">
-                        <div class="cat-icon">
-                            <img src="{{asset('frontend/assets/img/gallery/team3.png')}}" alt="">
-                        </div>
-                        <div class="cat-cap">
-                            <h5><a href="services.html">Mr. Shakil</a></h5>
-                            <p>The automated process all your website tasks.</p>
-                        </div>
-                    </div>
-                    <div class="single-cat text-center">
-                        <div class="cat-icon">
-                            <img src="{{asset('frontend/assets/img/gallery/team4.png')}}" alt="">
-                        </div>
-                        <div class="cat-cap">
-                            <h5><a href="services.html">Mr. Arafat</a></h5>
-                            <p>The automated process all your website tasks.</p>
-                        </div>
-                    </div>
-                    <div class="single-cat text-center">
-                        <div class="cat-icon">
-                            <img src="{{asset('frontend/assets/img/gallery/team3.png')}}" alt="">
-                        </div>
-                        <div class="cat-cap">
-                            <h5><a href="services.html">Mr. saiful</a></h5>
-                            <p>The automated process all your website tasks.</p>
-                        </div>
-                    </div>
+                @endforeach
                 </div>
             </div>
         </section>

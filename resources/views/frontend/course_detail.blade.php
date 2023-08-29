@@ -1,11 +1,8 @@
 @extends('frontend.layouts.app')
-
 @section('content')
 <main>
-   
    <section class="slider-area slider-area2">
      <div class="slider-active">
-       
        <div class="single-slider slider-height2">
          <div class="container">
            <div class="row">
@@ -27,7 +24,6 @@
 </div>
 </div>
 </section>
-
 <section class="blog_area single-post-area section-padding">
    <div class="container">
       <div class="row">
@@ -52,7 +48,6 @@
                </div>
             </div>
       </div>
-       
       <div class="row">
          <div class="col-lg-12">
          <h4 class="mt-4">
@@ -73,8 +68,10 @@
             @foreach($episodes as $episode)
             <div class="blog-author">
                <div class="media ">
-                  <img src="assets/img/blog/author.png" alt="">
-                  <div class="media-body">
+                   <a href="{{route('episode-detail',[$episode->Course->slug,$episode->slug])}}"><svg id="i-video" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="100" height="100" fill="none" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="2">
+                        <path d="M22 13 L30 8 30 24 22 19 Z M2 8 L2 24 22 24 22 8 Z" />
+                     </svg></i></a>
+                  <div class="media-body pl-4">
                      <a href="#" class="mb-2">
                         <h4>Episode Title -{{$episode->title}}</h4>
                      </a>
@@ -87,7 +84,6 @@
          </div>
       </div>    
 </div>
-  
 </div>
 </div>
 </section>

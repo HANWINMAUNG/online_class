@@ -61,9 +61,11 @@ class EpisodeController extends Controller
     public function store(EpisodeRequest $request,Course $course)
     {
         $attributes = $request->validated();
-           
+        $title = $attributes['title'];
+        $slug = Str::slug($title['title']);   
        $episode = Episode::create([
-            'title' =>$attributes['title'],
+            'title' => $title['title'],
+            'slug' => $slug,
             'course_id' =>$course->id,
             'cover' =>$attributes['cover'],
             'video' =>$attributes['video'],
@@ -106,9 +108,11 @@ class EpisodeController extends Controller
     public function update(EpisodeRequest $request,Course $course, Episode $episode)
     {
         $attributes = $request->validated();
-           
+        $title = $attributes['title'];
+        $slug = Str::slug($title['title']); 
         $episode->update([
-             'title' =>$attributes['title'],
+            'title' => $title['title'],
+            'slug' => $slug,
              'course_id' =>$episode->Course->id,
              'cover' =>$attributes['cover'],
              'video' =>$attributes['video'],

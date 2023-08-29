@@ -53,7 +53,7 @@
 <!-- Date Picker -->
 <script src="{{asset('frontend/assets/js/gijgo.min.js')}}"></script>
 <!-- Nice-select, sticky -->
-<script src="{{asset('frontend/assets/js/jquery.nice-select.min.js')}}"></script>
+<!-- <script src="{{asset('frontend/assets/js/jquery.nice-select.min.js')}}"></script> -->
 <script src="{{asset('frontend/assets/js/jquery.sticky.js')}}"></script>
 <!-- Progress -->
 <script src="{{asset('frontend/assets/js/jquery.barfiller.js')}}"></script>

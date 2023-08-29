@@ -16,6 +16,7 @@ class CreateEpisodesTable extends Migration
         Schema::create('episodes', function (Blueprint $table) {
             $table->id();
             $table->string('title')->unique();
+            $table->string('slug')->unique();
             $table->unsignedBigInteger('course_id');
             $table->enum('privacy', ['public', 'private'])->default('private');
             $table->Text('cover')->nullable();

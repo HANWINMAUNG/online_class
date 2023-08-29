@@ -28,6 +28,7 @@
                   <thead>
                     <tr>
                       <th style="text-align:center;">Title</th>
+                      <th style="text-align:center;">Slug</th>
                       <th style="text-align:center;">Instructor Name</th>
                       <th style="text-align:center;">Description</th>
                       <th style="text-align:center;">Summary</th>
@@ -63,6 +64,8 @@
                     columns: [
 
                         {data: 'title', name: 'title',class:'text-center'},
+
+                        {data: 'slug', name: 'slug',class:'text-center'},
 
                         {data: 'instructor_id', name: 'instructor_id',class:'text-center'},
 

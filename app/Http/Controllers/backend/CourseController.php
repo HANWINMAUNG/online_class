@@ -64,9 +64,11 @@ class CourseController extends Controller
     {
         
         $attributes = $request->validated();
-            
+        $title = $attributes['title'];
+        $slug = Str::slug($title['title']);  
        $course = Course::create([
-            'title' =>$attributes['title'],
+            'title' => $title['title'],
+            'slug' => $slug,
             'instructor_id' =>$attributes['instructor_id'],
             'price' =>$attributes['price'],
             'image' =>$attributes['image'],
@@ -122,9 +124,11 @@ class CourseController extends Controller
     public function update(CourseRequest $request, Course $course)
     {
         $attributes = $request->validated();
-            
+        $title = $attributes['title'];
+        $slug = Str::slug($title['title']);   
        $course->update([
-            'title' =>$attributes['title'],
+            'title' => $title['title'],
+            'slug' => $slug,
             'instructor_id' =>$attributes['instructor_id'],
             'price' =>$attributes['price'],
             'image' =>$attributes['image'],

@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use Illuminate\Support\Str;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 class EpisodeFactory extends Factory
@@ -13,8 +14,10 @@ class EpisodeFactory extends Factory
      */
     public function definition()
     {
+        $title = $this->faker->company();
         return [
-            'title'=>$this->faker->company(),
+            'title'=>$title,
+            'slug' => Str::slug($title),
             'course_id'=>$this->faker->numberBetween(1,20),
             'privacy'=>$this->faker->randomElement(['public','private']),
             'image'=>$this->faker->text(30),

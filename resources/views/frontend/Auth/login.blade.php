@@ -27,7 +27,7 @@
     
 </head>
 
-<body style="background-image:url({{asset('frontend/assets/img/gallery/login.jpg')}});" >
+<body style="background-color:#976FFF;" >
 
 @include('frontend.layouts.preloader')
 <section class="vh-100 gradient-custom mt-6">

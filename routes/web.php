@@ -18,14 +18,11 @@ use App\Http\Controllers\backend\auth\ForgotPasswordController;
 use App\Http\Controllers\frontend\Auth\EmailVerificationController;
 use App\Http\Controllers\frontend\Auth\UserResetPasswordController;
 use App\Http\Controllers\frontend\Auth\UserForgotPasswordController;
-
-
-
-
-
+//frontend
 Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::get('/courses',[CoursesController::class, 'index'])->name('courses');
-Route::get('/courses/course/{course}',[CoursesController::class, 'show'])->name('course-detail');
+Route::get('/courses/{course:slug}',[CoursesController::class, 'show'])->name('course-detail');
+Route::get('/courses/{course:slug}/episode/{episode:slug}',[CoursesController::class, 'showEpisode'])->name('episode-detail');
 Route::get('/about', function () {return view('frontend/about');})->name('about');
 Route::get('/contact', function () {return view('frontend/contact');})->name('contact');
 
@@ -35,8 +32,6 @@ Route::post('register', [RegisterController::class, 'postRegister'])->name('post
 Route::get('login', [UserLoginController::class, 'Login'])->name('get.login');
 Route::post('login', [UserLoginController::class, 'postLogin'])->name('post.login');
 Route::get('logout', [UserLoginController::class, 'Logout'])->name('logout');
-
-
 
 Route::prefix('email/verify')->group(function(){
     Route::get('/', [EmailVerificationController::class, 'verify'])->name('verification.verify');
@@ -52,49 +47,38 @@ Route::post('forgot-password' ,[UserForgotPasswordController::class, 'sendEmail'
 Route::get('reset-password', [UserResetPasswordController::class, 'index'])->name('resetPassword.index'); 
 Route::post('reset-password', [UserResetPasswordController::class, 'reset'])->name('resetPassword.reset');
 
-
-
-
-
-Route::group([
-    
-     'middleware'=>'guest',
-   
+//backend
+Route::group([ 
+    'prefix'=>'admin/',
+    'middleware'=>'guest',
 ],function(){
+Route::get('login', [LoginController::class, 'Login'])->name('admin_get.login');
+Route::post('login', [LoginController::class, 'postLogin'])->name('admin_post.login');
+Route::get('logout', [LoginController::class, 'Logout'])->name('admin.logout');
 
+Route::get('forgot-password' ,[ForgotPasswordController::class, 'index'])->name('forgot-password.index');
+Route::post('forgot-password' ,[ForgotPasswordController::class, 'sendEmail'])->name('forgot-password.send-email');
 
-
-Route::get('admin/login', [LoginController::class, 'Login'])->name('admin_get.login');
-Route::post('admin/login', [LoginController::class, 'postLogin'])->name('admin_post.login');
-Route::get('admin/logout', [LoginController::class, 'Logout'])->name('admin.logout');
-
-Route::get('admin/forgot-password' ,[ForgotPasswordController::class, 'index'])->name('forgot-password.index');
-Route::post('admin/forgot-password' ,[ForgotPasswordController::class, 'sendEmail'])->name('forgot-password.send-email');
-
-Route::get('admin/reset-password', [ResetPasswordController::class, 'index'])->name('reset-password.index'); 
-Route::post('admin/reset-password', [ResetPasswordController::class, 'reset'])->name('reset-password.reset');
-
+Route::get('reset-password', [ResetPasswordController::class, 'index'])->name('reset-password.index'); 
+Route::post('reset-password', [ResetPasswordController::class, 'reset'])->name('reset-password.reset');
 });
-
 
 Route::group([
     'prefix'=>'admin/',
      'middleware'=>'auth:admin',
-    //  'namespace'=>'App\Http\Controllers\backend'
 ],function(){
-    Route::get('', function(){return view('backend/index');})->name('admin');
+    Route::get('dashboard', function(){return view('backend/index');})->name('admin');
    
 //admin
-Route::get('admin-account', [AdminController::class, 'index'])->name('admin.index');
-Route::get('admin-account/create', [AdminController::class, 'create'])->name('admin.create');
-Route::post('admin-account', [AdminController::class, 'store'])->name('admin.store');
-Route::get('admin-account/{admin}', [AdminController::class,'show'])->name('admin.show');
-Route::delete('admin-account/{admin}', [AdminController::class,'destroy'])->name('admin.destroy');
-Route::get('admin-account/{admin}/edit', [AdminController::class,'edit'])->name('admin.edit');
-Route::patch('admin-account/{admin}', [AdminController::class,'update'])->name('admin.update');
+Route::get('account', [AdminController::class, 'index'])->name('admin.index');
+Route::get('account/create', [AdminController::class, 'create'])->name('admin.create');
+Route::post('account', [AdminController::class, 'store'])->name('admin.store');
+Route::get('account/{admin}', [AdminController::class,'show'])->name('admin.show');
+Route::delete('account/{admin}', [AdminController::class,'destroy'])->name('admin.destroy');
+Route::get('account/{admin}/edit', [AdminController::class,'edit'])->name('admin.edit');
+Route::patch('account/{admin}', [AdminController::class,'update'])->name('admin.update');
 
 //user
-
 Route::get('user', [UserController::class, 'index'])->name('user.index');
 Route::get('user/create', [UserController::class, 'create'])->name('user.create');
 Route::post('user', [UserController::class, 'store'])->name('user.store');
@@ -104,7 +88,6 @@ Route::get('user/{user}/edit', [UserController::class,'edit'])->name('user.edit'
 Route::patch('user/{user}', [UserController::class,'update'])->name('user.update');
 
 //instructor
-
 Route::get('instructor', [InstructorController::class, 'index'])->name('instructor.index');
 Route::get('instructor/create', [InstructorController::class, 'create'])->name('instructor.create');
 Route::post('instructor', [InstructorController::class, 'store'])->name('instructor.store');
@@ -113,9 +96,7 @@ Route::delete('instructor/{instructor}', [InstructorController::class,'destroy']
 Route::get('instructor/{instructor}/edit', [InstructorController::class,'edit'])->name('instructor.edit');
 Route::patch('instructor/{instructor}', [InstructorController::class,'update'])->name('instructor.update');
 
-
 //category
-
 Route::get('category', [CategoryController::class, 'index'])->name('category.index');
 Route::get('category/create', [CategoryController::class, 'create'])->name('category.create');
 Route::post('category', [CategoryController::class, 'store'])->name('category.store');
@@ -150,9 +131,6 @@ Route::get('role/{role:id}', [RoleController::class,'show'])->name('role.show');
 Route::delete('role/{role:id}', [RoleController::class,'destroy'])->name('role.destroy');
 Route::get('role/{role:id}/edit', [RoleController::class,'edit'])->name('role.edit');
 Route::patch('role/{role:id}', [RoleController::class,'update'])->name('role.update');
-
-
-
 });
 
 
