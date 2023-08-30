@@ -68,7 +68,7 @@
             @foreach($episodes as $episode)
             <div class="blog-author">
                <div class="media ">
-                   <a href="{{route('episode-detail',[$episode->Course->slug,$episode->slug])}}"><svg id="i-video" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="100" height="100" fill="none" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="2">
+                   <a href="{{route('episode-detail',[$episode->Course->slug])}}"><svg id="i-video" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="100" height="100" fill="none" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="2">
                         <path d="M22 13 L30 8 30 24 22 19 Z M2 8 L2 24 22 24 22 8 Z" />
                      </svg></i></a>
                   <div class="media-body pl-4">

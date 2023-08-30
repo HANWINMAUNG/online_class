@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use Yajra\DataTables\DataTables;
 use App\Http\Requests\AdminRequest;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Storage;
 
 class AdminController extends Controller
 {
@@ -56,8 +57,16 @@ class AdminController extends Controller
      */
     public function store(AdminRequest $request)
     {
-        
-        Admin::create($request->validated());
+        // $file_name = uniqid() . '_' . date('Y-m-d-H-i-s') . '_' . $request->profile->getClientOriginalName();
+        // $request->profile->move('images', $file_name);
+        $input = $request->validated();
+        if($request->hasFile('profile') && $request->file('profile')->isValid()){
+           $file_name = uploadFile($request->profile, 'images');
+        // $file_name = uniqid() . '_' . date('Y-m-d-H-i-s') . '_' . $request->profile->getClientOriginalName();
+        // Storage::put('images/' . $file_name, file_get_contents($request->profile));//put(full_path,content)
+           $input['profile'] = $file_name;
+        }
+        Admin::create($input);
         return redirect()->route('admin.index')->with('success','Admin is successfully created!');
     }
 
@@ -69,7 +78,11 @@ class AdminController extends Controller
      */
     public function show(Admin $admin)
     {
-        return view('backend.detail.admin_detail',['admin' => $admin]);
+        // $profile = Storage::get('images/' . $admin->profile);
+        return view('backend.detail.admin_detail',[
+            'admin' => $admin,
+            // 'profile' => $profile
+        ]);
     }
 
     /**
@@ -93,9 +106,13 @@ class AdminController extends Controller
      */
     public function update(AdminRequest $request, Admin $admin)
     {
-       
-        $admin->update($request->validated());
-        return redirect()->route('admin.index')->with('success','Admin is successfully updated!');
+        $input = $request->validated();
+        if($request->hasFile('profile') && $request->file('profile')->isValid()){
+           $file_name = uploadFile($request->profile, 'images');
+           $input['profile'] = $file_name; 
+        }
+        $admin->update($input);
+        return redirect()->route('admin.index')->with('success','Admin is successfully updated!');  
     }
 
     /**

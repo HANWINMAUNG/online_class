@@ -6,7 +6,7 @@
         <section class="slider-area slider-area2">
             <div class="slider-active">
                 <!-- Single Slider -->
-                <div class="single-slider slider-height2">
+                <div class="single-slider slider-height2" style="height:300px;">
                     <div class="container">
                         <div class="row">
                             <div class="col-xl-8 col-lg-11 col-md-12">
@@ -50,7 +50,7 @@
                     <div class="text-lg-right">
                     <form method="GET" action="{{ route('courses')}}">
                         <input type="text" name="search" value="{{request('search') ?? ''}}" placeholder="Find something"
-                               class="p-4 m-4 w-100 ">
+                               class="p-4 m-4 " style="width:340px;">
                     </form>
                     </div>
                     </div>

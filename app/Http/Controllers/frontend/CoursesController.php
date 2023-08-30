@@ -15,7 +15,7 @@ class CoursesController extends Controller
         $course_query = Course::query()->with('Instructor','Category')->latest()->filter(request()->all()); 
         $categories = Category::all()->toBase()->pluck('title', 'id')->toArray();
         $courses = $course_query->paginate(6);
-        return view('frontend.courses',
+        return view('frontend.course.index',
         [
             'courses'=> $courses,
             'categories' =>$categories
@@ -24,16 +24,11 @@ class CoursesController extends Controller
     public function show(Course $course)
     { 
         $episodes =Episode::where('course_id', $course->id)->get();
-        return view('frontend.course_detail', [
+        return view('frontend.course.detail', [
            'course'=>$course, 
            'episodes' =>$episodes 
        ]);
     }
-    public function showEpisode(Course $course,Episode $episode)
-    { 
-        dd('ss');
-        return view('frontend.episode_detail', [ 
-            'episode' =>$episode
-        ]);
-    }
+   
+   
 }

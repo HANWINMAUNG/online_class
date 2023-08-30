@@ -21,8 +21,9 @@
                 class="w-full p-4 bg-white rounded-lg shadow-xs dark:bg-gray-800"
               >
                 <h4 class="mb-4 font-semibold text-gray-600 dark:text-gray-300">
-                  Personal Info
+                  Episode Info
                 </h4>
+                <img src="{{asset('images/' . $episode->image)}}" alt="image" style="width:200px;height:200px;" class="mb-4">
                 <div class="flex flex-row">
                 <p class="text-gray-600 dark:text-gray-400 basis-1/2 ml-8">
                   Title

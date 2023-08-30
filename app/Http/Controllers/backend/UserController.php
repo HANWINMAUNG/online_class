@@ -61,8 +61,13 @@ class UserController extends Controller
      */
     public function store(UserRequest $request)
     {
+        $input = $request->validated();
+        if($request->hasFile('profile') && $request->file('profile')->isValid()){
+           $file_name = uploadFile($request->profile, 'images');
+           $input['profile'] = $file_name;
+        }
         $this->checkRolePermission('create-user');
-        User::create($request->validated());
+        User::create($input);
         return redirect()->route('user.index')->with('success','User is successfully created!');
     }
 
@@ -99,8 +104,13 @@ class UserController extends Controller
      */
     public function update(UserRequest $request, User  $user)
     {
+        $input = $request->validated();
+        if($request->hasFile('profile') && $request->file('profile')->isValid()){
+           $file_name = uploadFile($request->profile, 'images');
+           $input['profile'] = $file_name;
+        }
         $this->checkRolePermission('edit-user');
-        $user->update($request->validated());
+        $user->update($input);
         return redirect()->route('user.index')->with('success','User is successfully updated!');
     }
 

@@ -56,7 +56,10 @@ class InstructorController extends Controller
     public function store(InstructorRequest $request)
     {
        $attributes = $request->validated();
-       
+       if($request->hasFile('profile') && $request->file('profile')->isValid()){
+          $file_name = uploadFile($request->profile, 'images');
+          $attributes['profile'] = $file_name;
+       }
         Instructor::create([
             'name' =>$attributes['name'],
             'email' =>$attributes['email'],
@@ -108,7 +111,10 @@ class InstructorController extends Controller
     {
         
         $attributes = $request->validated();
-    //    dd(json_encode($attributes['link']));
+        if($request->hasFile('profile') && $request->file('profile')->isValid()){
+            $file_name = uploadFile($request->profile, 'images');
+            $attributes['profile'] = $file_name;
+         }
         $instructor->update([
             'name' =>$attributes['name'],
             'email' =>$attributes['email'],

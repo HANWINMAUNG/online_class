@@ -24,6 +24,7 @@
                 <h4 class="mb-4 font-semibold text-gray-600 dark:text-gray-300">
                   Personal Info
                 </h4>
+                <img src="{{asset('images/' . $admin->profile)}}" alt="image" style="width:200px;height:200px;" class="mb-4">
                 <div class="flex flex-row">
                 <p class="text-gray-600 dark:text-gray-400 basis-1/2 ml-8">
                   Name

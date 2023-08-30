@@ -9,6 +9,7 @@ use App\Http\Controllers\backend\CourseController;
 use App\Http\Controllers\backend\EpisodeController;
 use App\Http\Controllers\backend\CategoryController;
 use App\Http\Controllers\frontend\CoursesController;
+use App\Http\Controllers\frontend\EpisodesController;
 use App\Http\Controllers\backend\auth\LoginController;
 use App\Http\Controllers\backend\InstructorController;
 use App\Http\Controllers\Frontend\Auth\RegisterController;
@@ -22,7 +23,7 @@ use App\Http\Controllers\frontend\Auth\UserForgotPasswordController;
 Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::get('/courses',[CoursesController::class, 'index'])->name('courses');
 Route::get('/courses/{course:slug}',[CoursesController::class, 'show'])->name('course-detail');
-Route::get('/courses/{course:slug}/episode/{episode:slug}',[CoursesController::class, 'showEpisode'])->name('episode-detail');
+Route::get('/courses/{course:slug}/episode',[EpisodesController::class, 'index'])->name('episode-detail');
 Route::get('/about', function () {return view('frontend/about');})->name('about');
 Route::get('/contact', function () {return view('frontend/contact');})->name('contact');
 

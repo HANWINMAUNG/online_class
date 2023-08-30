@@ -35,16 +35,16 @@ class AdminRequest extends FormRequest
                  'profile' =>'nullable',
             ];
         }else{
-        return [
-            'name' =>'required',
-            'email' =>'required',
-             'password'=>'required',
-             'phone' =>'required',
-             'address' =>'nullable',
-             'gender' =>'nullable',
-             'dob' =>'nullable',
-             'profile' =>'nullable',
-        ];
+                return [
+                    'name' =>'required',
+                    'email' =>'required',
+                    'password'=>'required',
+                    'phone' =>'required',
+                    'address' =>'nullable',
+                    'gender' =>'nullable',
+                    'dob' =>'nullable',
+                    'profile' =>'nullable',
+                ];
     }
 }
 }
