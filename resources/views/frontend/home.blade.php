@@ -78,7 +78,7 @@
                     <div class="properties pb-20">
                         <div class="properties__card">
                             <div class="properties__img overlay1">
-                                <a href="#"><img src="{{asset('frontend/assets/img/gallery/featured1.png')}}" alt=""></a>
+                                <a href="#"><img src="{{asset('images/' . $course->image)}}" alt="" style="width:360px;height:218px;"></a>
                             </div>
                             <div class="properties__caption">
                                 <p>Instructor Name - {{Str::limit($course->Instructor->name,15,'...')}}</p>
@@ -99,7 +99,7 @@
                     <div class="properties pb-20">
                         <div class="properties__card">
                             <div class="properties__img overlay1">
-                                <a href="#"><img src="{{asset('frontend/assets/img/gallery/featured2.png')}}" alt=""></a>
+                                <a href="#"><img src="{{asset('images/' . $course_second->image)}}" alt="" style="width:360px;height:218px;"></a>
                             </div>
                             <div class="properties__caption">
                                 <p>Instructor Name - {{Str::limit($course_second->Instructor->name,15,'...')}}</p>
@@ -284,7 +284,7 @@
                 @foreach($instructors->take(4) as $instructor)
                     <div class="single-cat text-center">
                         <div class="cat-icon">
-                            <img src="{{asset('frontend/assets/img/gallery/team1.png')}}" alt="">
+                            <img src="{{asset('images/' . $course_second->profile)}}" alt="" style="width:193px;height:193px;">
                         </div>
                         <div class="cat-cap">
                             <h5><a href="services.html">{{$instructor->name}}</a></h5>
@@ -295,7 +295,7 @@
                 @foreach($instructors->skip(4) as $instructor_second)
                     <div class="single-cat text-center">
                         <div class="cat-icon">
-                            <img src="{{asset('frontend/assets/img/gallery/team2.png')}}" alt="">
+                            <img src="{{asset('images/' . $course_second->profile)}}" alt="" style="width:193px;height:193px;">
                         </div>
                         <div class="cat-cap">
                             <h5><a href="services.html">{{$instructor_second->name}}</a></h5>

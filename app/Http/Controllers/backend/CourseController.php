@@ -142,18 +142,8 @@ class CourseController extends Controller
             $file_name = uploadFile($request->image, 'images');
             $attributes['image'] = $file_name;
          }
-        $title = $attributes['title'];
-        $slug = Str::slug($title);   
-       $course->update([
-            'title' => $title,
-            'slug' => $slug,
-            'instructor_id' =>$attributes['instructor_id'],
-            'price' =>$attributes['price'],
-            'image' =>$attributes['image'],
-            'cover_photo' =>$attributes['cover_photo'], 
-            'description' =>$attributes['description'],
-            'summary' =>$attributes['summary']
-        ]);
+         
+       $course->update($attributes);
 
         $course->Category()->sync($attributes['category']);
 

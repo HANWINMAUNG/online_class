@@ -62,7 +62,7 @@
                         <div class="properties properties2 mb-30">
                             <div class="properties__card">
                                 <div class="properties__img overlay1">
-                                    <a href="#"><img src="{{asset('frontend/assets/img/gallery/featured2.png')}}" alt=""></a>
+                                    <a href="#"><img src="{{asset('images/' . $course->image)}}" alt="" style="width:340px;height:206px;"></a>
                                 </div>
                                 <div class="properties__caption">
                                     <p>Instructor Name - {{Str::limit($course->Instructor->name,15,'...')}}</p>

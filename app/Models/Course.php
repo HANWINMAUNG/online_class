@@ -27,6 +27,11 @@ class Course extends Model
     {
         return $this->hasMany(Episode::class);
     }
+    public function setTitleAttributes($value)
+    {
+        $this->attributes['title'] = strtolower($value);
+        $this->attributes['slug'] = Str::slug($value);
+    }
 
     public function scopeFilter(Builder $builder, array $filters){
        

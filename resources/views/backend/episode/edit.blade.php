@@ -31,21 +31,6 @@
                         <small style="color:red;">{{$message}}*</small>
                  @enderror
 
-                <label class="block mt-4 text-sm">
-                <span class="text-gray-700 dark:text-gray-400">
-                 Course Name<span style="color:red;">*</span>
-                </span>
-                <input type="text" name="course_id" value="{{$episode->Course->title}}"
-                  class="block w-full mt-1 text-sm dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input"
-                  placeholder=""
-                />
-              </label>
-             
-               @error('course_id')
-                        <small style="color:red;">{{$message}}*</small>
-                @enderror
-              </label>
-
               <label class="block mt-4 text-sm">
                 <span class="text-gray-700 dark:text-gray-400">
                  Privacy<span style="color:red;">*</span>
@@ -89,11 +74,11 @@
 
                 <label class="block mt-4 text-sm">
                 <span class="text-gray-700 dark:text-gray-400">Video<span style="color:red;">*</span></span>
-                <input type="file" name="video" value="{{$episode->video}}"
+                <input type="file" name="video"
                   class="block w-full mt-1 text-sm dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input"
                   placeholder=""
                 />
-              </label>
+                </label>
 
               @error('video')
                         <small style="color:red;">{{$message}}*</small>

@@ -23,13 +23,22 @@ class EpisodeRequest extends FormRequest
      */
     public function rules()
     {
-        return [
-            'title'=>'required',
-            'course_id' =>'required',
-            'cover' =>'nullable|mimes:png,jpg|max:1000',
-            'image' =>'nullable|mimes:png,jpg|max:1000',
-            'video' =>'nullable',
-            'summary' =>'nullable',
-        ];
+        if($this->method() == 'PATCH'){
+            return [
+                'title'=>'required',
+                'cover' =>'nullable|mimes:png,jpg',
+                'image' =>'nullable|mimes:png,jpg',
+                'video' =>'nullable',
+                'summary' =>'nullable',];
+            }else{
+            return [
+                'title'=>'required',
+                'course_id' =>'required',
+                'cover' =>'nullable|mimes:png,jpg',
+                'image' =>'nullable|mimes:png,jpg',
+                'video' =>'nullable',
+                'summary' =>'nullable',
+            ];
     }
+}
 }

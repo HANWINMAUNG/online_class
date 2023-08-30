@@ -126,33 +126,20 @@ class EpisodeController extends Controller
     public function update(EpisodeRequest $request,Course $course, Episode $episode)
     {
         $attributes = $request->validated();
-        dd($attributes);
         if($request->hasFile('cover') && $request->file('cover')->isValid()){
             $file_name = uploadFile($request->cover, 'images');
             $attributes['cover'] = $file_name;
          }
-
+        
          if($request->hasFile('image') && $request->file('image')->isValid()){
             $file_name = uploadFile($request->image, 'images');
             $attributes['image'] = $file_name;
          }
-         dd($request->hasFile('video'));
          if($request->hasFile('video') && $request->file('video')->isValid()){
             $file_name = uploadFile($request->video, 'videos');
             $attributes['video'] = $file_name;
          }
-         
-        $title = $attributes['title'];
-        $slug = Str::slug($title); 
-        $episode->update([
-            'title' => $title,
-            'slug' => $slug,
-             'course_id' =>$episode->Course->id,
-             'cover' =>$attributes['cover'],
-             'image' =>$attributes['image'],
-             'video' =>$attributes['video'],
-             'summary' =>$attributes['summary']
-         ]);
+        $episode->update($attributes);
 
         return redirect()->route('episode.index',[$episode->Course->id])->with('success','Episode is successfully updated!');    }
 
