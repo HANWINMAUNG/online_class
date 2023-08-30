@@ -16,7 +16,7 @@
                 Back &LeftArrow;
               </a>
             </div>
-        <form action="{{route('episode.store',[$course->id])}}" method="post" id="form">
+        <form action="{{route('episode.store',[$course->id])}}" method="post" id="form" enctype="multipart/form-data">
             @csrf
             <div
               class="px-4 py-3 mb-8 bg-white rounded-lg shadow-md dark:bg-gray-800"

@@ -28,8 +28,8 @@ class CourseRequest extends FormRequest
             'instructor_id' =>'required',
             'category' =>'required',
             'price' =>'required',
-            'image'=>'nullable',
-            'cover_photo'=>'nullable',
+            'image'=>'nullable|mimes:png,jpg|max:1000',
+            'cover_photo'=>'nullable|mimes:png,jpg|max:1000',
             'description' =>'nullable',
             'summary' =>'nullable',
         ];

@@ -16,7 +16,7 @@
                 Back &LeftArrow;
               </a>
             </div>
-        <form action="{{route('episode.update',[$episode->Course->id,$episode->id])}}" method="post" id="form">
+        <form action="{{route('episode.update',[$episode->Course->id,$episode->id])}}" method="post" id="form" enctype="multipart/form-data">
             @method('PATCH')
             @csrf
             <div
@@ -65,7 +65,7 @@
 
                 <label class="block mt-4 text-sm">
                 <span class="text-gray-700 dark:text-gray-400">image<span style="color:red;">*</span></span>
-                <input type="file" name="image"
+                <input type="file" name="image" value="{{$episode->image}}"
                   class="block w-full mt-1 text-sm dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input"
                   placeholder=""
                 />
@@ -77,7 +77,7 @@
 
                 <label class="block mt-4 text-sm">
                 <span class="text-gray-700 dark:text-gray-400">Cover<span style="color:red;">*</span></span>
-                <input type="file" name="cover"
+                <input type="file" name="cover"  value="{{$episode->cover}}"
                   class="block w-full mt-1 text-sm dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input"
                   placeholder=""
                 />
@@ -89,7 +89,7 @@
 
                 <label class="block mt-4 text-sm">
                 <span class="text-gray-700 dark:text-gray-400">Video<span style="color:red;">*</span></span>
-                <input type="file" name="video"
+                <input type="file" name="video" value="{{$episode->video}}"
                   class="block w-full mt-1 text-sm dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input"
                   placeholder=""
                 />

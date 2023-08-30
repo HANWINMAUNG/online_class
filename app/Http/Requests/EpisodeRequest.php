@@ -26,8 +26,9 @@ class EpisodeRequest extends FormRequest
         return [
             'title'=>'required',
             'course_id' =>'required',
-            'cover' =>'required',
-            'video' =>'required',
+            'cover' =>'nullable|mimes:png,jpg|max:1000',
+            'image' =>'nullable|mimes:png,jpg|max:1000',
+            'video' =>'nullable',
             'summary' =>'nullable',
         ];
     }

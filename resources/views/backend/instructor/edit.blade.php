@@ -20,7 +20,7 @@
                 Back &LeftArrow;
               </a>
             </div>
-        <form action="{{route('instructor.update',$instructor->id)}}" method="post" id="form">
+        <form action="{{route('instructor.update',$instructor->id)}}" method="post" id="form" enctype="multipart/form-data">
              @method('PATCH') 
             @csrf
 

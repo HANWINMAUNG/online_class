@@ -32,7 +32,7 @@ class AdminRequest extends FormRequest
                  'address' =>'nullable',
                  'gender' =>'nullable',
                  'dob' =>'nullable',
-                 'profile' =>'nullable',
+                 'profile' =>'nullable|mimes:png,jpg|max:1000',
             ];
         }else{
                 return [
@@ -43,7 +43,7 @@ class AdminRequest extends FormRequest
                     'address' =>'nullable',
                     'gender' =>'nullable',
                     'dob' =>'nullable',
-                    'profile' =>'nullable',
+                    'profile' =>'nullable|mimes:png,jpg|max:1000',
                 ];
     }
 }

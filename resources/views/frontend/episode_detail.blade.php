@@ -1,5 +1,7 @@
 @extends('frontend.layouts.app')
-
+@push('header')
+<link href="{{asset('frontend/assets/css/video.css')}}" rel="stylesheet"/>
+@endpush
 @section('content')
 <main>
    <!--? slider Area Start-->
@@ -85,21 +87,52 @@
             </div>
          </div>
      </div>
-     @foreach($episodes as $episode)
-     <div class="blog-author">
-         <div class="media align-items-center">
-            <img src="assets/img/blog/author.png" alt="">
-            <div class="media-body">
-               <a href="#">
-                  <h4>{{$episode->title}}</h4>
-               </a>
-               <p> {{$episode->summary}}</p>
-            </div>
-         </div>
-      </div>
-      @endforeach
+     
+     <div class="row">
+                     <div class="col-4 card">
+                     @foreach($episodes as $episode)
+                        <div class="blog-author bg-muted">
+                           <div class="media align-items-center">
+                           <svg id="i-video" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="50" height="50" fill="none" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="2">
+                                 <path d="M22 13 L30 8 30 24 22 19 Z M2 8 L2 24 22 24 22 8 Z" />
+                              </svg>
+                              <div class="media-body pl-4">
+                                 <a href="#">
+                                    <h4>{{$episode->title}}</h4>
+                                 </a>
+                                 <p> {{$episode->summary}}</p>
+                              </div>
+                           </div>
+                        </div>
+                        @endforeach
+                     </div>
+            
+                  <div class="col-8 card">
+                        <div style=" padding-top:100px;">
+                           <video
+                                    id="my-video"
+                                    class="video-js"
+                                    controls
+                                    preload="auto"
+                                    width="768"
+                                    height="464"
+                                    poster="MY_VIDEO_POSTER.jpg"
+                                    data-setup="{}"
+                                 >
+                                    <source src="MY_VIDEO.mp4" type="video/mp4" />
+                                    <p class="vjs-no-js">
+                                       To view this video please enable JavaScript, and consider upgrading to a
+                                       web browser that
+                                    </p>
+                            </video>
+                        </div>
+                  </div>
+     </div>
   </div>
 </section>
 
 </main>
 @endsection
+@push('script')
+   <script src="{{asset('frontend/assets/js/video.min.js')}}"></script>
+@endpush

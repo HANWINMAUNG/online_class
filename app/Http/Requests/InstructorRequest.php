@@ -32,7 +32,7 @@ class InstructorRequest extends FormRequest
                  'address' =>'nullable',
                  'gender' =>'nullable',
                  'dob' =>'nullable',
-                 'profile' =>'nullable',
+                 'profile' =>'nullable|mimes:png,jpg|max:1000',
                  'link' =>'nullable'
             ];
         }else{
@@ -45,7 +45,7 @@ class InstructorRequest extends FormRequest
              'gender' =>'nullable',
              'dob' =>'nullable',
              'link' =>'nullable',
-             'profile' =>'nullable',
+             'profile' =>'nullable|mimes:png,jpg|max:1000',
         ];
     }
 }

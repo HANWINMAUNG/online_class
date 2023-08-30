@@ -5,6 +5,7 @@ namespace App\Http\Controllers\backend;
 use App\Models\Course;
 use App\Models\Category;
 use App\Models\Instructor;
+use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use App\Models\CategoryCourse;
 use Yajra\DataTables\DataTables;
@@ -64,9 +65,20 @@ class CourseController extends Controller
     {
         
         $attributes = $request->validated();
+
+        if($request->hasFile('cover_photo') && $request->file('cover_photo')->isValid()){
+            $file_name = uploadFile($request->cover_photo, 'images');
+            $attributes['cover'] = $file_name;
+         }
+
+         if($request->hasFile('image') && $request->file('image')->isValid()){
+            $file_name = uploadFile($request->image, 'images');
+            $attributes['image'] = $file_name;
+         }
+
         $title = $attributes['title'];
         $slug = Str::slug($title['title']);  
-       $course = Course::create([
+        $course = Course::create([
             'title' => $title['title'],
             'slug' => $slug,
             'instructor_id' =>$attributes['instructor_id'],
@@ -77,9 +89,7 @@ class CourseController extends Controller
             'summary' =>$attributes['summary']
         ]);
 
-        $course->Category()->attach($attributes['category']);
-       
-        
+        $course->Category()->attach($attributes['category']); 
         return redirect()->route('course.index')->with('success','Course is successfully created!');
     }
 
@@ -103,7 +113,7 @@ class CourseController extends Controller
     public function edit(Course $course)
     {
         $category_courses = $course->Category->toBase()->pluck('title', 'id')->toArray();
-        $categories = Category::toBase()->get()->pluck('title', 'id')->toArray();
+        $categories = Category::pluck('title', 'id')->toArray();
         $instructors = Instructor::query()->get();
         return view('backend.course.edit',[
             'instructors' =>$instructors,
@@ -113,7 +123,6 @@ class CourseController extends Controller
 
         ]);
     }
-
     /**
      * Update the specified resource in storage.
      *
@@ -124,10 +133,19 @@ class CourseController extends Controller
     public function update(CourseRequest $request, Course $course)
     {
         $attributes = $request->validated();
+        if($request->hasFile('cover_photo') && $request->file('cover_photo')->isValid()){
+            $file_name = uploadFile($request->cover_photo, 'images');
+            $attributes['cover'] = $file_name;
+         }
+
+         if($request->hasFile('image') && $request->file('image')->isValid()){
+            $file_name = uploadFile($request->image, 'images');
+            $attributes['image'] = $file_name;
+         }
         $title = $attributes['title'];
-        $slug = Str::slug($title['title']);   
+        $slug = Str::slug($title);   
        $course->update([
-            'title' => $title['title'],
+            'title' => $title,
             'slug' => $slug,
             'instructor_id' =>$attributes['instructor_id'],
             'price' =>$attributes['price'],

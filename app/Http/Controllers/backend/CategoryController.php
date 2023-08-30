@@ -102,7 +102,7 @@ class CategoryController extends Controller
         $slug = Str::slug($title['title']);
         
         Category::update([
-              'title' => $title['title'],
+              'title' => $title,
               'slug' => $slug
         ]);
         return redirect()->route('category.index')->with('success','Category is successfully updated!');

@@ -16,7 +16,7 @@
                 Back &LeftArrow;
               </a>
             </div>
-        <form action="{{route('course.update',$course->id)}}" method="post" id="form">
+        <form action="{{route('course.update',$course->id)}}" method="post" id="form" enctype="multipart/form-data">
             @method('PATCH')
             @csrf
             <div
