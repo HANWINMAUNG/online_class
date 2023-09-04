@@ -1,5 +1,4 @@
 <?php
-
 namespace App\Http\Controllers\backend;
 
 use App\Models\User;
@@ -18,26 +17,26 @@ class UserController extends Controller
     public function index(Request $request)
     {
         // abort_if(!auth()->guard('admin')->user()->can('view-user'),403);
-
         $this->checkRolePermission('view-user');
-       
-        if($request->ajax()){
-
+        if($request->ajax())
+        {
             $query = User::query();
-
             return DataTables::of($query)
-                       ->addColumn('action', function($user){
-                        return view('backend.action.user_action',['user' => $user]);
+                       ->addColumn('action' , function($user)
+                       {
+                        return view('backend.action.user_action' , ['user' => $user]);
                        })
-                       ->order(function ($user){
-                        $user->orderBy('created_at','desc');
-                                 })->addColumn('created_at', function ($data) {
-                        return date('d-M-Y H:i:s', strtotime($data->created_at));
-                             })
+                       ->order(function ($user)
+                       {
+                        $user->orderBy('created_at' , 'desc');
+                       })
+                       ->addColumn('created_at' , function ($data)
+                       {
+                        return date('d-M-Y H:i:s' , strtotime($data->created_at));
+                       })
                        ->rawColumns(['action'])
                        ->make(true);
-        }
-        
+        }    
         return view('backend.user.index');
     }
 
@@ -62,13 +61,14 @@ class UserController extends Controller
     public function store(UserRequest $request)
     {
         $input = $request->validated();
-        if($request->hasFile('profile') && $request->file('profile')->isValid()){
-           $file_name = uploadFile($request->profile, 'images');
+        if($request->hasFile('profile') && $request->file('profile')->isValid())
+        {
+           $file_name = uploadFile($request->profile , 'images');
            $input['profile'] = $file_name;
         }
         $this->checkRolePermission('create-user');
         User::create($input);
-        return redirect()->route('user.index')->with('success','User is successfully created!');
+        return redirect()->route('user.index')->with('success' , 'User is successfully created!');
     }
 
     /**
@@ -80,7 +80,7 @@ class UserController extends Controller
     public function show(User $user)
     {
         $this->checkRolePermission('view-user');
-        return view('backend.detail.user_detail',['user' => $user]);
+        return view('backend.detail.user_detail' , ['user' => $user]);
     }
 
     /**
@@ -92,7 +92,7 @@ class UserController extends Controller
     public function edit(User $user)
     {
         $this->checkRolePermission('edit-user');
-        return view('backend.user.edit', ['user'=>$user]);
+        return view('backend.user.edit' , ['user' => $user]);
     }
 
     /**
@@ -102,16 +102,17 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(UserRequest $request, User  $user)
+    public function update(UserRequest $request , User  $user)
     {
         $input = $request->validated();
-        if($request->hasFile('profile') && $request->file('profile')->isValid()){
-           $file_name = uploadFile($request->profile, 'images');
+        if($request->hasFile('profile') && $request->file('profile')->isValid())
+        {
+           $file_name = uploadFile($request->profile , 'images');
            $input['profile'] = $file_name;
         }
         $this->checkRolePermission('edit-user');
         $user->update($input);
-        return redirect()->route('user.index')->with('success','User is successfully updated!');
+        return redirect()->route('user.index')->with('success' , 'User is successfully updated!');
     }
 
     /**
@@ -124,6 +125,6 @@ class UserController extends Controller
     {
         $this->checkRolePermission('delete-user');
         $user->delete();
-        return redirect()->route('user.index')->with('success','User is successfully deleted!');
+        return redirect()->route('user.index')->with('success' , 'User is successfully deleted!');
     }
 }

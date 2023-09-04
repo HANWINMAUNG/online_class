@@ -15,15 +15,15 @@ class CourseFactory extends Factory
     public function definition()
     {
         $title = $this->faker->company();
-        return [
-            'title'=>$title,
-            'slug' => Str::slug($title),
-            'instructor_id'=>$this->faker->numberBetween(1,20),
-            'price'=>$this->faker->numberBetween(300,1000),
-            'image'=>$this->faker->text(30),
-            'cover_photo'=>$this->faker->text(30),
-            'description' => $this->faker->text(50),
-            'summary' =>  $this->faker->text(70)
-        ];
+            return [
+                'title' => $title,
+                'slug' => Str::slug($title),
+                'instructor_id' => $this->faker->numberBetween(1,20),
+                'price' => $this->faker->numberBetween(300,1000),
+                'image' => $this->faker->text(30),
+                'cover_photo' => $this->faker->text(30),
+                'description' => $this->faker->text(50),
+                'summary' =>  $this->faker->text(70)
+            ];
     }
 }

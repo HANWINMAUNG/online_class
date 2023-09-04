@@ -1,5 +1,4 @@
 <?php
-
 namespace App\Http\Controllers\backend;
 
 use App\Models\Category;
@@ -18,23 +17,26 @@ class CategoryController extends Controller
      */
     public function index(Request $request)
     {
-        if($request->ajax()){
+        if($request->ajax())
+        {
             $query = Category::query();
-
             return DataTables::of($query)
-                       ->addColumn('action', function($category){
-                        return view('backend.action.category_action',['category' => $category]);
+                       ->addColumn('action' , function($category)
+                       {
+                        return view('backend.action.category_action' , ['category' => $category]);
                        })
-                       ->order(function ($category){
-                        $category->orderBy('created_at','desc');
-                                 })->addColumn('created_at', function ($data) {
-                        return date('d-M-Y H:i:s', strtotime($data->created_at));
-                             })
+                       ->order(function ($category)
+                       {
+                        $category->orderBy('created_at' , 'desc');
+                       })
+                       ->addColumn('created_at' , function ($data)
+                       {
+                        return date('d-M-Y H:i:s' , strtotime($data->created_at));
+                       })
                        ->rawColumns(['action'])
                        ->make(true);
-        }
-        
-        return view('backend.category.index');
+        }  
+            return view('backend.category.index');
     }
 
     /**
@@ -55,15 +57,13 @@ class CategoryController extends Controller
      */
     public function store(CategoryRequest $request)
     {
-        $title = $request->validated();
-
+         $title = $request->validated();
          $slug = Str::slug($title['title']);
-        
-        Category::create([
+         Category::create([
               'title' => $title['title'],
               'slug' => $slug
-        ]);
-        return redirect()->route('category.index')->with('success','Category is successfully created!');
+         ]);
+         return redirect()->route('category.index')->with('success' , 'Category is successfully created!');
     }
 
     /**
@@ -74,7 +74,7 @@ class CategoryController extends Controller
      */
     public function show(Category $category)
     {
-        return view('backend.detail.category_detail',['category' => $category]);
+        return view('backend.detail.category_detail' , ['category' => $category]);
     }
 
     /**
@@ -85,7 +85,7 @@ class CategoryController extends Controller
      */
     public function edit(Category $category)
     {
-        return view('backend.category.edit', ['category'=>$category]);
+        return view('backend.category.edit' , ['category' => $category]);
     }
 
     /**
@@ -95,19 +95,16 @@ class CategoryController extends Controller
      * @param  \App\Models\Category  $category
      * @return \Illuminate\Http\Response
      */
-    public function update(CategoryRequest $request, Category $category)
+    public function update(CategoryRequest $request , Category $category)
     {
-        $title =$request->validated();
-        
+        $title = $request->validated();
         $slug = Str::slug($title['title']);
-        
         Category::update([
               'title' => $title,
               'slug' => $slug
         ]);
-        return redirect()->route('category.index')->with('success','Category is successfully updated!');
+        return redirect()->route('category.index')->with('success' , 'Category is successfully updated!');
     }
-
     /**
      * Remove the specified resource from storage.
      *
@@ -117,6 +114,6 @@ class CategoryController extends Controller
     public function destroy(Category $category)
     {
         $category->delete();
-        return redirect()->route('category.index')->with('success','Category is successfully deleted!');
+        return redirect()->route('category.index')->with('success' , 'Category is successfully deleted!');
     }
 }

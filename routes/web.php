@@ -34,11 +34,13 @@ Route::get('login', [UserLoginController::class, 'Login'])->name('get.login');
 Route::post('login', [UserLoginController::class, 'postLogin'])->name('post.login');
 Route::get('logout', [UserLoginController::class, 'Logout'])->name('logout');
 
-Route::prefix('email/verify')->group(function(){
+Route::prefix('email/verify')->group(function()
+{
     Route::get('/', [EmailVerificationController::class, 'verify'])->name('verification.verify');
     Route::get('notice', [EmailVerificationController::class, 'notice'])->name('verification.notice');
     Route::get('resend', [EmailVerificationController::class, 'resend'])->name('verification.resend');
     Route::get('sent', [EmailVerificationController::class, 'sent'])->name('verification.sent');
+    Route::get('login_sent', [EmailVerificationController::class, 'loginSent'])->name('loginSent.sent');
     Route::get('success', [EmailVerificationController::class, 'success'])->name('verification.success');
 });
 
@@ -50,8 +52,8 @@ Route::post('reset-password', [UserResetPasswordController::class, 'reset'])->na
 
 //backend
 Route::group([ 
-    'prefix'=>'admin/',
-    'middleware'=>'guest',
+    'prefix' => 'admin/',
+    'middleware' => 'guest',
 ],function(){
 Route::get('login', [LoginController::class, 'Login'])->name('admin_get.login');
 Route::post('login', [LoginController::class, 'postLogin'])->name('admin_post.login');
@@ -65,8 +67,8 @@ Route::post('reset-password', [ResetPasswordController::class, 'reset'])->name('
 });
 
 Route::group([
-    'prefix'=>'admin/',
-     'middleware'=>'auth:admin',
+    'prefix' => 'admin/',
+     'middleware' => 'auth:admin',
 ],function(){
     Route::get('dashboard', function(){return view('backend/index');})->name('admin');
    

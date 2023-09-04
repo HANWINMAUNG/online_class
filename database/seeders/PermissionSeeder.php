@@ -1,5 +1,4 @@
 <?php
-
 namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
@@ -15,18 +14,14 @@ class PermissionSeeder extends Seeder
     public function run()
     {
         $custom_permissions = config('custom_permissions.default');
-
-        Permission::chunk(20, function($permissions){
+        Permission::chunk(20 , function($permissions){
             foreach($permissions as $permission)
             {
                 $permission->delete();  
             }
-        });
-
-        
-        
-        foreach($custom_permissions as $permission){
-            Permission::create(['name' =>$permission,'guard_name' =>'admin']);
-        }
+        });    
+            foreach($custom_permissions as $permission){
+                Permission::create(['name' => $permission , 'guard_name' => 'admin']);
+            }
     }
 }

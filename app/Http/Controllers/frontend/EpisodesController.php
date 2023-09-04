@@ -1,5 +1,4 @@
 <?php
-
 namespace App\Http\Controllers\frontend;
 
 use App\Models\Course;
@@ -11,10 +10,10 @@ class EpisodesController extends Controller
 {
     public function index(Course $course)
     { 
-        $episodes =Episode::where('course_id', $course->id)->get();
+        $episodes = Episode::where('course_id', $course->id)->get();
         return view('frontend.episode_detail', [ 
-            'episodes' =>$episodes,
-            'course' =>$course
+            'episodes' => $episodes,
+            'course' => $course
         ]);
     } 
 }

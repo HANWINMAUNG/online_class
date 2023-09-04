@@ -1,5 +1,4 @@
 <?php
-
 namespace App\Mail;
 
 use Carbon\Carbon;
@@ -24,7 +23,6 @@ class ForgotPasswordMail extends Mailable
     {
         $this->admin = $admin;
     }
-
     /**
      * Build the message.
      *
@@ -40,8 +38,8 @@ class ForgotPasswordMail extends Mailable
        return $this->subject("Forget Password From Online_class")
                         ->from('onlineclass@muse.com')
                         ->view('backend.email.forgot_password',
-                        ['admin'=>$this->admin,
-                          'password_reset_link' =>$password_reset_link
-                       ]);
+                        ['admin' => $this->admin,
+                          'password_reset_link' => $password_reset_link
+                        ]);
     }
 }

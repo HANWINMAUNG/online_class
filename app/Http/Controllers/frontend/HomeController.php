@@ -1,5 +1,4 @@
 <?php
-
 namespace App\Http\Controllers\frontend;
 
 use App\Models\Course;
@@ -11,16 +10,15 @@ use App\Http\Controllers\Controller;
 class HomeController extends Controller
 {
     public function index()
-    {
-        $courses = Course::query()->with('Instructor','Category')->get(); 
-        $categories =Category::toBase()->get();
-        $instructors =Instructor::toBase()->get();
-        
+    {  
+        $courses = Course::query()->with('Instructor' , 'Category')->get(); 
+        $categories = Category::toBase()->get();
+        $instructors = Instructor::toBase()->get(); 
         return view('frontend/home',
         [
-            'courses'=> $courses,
-            'categories'=>$categories,
-            'instructors'=>$instructors
+            'courses' => $courses,
+            'categories' => $categories,
+            'instructors' => $instructors
         ]);
     }
 }

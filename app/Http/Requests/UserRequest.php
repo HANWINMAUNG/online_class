@@ -32,19 +32,19 @@ class UserRequest extends FormRequest
                  'address' =>'nullable',
                  'gender' =>'nullable',
                  'dob' =>'nullable',
-                 'profile' =>'nullable|mimes:png,jpg|max:1000',
+                 'profile' =>'nullable|mimes:png,jpg,jpeg|max:1000',
             ];
         }else{
-        return [
-            'name' =>'required',
-            'email' =>'required',
-             'password'=>'required',
-             'phone' =>'required',
-            'address' =>'nullable',
-             'gender' =>'nullable',
-             'dob' =>'nullable',
-             'profile' =>'nullable|mimes:png,jpg|max:1000',
-        ];
+            return [
+                'name' =>'required',
+                'email' =>'required',
+                'password'=>'required',
+                'phone' =>'required',
+                'address' =>'nullable',
+                'gender' =>'nullable',
+                'dob' =>'nullable',
+                'profile' =>'nullable|mimes:png,jpg,jpeg|max:1000',
+            ];
     }
 }
 }

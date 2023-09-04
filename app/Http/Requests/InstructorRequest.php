@@ -36,17 +36,17 @@ class InstructorRequest extends FormRequest
                  'link' =>'nullable'
             ];
         }else{
-        return [
-            'name' =>'required',
-            'email' =>'required',
-             'password'=>'required',
-             'phone' =>'required',
-            'address' =>'nullable',
-             'gender' =>'nullable',
-             'dob' =>'nullable',
-             'link' =>'nullable',
-             'profile' =>'nullable|mimes:png,jpg|max:1000',
-        ];
-    }
+            return [
+                'name' =>'required',
+                'email' =>'required',
+                'password'=>'required',
+                'phone' =>'required',
+                'address' =>'nullable',
+                'gender' =>'nullable',
+                'dob' =>'nullable',
+                'link' =>'nullable',
+                'profile' =>'nullable|mimes:png,jpg|max:1000',
+            ];
+        }
 }
 }

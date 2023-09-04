@@ -15,43 +15,38 @@ class UserLoginController extends Controller
         return view('frontend.Auth.login');
     }
 
-   
     public function postLogin(Request $request)
     {
         $attributes = $request->validate([
             'email' => 'required|email',
-            'password' =>'required|min:6|max:12',  
+            'password' => 'required|min:6|max:12',  
         ]);
         $remember = isset( $request->remember) &&  $request->remember == 'on' ? true : false;
         $user = User::where('email',$request->email)->first();
-         
         if(is_null($user)){
             return redirect()
                           ->route('get.login')
-                          ->with(['unverified' =>'Your credentials does not match our records']);
+                          ->with(['unverified' => 'Your credentials does not match our records']);
         }
-        if(!$user->hasVerifiedEmail()){
-            $this->setResend($user);
-
-        return redirect()->route('get.login')
-        ->with(['unverified' =>'Please verify your email to sign in']);
-
+        if(!$user->hasVerifiedEmail()){         
+            return redirect()->route('loginSent.sent')
+                                    ->with(['unverified' => 'Please verify your email to sign in']);
         }
         if(Auth::attempt($attributes, $remember )){
            
-            return redirect()->route('verification.notice');
+            return redirect()->route('home');
         }
-        return back()->withErrors(['message' =>'Invalid Credentials']);
+        return back()->withErrors(['message' => 'Invalid Credentials']);
     }
+
     public function logout()
     {
         Auth::logout();
         return redirect()->route('get.login');
     }
-    private function setResend($user){
-        session(['resend'=>['id'=>$user->id]]);
-      }
-    
 
-    
+    private function setResend($user)
+      {
+        session(['resend'=>['id'=>$user->id]]);
+      }    
 }

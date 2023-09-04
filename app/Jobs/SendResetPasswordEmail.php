@@ -1,5 +1,4 @@
 <?php
-
 namespace App\Jobs;
 
 use App\Models\Admin;
@@ -26,8 +25,6 @@ class SendResetPasswordEmail implements ShouldQueue
     {
         $this->admin = $admin;
     }
-
-
     /**
      * Execute the job.
      *

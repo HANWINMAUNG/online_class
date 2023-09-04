@@ -1,7 +1,5 @@
 <?php
-
 namespace Database\Seeders;
-
 
 use Illuminate\Database\Seeder;
 use Database\Seeders\PermissionSeeder;
@@ -25,6 +23,5 @@ class DatabaseSeeder extends Seeder
 
          $this->call(PermissionSeeder::class);
          $this->call(SuperAdminSeeder::class);
-
     }
 }

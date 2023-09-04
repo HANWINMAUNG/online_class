@@ -1,5 +1,4 @@
 <?php
-
 namespace App\Http\Controllers\backend;
 
 use Illuminate\Http\Request;
@@ -18,22 +17,26 @@ class RoleController extends Controller
      */
     public function index(Request $request)
     {
-        if($request->ajax()){
+        if($request->ajax())
+        {
             $query = Role::query();
-
             return DataTables::of($query)
-                       ->addColumn('action', function($role){
-                        return view('backend.action.role_action',['role' => $role]);
+                       ->addColumn('action' , function($role)
+                       {
+                        return view('backend.action.role_action' , ['role' => $role]);
                        })
-                       ->order(function ($role){
-                        $role->orderBy('created_at','desc');
-                                 })->addColumn('created_at', function ($data) {
-                        return date('d-M-Y H:i:s', strtotime($data->created_at));
-                             })
+                       ->order(function ($role)
+                       {
+                        $role->orderBy('created_at' , 'desc');
+                       })
+                       ->addColumn('created_at' , function ($data)
+                       {
+                        return date('d-M-Y H:i:s' , strtotime($data->created_at));
+                       })
                        ->rawColumns(['action'])
                        ->make(true);
         }
-        return view('backend.role.index');
+            return view('backend.role.index');
     }
 
     /**
@@ -43,9 +46,8 @@ class RoleController extends Controller
      */
     public function create()
     {
-        $permissions = Permission::toBase()->get()->pluck('name', 'id')->toArray();
-        
-        return view('backend.role.create',['permissions'=>$permissions]);
+        $permissions = Permission::pluck('name', 'id')->toArray();
+        return view('backend.role.create',['permissions' => $permissions]);
     }
 
     /**
@@ -55,17 +57,14 @@ class RoleController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(RoleRequest $request)
-    {
-       
+    {     
         $attributes = $request->validated();
-
         $role = Role::create([
-            'name' =>$attributes['name'],
+            'name' => $attributes['name'],
             'guard_name' => 'admin'
         ]);
-
         $role->syncPermissions($attributes['permission']);
-        return redirect()->route('role.index')->with('success','Role is successfully Created!');
+        return redirect()->route('role.index')->with('success' , 'Role is successfully Created!');
     }
 
     /**
@@ -76,7 +75,7 @@ class RoleController extends Controller
      */
     public function show(Role $role)
     {
-        return view('backend.detail.role_detail',['role' => $role]);
+        return view('backend.detail.role_detail' , ['role' => $role]);
     }
 
     /**
@@ -87,9 +86,10 @@ class RoleController extends Controller
      */
     public function edit(Role $role)
     {
-        $permissions = Permission::toBase()->get()->pluck('name', 'id')->toArray();
-        
-        return view('backend.role.edit',['permissions'=>$permissions,'role'=>$role]);
+        $permissions = Permission::pluck('name', 'id')->toArray();
+        return view('backend.role.edit' , [
+            'permissions' => $permissions, 
+            'role'  =>$role]);
     }
 
     /**
@@ -99,17 +99,15 @@ class RoleController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(RoleRequest $request, $id)
+    public function update(RoleRequest $request , $id)
     {
         $attributes = $request->validated();
-
         $role = Role::update([
-            'name' =>$attributes['name'],
+            'name' => $attributes['name'],
             'guard_name' => 'admin'
         ]);
-
          $role->syncPermissions($attributes['permission']);
-        return redirect()->route('role.index')->with('success','Role is successfully Update!');
+         return redirect()->route('role.index')->with('success' , 'Role is successfully Update!');
     }
 
     /**
@@ -121,6 +119,6 @@ class RoleController extends Controller
     public function destroy(Role $role)
     {
         $role->delete();
-        return redirect()->route('role.index')->with('success','Role is successfully deleted!');
+        return redirect()->route('role.index')->with('success' , 'Role is successfully deleted!');
     }
 }

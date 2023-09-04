@@ -1,11 +1,11 @@
 <?php
-
 namespace App\Notifications;
-
+use Carbon\Carbon;
 use Illuminate\Bus\Queueable;
+use Illuminate\Support\Facades\URL;
+use Illuminate\Notifications\Notification;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Messages\MailMessage;
-use Illuminate\Notifications\Notification;
 
 class RegisterNotification extends Notification implements ShouldQueue
 {
@@ -40,13 +40,9 @@ class RegisterNotification extends Notification implements ShouldQueue
      */
     public function toMail($notifiable)
     {
-        $verify_url = URL::temporarySignedRoute('verification.verify', Carbon::now()->addMinutes(5),['user_id' =>$notifiable->id]);
-        // return (new MailMessage)
-        //             ->line('The introduction to the notification.')
-        //             ->action('Notification Action', url('/'))
-        //             ->line('Thank you for using our application!');
+        $verify_url = URL::temporarySignedRoute('verification.verify', Carbon::now()->addMinutes(5),['user_id' => $notifiable->id]);
         return (new MailMessage)
-        ->view('frontend.email.verification', ['verification_link'=>$verify_url, 'user' =>$notifiable])
+        ->view('frontend.email.verification', ['verification_link' => $verify_url, 'user' => $notifiable])
         ->subject('Email Verification From Oak');
     } 
 

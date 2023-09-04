@@ -1,5 +1,4 @@
 <?php
-
 namespace App\Http\Controllers\backend\auth;
 
 use Illuminate\Http\Request;
@@ -12,23 +11,23 @@ class LoginController extends Controller
     {
         return view('backend.auth.login');
     }
+
     public function postLogin(Request $request)
-    {
-        
+    {  
         $attributes = $request->validate([
             'email' => 'required|email',
-            'password' =>'required|min:6|max:12',
-            
+            'password' => 'required|min:6|max:12', 
          ]);
-         if(auth()->guard('admin')->attempt($attributes)){
+         if(auth()->guard('admin')->attempt($attributes))
+          {
             return redirect()->intended('/admin');
           }
-        return back()->withErrors(['email'=> 'These credential does not match our records.']);
+        return back()->withErrors(['email' => 'These credential does not match our records.']);
      }
     
-     public function Logout(){
+     public function Logout()
+     {
             Auth::guard('admin')->logout();
             return redirect('admin/login');
-    }
-    
+     }   
 }

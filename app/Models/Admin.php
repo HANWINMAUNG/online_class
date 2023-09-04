@@ -1,11 +1,7 @@
 <?php
-
 namespace App\Models;
-
-
 use Laravel\Sanctum\HasApiTokens;
 use Spatie\Permission\Traits\HasRoles;
-
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
@@ -17,13 +13,8 @@ class Admin extends  Authenticatable implements  MustVerifyEmail
 {
     use HasApiTokens, HasFactory, Notifiable,HasRoles;
 
-    protected $guarded = [
-        
-     ];
-
-     public function setPasswordAttribute($value){
-        $this->attributes['password'] = bcrypt($value);
-    }
-
-   
+        protected $guarded = [];
+        public function setPasswordAttribute($value){
+            $this->attributes['password'] = bcrypt($value);
+        }  
 }

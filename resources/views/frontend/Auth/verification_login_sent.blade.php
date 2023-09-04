@@ -33,9 +33,9 @@
 <div class="container mt-30 d-flex justify-content-center  align-middle">
 <div class="card text-center mt-20">
   <div class="card-body">
-    <h3 class="card-title text-success">Verify Your Email</h3>
-    <p class="card-text">Please check your email verify and click on the verification link to verify your email address.</p>
-    <!-- <a href="{{route('verification.resend')}}" class="btn btn-primary">Resend Verification </a> -->
+    <h3 class="card-title text-success">Your Email Not Verify!</h3>
+    <p class="card-text">Please check your email verify or click to  resend button</p>
+    <a href="{{route('verification.resend')}}" class="btn btn-primary">Resend Verification </a>
   </div>
   </div>
 </div>   

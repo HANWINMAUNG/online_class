@@ -1,11 +1,9 @@
 <?php
-
 namespace App\Jobs;
 
 use App\Models\User;
 use Illuminate\Mail\Mailer;
 use Illuminate\Bus\Queueable;
-
 use App\Mail\UserForgotPasswordMail;
 use Illuminate\Queue\SerializesModels;
 use Illuminate\Queue\InteractsWithQueue;
@@ -26,7 +24,6 @@ class SendUserForgotPasswordEmail implements ShouldQueue
     {
         $this->user = $user;
     }
-
     /**
      * Execute the job.
      *

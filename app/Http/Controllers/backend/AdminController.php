@@ -1,5 +1,4 @@
 <?php
-
 namespace App\Http\Controllers\backend;
 
 use App\Models\Admin;
@@ -18,27 +17,27 @@ class AdminController extends Controller
      */
     public function index(Request $request)
     {
-        if($request->ajax()){
-            $query = Admin::query();
-             
+        if($request->ajax())
+        {
+            $query = Admin::query();  
             return DataTables::of($query)
-                       ->addColumn('action', function($admin){
-                        return view('backend.action.admin_action',['admin' => $admin]);
+                       ->addColumn('action' , function($admin)
+                       {
+                        return view('backend.action.admin_action' , ['admin' => $admin]);
                        })
-                       ->order(function ($admin){
-                        $admin->orderBy('created_at','desc');
-                                 })->addColumn('created_at', function ($data) {
-                        return date('d-M-Y H:i:s', strtotime($data->created_at));
-                             })
-                       
+                       ->order(function ($admin)
+                       {
+                        $admin->orderBy('created_at' , 'desc');
+                       })
+                       ->addColumn('created_at' , function ($data)
+                      {
+                        return date('d-M-Y H:i:s' , strtotime($data->created_at));
+                      })
                        ->rawColumns(['action'])
                        ->make(true);
         }
-        
-        
-        return view('backend.admin.index');
+          return view('backend.admin.index');
     }
-
     /**
      * Show the form for creating a new resource.
      *
@@ -60,16 +59,16 @@ class AdminController extends Controller
         // $file_name = uniqid() . '_' . date('Y-m-d-H-i-s') . '_' . $request->profile->getClientOriginalName();
         // $request->profile->move('images', $file_name);
         $input = $request->validated();
-        if($request->hasFile('profile') && $request->file('profile')->isValid()){
-           $file_name = uploadFile($request->profile, 'images');
+        if($request->hasFile('profile') && $request->file('profile')->isValid())
+        {
+           $file_name = uploadFile($request->profile , 'images');
         // $file_name = uniqid() . '_' . date('Y-m-d-H-i-s') . '_' . $request->profile->getClientOriginalName();
         // Storage::put('images/' . $file_name, file_get_contents($request->profile));//put(full_path,content)
            $input['profile'] = $file_name;
         }
-        Admin::create($input);
-        return redirect()->route('admin.index')->with('success','Admin is successfully created!');
+          Admin::create($input);
+          return redirect()->route('admin.index')->with('success' , 'Admin is successfully created!');
     }
-
     /**
      * Display the specified resource.
      *
@@ -78,13 +77,8 @@ class AdminController extends Controller
      */
     public function show(Admin $admin)
     {
-        // $profile = Storage::get('images/' . $admin->profile);
-        return view('backend.detail.admin_detail',[
-            'admin' => $admin,
-            // 'profile' => $profile
-        ]);
+        return view('backend.detail.admin_detail',['admin' => $admin]);
     }
-
     /**
      * Show the form for editing the specified resource.
      *
@@ -92,11 +86,9 @@ class AdminController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function edit(Admin $admin)
-    {
-        
-        return view('backend.admin.edit', ['admin'=>$admin]);
+    {   
+        return view('backend.admin.edit' , ['admin' => $admin]);
     }
-
     /**
      * Update the specified resource in storage.
      *
@@ -104,15 +96,16 @@ class AdminController extends Controller
      * @param  \App\Models\Admin  $admin
      * @return \Illuminate\Http\Response
      */
-    public function update(AdminRequest $request, Admin $admin)
+    public function update(AdminRequest $request , Admin $admin)
     {
         $input = $request->validated();
-        if($request->hasFile('profile') && $request->file('profile')->isValid()){
-           $file_name = uploadFile($request->profile, 'images');
+        if($request->hasFile('profile') && $request->file('profile')->isValid())
+        {
+           $file_name = uploadFile($request->profile , 'images');
            $input['profile'] = $file_name; 
         }
         $admin->update($input);
-        return redirect()->route('admin.index')->with('success','Admin is successfully updated!');  
+        return redirect()->route('admin.index')->with('success' , 'Admin is successfully updated!');  
     }
 
     /**
@@ -124,6 +117,6 @@ class AdminController extends Controller
     public function destroy(Admin $admin)
     {
         $admin->delete();
-        return redirect()->route('admin.index')->with('success','Admin is successfully deleted!');
+        return redirect()->route('admin.index')->with('success' , 'Admin is successfully deleted!');
     }
 }

@@ -1,5 +1,4 @@
 <?php
-
 namespace App\Http\Controllers\backend;
 
 use App\Models\Course;
@@ -21,25 +20,29 @@ class CourseController extends Controller
      */
     public function index(Request $request)
     {
-        if($request->ajax()){
+        if($request->ajax())
+        {
             $query = Course::query();
-
             return DataTables::of($query)
-                       ->addColumn('instructor_id',function($course){
+                       ->addColumn('instructor_id' , function($course)
+                       {
                         return $course->Instructor->name;
                        })
-                       ->order(function ($course){
-                        $course->orderBy('created_at','desc');
-                                 })->addColumn('created_at', function ($data) {
-                        return date('d-M-Y H:i:s', strtotime($data->created_at));
-                             })
-                       ->addColumn('action', function($course){
-                        return view('backend.action.course_action',['course' => $course]);
+                       ->order(function ($course)
+                       {
+                        $course->orderBy('created_at' , 'desc');
+                       })
+                       ->addColumn('created_at' , function ($data)
+                        {
+                        return date('d-M-Y H:i:s' , strtotime($data->created_at));
+                        })
+                       ->addColumn('action' , function($course)
+                       {
+                        return view('backend.action.course_action' , ['course' => $course]);
                        })
                        ->rawColumns(['action'])
                        ->make(true);
         }
-        
         return view('backend.course.index');
     }
 
@@ -52,7 +55,9 @@ class CourseController extends Controller
     {
         $instructors = Instructor::query()->get();
         $categories = Category::toBase()->get()->pluck('title', 'id')->toArray();
-        return view('backend.course.create',['instructors' =>$instructors,'categories' => $categories]);
+        return view('backend.course.create',[
+            'instructors' => $instructors,
+            'categories' => $categories]);
     }
 
     /**
@@ -62,35 +67,23 @@ class CourseController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(CourseRequest $request)
-    {
-        
+    { 
         $attributes = $request->validated();
-
-        if($request->hasFile('cover_photo') && $request->file('cover_photo')->isValid()){
-            $file_name = uploadFile($request->cover_photo, 'images');
+        if($request->hasFile('cover_photo') && $request->file('cover_photo')->isValid())
+        {
+            $file_name = uploadFile($request->cover_photo , 'images');
             $attributes['cover'] = $file_name;
          }
 
          if($request->hasFile('image') && $request->file('image')->isValid()){
-            $file_name = uploadFile($request->image, 'images');
+            $file_name = uploadFile($request->image , 'images');
             $attributes['image'] = $file_name;
          }
-
         $title = $attributes['title'];
         $slug = Str::slug($title['title']);  
-        $course = Course::create([
-            'title' => $title['title'],
-            'slug' => $slug,
-            'instructor_id' =>$attributes['instructor_id'],
-            'price' =>$attributes['price'],
-            'image' =>$attributes['image'],
-            'cover_photo' =>$attributes['cover_photo'],
-            'description' =>$attributes['description'],
-            'summary' =>$attributes['summary']
-        ]);
-
+        $course = Course::create([$attributes]);
         $course->Category()->attach($attributes['category']); 
-        return redirect()->route('course.index')->with('success','Course is successfully created!');
+        return redirect()->route('course.index')->with('success' , 'Course is successfully created!');
     }
 
     /**
@@ -112,15 +105,14 @@ class CourseController extends Controller
      */
     public function edit(Course $course)
     {
-        $category_courses = $course->Category->toBase()->pluck('title', 'id')->toArray();
+        $category_courses = $course->Category->toBase()->pluck('title' , 'id')->toArray();
         $categories = Category::pluck('title', 'id')->toArray();
         $instructors = Instructor::query()->get();
         return view('backend.course.edit',[
-            'instructors' =>$instructors,
-            'course' =>$course,
-            'categories'=>$categories,
-            'category_courses'=>$category_courses
-
+            'instructors' =>  $instructors,
+            'course' => $course,
+            'categories' => $categories,
+            'category_courses' => $category_courses
         ]);
     }
     /**
@@ -130,24 +122,22 @@ class CourseController extends Controller
      * @param  \App\Models\Course  $course
      * @return \Illuminate\Http\Response
      */
-    public function update(CourseRequest $request, Course $course)
+    public function update(CourseRequest $request , Course $course)
     {
         $attributes = $request->validated();
-        if($request->hasFile('cover_photo') && $request->file('cover_photo')->isValid()){
-            $file_name = uploadFile($request->cover_photo, 'images');
+        if($request->hasFile('cover_photo') && $request->file('cover_photo')->isValid())
+        {
+            $file_name = uploadFile($request->cover_photo , 'images');
             $attributes['cover'] = $file_name;
          }
-
-         if($request->hasFile('image') && $request->file('image')->isValid()){
-            $file_name = uploadFile($request->image, 'images');
+         if($request->hasFile('image') && $request->file('image')->isValid())
+         {
+            $file_name = uploadFile($request->image , 'images');
             $attributes['image'] = $file_name;
-         }
-         
-       $course->update($attributes);
-
+         } 
+        $course->update($attributes);
         $course->Category()->sync($attributes['category']);
-
-        return redirect()->route('course.index')->with('success','Course is successfully updated!');
+        return redirect()->route('course.index')->with('success' , 'Course is successfully updated!');
     }
 
     /**
@@ -159,6 +149,6 @@ class CourseController extends Controller
     public function destroy(Course $course)
     {
         $course->delete();
-        return redirect()->route('course.index')->with('success','Course is successfully deleted!');
+        return redirect()->route('course.index')->with('success' , 'Course is successfully deleted!');
     }
 }

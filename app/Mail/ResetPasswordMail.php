@@ -1,5 +1,4 @@
 <?php
-
 namespace App\Mail;
 
 use Carbon\Carbon;
@@ -24,7 +23,6 @@ class ResetPasswordMail extends Mailable
     {
         $this->admin = $admin;
     }
-
     /**
      * Build the message.
      *
@@ -40,8 +38,8 @@ class ResetPasswordMail extends Mailable
        return $this->subject("Success Password From Online_class")
                         ->from('onlineclass@muse.com')
                         ->view('backend.email.success_password',
-                        ['admin'=>$this->admin,
-                          'password_success_link' =>$password_success_link
+                        ['admin '=> $this->admin,
+                          'password_success_link' => $password_success_link
                        ]);
     }
 }

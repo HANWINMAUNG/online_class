@@ -39,7 +39,7 @@
         <div class="card shadow-2-strong card-registration" style="border-radius: 15px;">
           <div class="card-body p-4 p-md-5 mt-6">
             <h2 class="mb-4 pb-2 pb-md-0 mb-md-5 text-center">Registration Form</h3>
-            <form class="form-default" action="{{route('post.register')}}" method="POST" id="form">
+            <form class="form-default" action="{{route('post.register')}}" method="POST" id="form" enctype="multipart/form-data">
             @csrf
               <div class="row">
                 <div class="col-md-12 mb-4">
@@ -123,7 +123,7 @@
                 <div class="col-md-12 mb-4">
                   <div class="form-outline">
                   <label class="form-label" >Address</label>
-                    <textarea id="firstName" class="form-control form-control-lg"></textarea>
+                    <textarea id="firstName" name="address" class="form-control form-control-lg"></textarea>
                   </div>
                 </div>
               </div>

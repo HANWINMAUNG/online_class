@@ -1,5 +1,4 @@
 <?php
-
 namespace App\Mail;
 
 use Carbon\Carbon;
@@ -23,7 +22,6 @@ class UserResetPasswordMail extends Mailable
     {
         $this->user = $user;
     }
-
     /**
      * Build the message.
      *
@@ -39,8 +37,8 @@ class UserResetPasswordMail extends Mailable
        return $this->subject("Success Password From Online_class")
                         ->from('onlineclass@gmail.com')
                         ->view('frontend.email.success_password',
-                        ['user'=>$this->user,
-                          'password_success_link' =>$password_success_link
+                        ['user' => $this->user,
+                          'password_success_link' => $password_success_link
                        ]);
     }
     

@@ -1,5 +1,4 @@
 <?php
-
 namespace App\Http\Controllers\frontend\Auth;
 
 use App\Models\User;
@@ -14,18 +13,16 @@ class UserForgotPasswordController extends Controller
     {
         return view('frontend.Auth.forgot_password');
     }
+
     public function sendEmail(Request $request)
     {
-        $attributes = $request->validate(['email'=>'required|email']);
-
-        $user = User::where('email',$attributes['email'])->first();
-        
-        if(is_null($user)){
-            return back()->with(['email'=>'Your email cannot be found!']);
+        $attributes = $request->validate(['email' => 'required|email']);
+        $user = User::where('email',$attributes['email'])->first(); 
+        if(is_null($user))
+        {
+            return back()->with(['email' => 'Your email cannot be found!']);
         }
-
         SendUserForgotPasswordEmail::dispatch($user);
-
         return back()->with('success','please check your email to reset password!');
     }
 }

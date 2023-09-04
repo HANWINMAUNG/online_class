@@ -21,10 +21,10 @@ class SuperAdminSeeder extends Seeder
             'email' => 'admin@gmail.com',
             'password' => '123123123',
             'gender' =>'male'
-     ]);
-      $role = Role::create(['name' => 'Super Admin' , 'guard_name' => 'admin']);
-      $permissions = Permission::pluck('id', 'id')->all();
-      $role->syncPermissions($permissions);
-      $admin->assignRole([$role->id]);
+        ]);
+        $role = Role::create(['name' => 'Super Admin' , 'guard_name' => 'admin']);
+        $permissions = Permission::pluck('id', 'id')->all();
+        $role->syncPermissions($permissions);
+        $admin->assignRole([$role->id]);
     }
 }
