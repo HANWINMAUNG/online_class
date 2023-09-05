@@ -1,7 +1,4 @@
-
-
-    <header>
-        <!-- Header Start -->
+<header>
         <div class="header-area header-transparent">
             <div class="main-header ">
                 <div class="header-bottom  header-sticky">
@@ -40,5 +37,4 @@
                 </div>
             </div>
         </div>
-        <!-- Header End -->
-    </header>
+</header>

@@ -11,7 +11,7 @@
                                              <h1 data-animation="bounceIn" data-delay="0.2s">Course Detail</h1>
                                              <nav aria-label="breadcrumb">
                                                 <ol class="breadcrumb">
-                                                   <li class="breadcrumb-item"><a href="{{route('courses')}}">Courses</a></li>
+                                                   <li class="breadcrumb-item"><a href="{{ route('courses') }}">Courses</a></li>
                                                    <li class="breadcrumb-item"><a href="#">Course Detail</a></li> 
                                                 </ol>
                                              </nav>
@@ -34,14 +34,14 @@
                      </div>
                      <div class="col-lg-6">
                         <div class="blog_details">
-                              <h2 style="color: #2d2d2d;">{{$course->title}}</h2>
+                              <h2 style="color: #2d2d2d;">{{ $course->title }}</h2>
                               <ul class="blog-info-link mt-3 mb-4">
-                                 <li><a href="#"><i class="fa fa-user"></i> Instructor Name:{{$course->Instructor->name}}</a></li>
-                                 <li><a href="#"><i class="fa fa-money"></i>Price:${{$course->price}}</a></li>
+                                 <li><a href="#"><i class="fa fa-user"></i> Instructor Name:{{ $course->Instructor->name }}</a></li>
+                                 <li><a href="#"><i class="fa fa-money"></i>Price:${{ $course->price }}</a></li>
                               </ul>
                               <h4>Description</h4>
                               <p class="excert">
-                              {{$course->description}}
+                              {{ $course->description }}
                               </p>
                            </div>
                      </div>
@@ -53,7 +53,7 @@
                            </h4>
                            <div class="quote-wrapper">
                               <div class="quotes">
-                              {{$course->summary}}
+                              {{ $course->summary }}
                               </div>
                            </div>
                   </div>
@@ -63,7 +63,7 @@
                      <div class="text-center mb-2">
                         <h1>Related Episodes</h1>
                      </div>
-                     <a href="{{route('episode-detail',[$course->slug])}}">
+                     <a href="{{ route('episode-detail' , [$course->slug]) }}">
                            <div class="blog-author" style="background-color:#CC6AFF;">
                               <div class="media ">
                                     <svg id="i-video" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="100" height="100" fill="none" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="2">

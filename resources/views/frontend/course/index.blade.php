@@ -1,25 +1,20 @@
 @extends('frontend.layouts.app')
-
 @section('content') 
-<main>
-        <!--? slider Area Start-->
+<main>     
         <section class="slider-area slider-area2">
             <div class="slider-active" style="height:300px;">
-                <!-- Single Slider -->
                 <div class="single-slider slider-height2">
                     <div class="container">
                         <div class="row">
                             <div class="col-xl-8 col-lg-11 col-md-12">
                                 <div class="hero__caption hero__caption2" style="padding-top:130px;">
                                     <h1 data-animation="bounceIn" data-delay="0.2s">Our courses</h1>
-                                    <!-- breadcrumb Start-->
                                     <nav aria-label="breadcrumb">
                                         <ol class="breadcrumb">
                                             <li class="breadcrumb-item"><a href="{{route('home')}}">Home</a></li>
                                             <li class="breadcrumb-item"><a href="#">Services</a></li> 
                                         </ol>
                                     </nav>
-                                    <!-- breadcrumb End -->
                                 </div>
                             </div>
                         </div>
@@ -27,7 +22,6 @@
                 </div>
             </div>
         </section>
-        <!-- Courses area start -->
         <div class="courses-area section-padding40 fix">
             <div class="container">
                 <div class="row justify-content-center">
@@ -88,8 +82,6 @@
                 </div>
             </div>
         </div>
-        <!-- Courses area End -->
-        <!--? top subjects Area Start -->
         <div class="topic-area">
             <div class="container">
                 <div class="row justify-content-center">
@@ -198,11 +190,8 @@
                     </div>
                 </div>
             </div>
-        </div>
-        <!-- top subjects End -->  
-        <!-- ? services-area -->
-       
-    </main>
+        </div>   
+</main>
 @endsection
 @push('script')
 <script>
@@ -214,5 +203,5 @@
                     window.location = `${change_location}?category_id=${current_category}`;
                 });
             })
-      </script>
+</script>
 @endpush

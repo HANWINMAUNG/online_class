@@ -1,7 +1,5 @@
 @extends('frontend.layouts.app')
-
 @section('content') 
-
     <main>
         <!--? slider Area Start-->
         <section class="slider-area ">
