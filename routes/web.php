@@ -40,7 +40,7 @@ Route::prefix('email/verify')->group(function()
     Route::get('notice', [EmailVerificationController::class, 'notice'])->name('verification.notice');
     Route::get('resend', [EmailVerificationController::class, 'resend'])->name('verification.resend');
     Route::get('sent', [EmailVerificationController::class, 'sent'])->name('verification.sent');
-    Route::get('login_sent', [EmailVerificationController::class, 'loginSent'])->name('loginSent.sent');
+    Route::get('login-sent', [EmailVerificationController::class, 'loginSent'])->name('loginSent.sent');
     Route::get('success', [EmailVerificationController::class, 'success'])->name('verification.success');
 });
 

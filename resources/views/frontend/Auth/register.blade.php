@@ -1,10 +1,30 @@
-@include('frontend.layouts.header_info')
-<body style="background-color:#976FFF;">  
-          @include('frontend.layouts.preloader')
-                <section class="vh-100 gradient-custom mt-6">
+@extends('frontend.layouts.app')
+@section('content') 
+                <section class="slider-area slider-area2">
+                    <div class="slider-active" style="height:300px;">
+                        <div class="single-slider slider-height2">
+                            <div class="container">
+                                <div class="row">
+                                    <div class="col-xl-8 col-lg-11 col-md-12">
+                                        <div class="hero__caption hero__caption2" style="padding-top:130px;">
+                                            <h1 data-animation="bounceIn" data-delay="0.2s">Register</h1>
+                                            <nav aria-label="breadcrumb">
+                                                <ol class="breadcrumb">
+                                                    <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+                                                    <li class="breadcrumb-item"><a href="#">Register</a></li> 
+                                                </ol>
+                                            </nav>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>          
+                        </div>
+                    </div>
+                </section>
+                <section class="vh-100 gradient-custom mt-6" style="background-color:#976FFF;">
                   <div class="container mt-6 py-5 h-100">
                     <div class="row justify-content-center align-items-center h-100">
-                      <div class="col-12 col-lg-9 col-xl-8" style="margin-top: 30px;">
+                      <div class="col-12 col-lg-9 col-xl-8" >
                         <div class="card shadow-2-strong card-registration" style="border-radius: 15px;">
                           <div class="card-body p-4 p-md-5 mt-6">
                                   <h2 class="mb-4 pb-2 pb-md-0 mb-md-5 text-center">Registration Form</h3>
@@ -98,7 +118,5 @@
                       </div>
                     </div>
                   </div>
-                </section>
-          @include('frontend.layouts.footer_info')
-</body>
-</html>
+                </section>        
+@endsection

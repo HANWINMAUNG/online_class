@@ -16,19 +16,22 @@
                                     <div class="main-menu d-none d-lg-block">
                                         <nav>
                                             <ul id="navigation">                                                                                          
-                                                <li class="active" ><a href="{{route('home')}}">Home</a></li>
-                                                <li><a href="{{route('courses')}}">Courses</a></li>
-                                                <li><a href="{{route('about')}}">About</a></li>
-                                                <li><a href="{{route('contact')}}">Contact</a></li>
-                                                <!-- Button -->
-                                                <li class="button-header margin-left "><a href="{{route('get.register')}}" class="btn">Register</a></li>
-                                                <li class="button-header"><a href="{{route('get.login')}}" class="btn btn3">Log in</a></li>
+                                                <li class="active" ><a href="{{ route('home') }}">Home</a></li>
+                                                <li><a href="{{ route('courses') }}">Courses</a></li>
+                                                <li><a href="{{ route('about') }}">About</a></li>
+                                                <li><a href="{{ route('contact') }}">Contact</a></li>
+                                                @if(auth()->user())
+                                                <li class="button-header margin-left "><a href="" class="text-dark">{{ auth()->user()->name }}</a></li>
+                                                <li class="button-header"><a href="{{ route('logout') }}" class="btn btn3">Logout</a></li>
+                                                @else
+                                                <li class="button-header margin-left "><a href="{{ route('get.register') }}" class="btn">Register</a></li>
+                                                <li class="button-header"><a href="{{ route('get.login') }}" class="btn btn3">Log in</a></li>
+                                                @endif
                                             </ul>
                                         </nav>
                                     </div>
                                 </div>
                             </div> 
-                            <!-- Mobile Menu -->
                             <div class="col-12">
                                 <div class="mobile_menu d-block d-lg-none"></div>
                             </div>

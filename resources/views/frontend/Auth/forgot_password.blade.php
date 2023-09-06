@@ -1,25 +1,55 @@
-@include('frontend.layouts.header_info')
-<body style="background-image:url({{asset('frontend/assets/img/gallery/forgot.png')}});" >
-        @include('frontend.layouts.preloader')
-            <main class="login-body">   
-                            <form class="form-default" action="{{route('forgotPassword.send-email')}}" method="POST" id="form">
-                                @csrf
-                                <div class="login-form">
-                                    <h2>Forgot Password</h2>
-                                    @include('frontend.layouts.page_info')
-                                    <div class="form-input">
-                                        <label for="name">Email</label>
-                                        <input  type="email" name="email" placeholder="Email" id="email">
+@extends('frontend.layouts.app')
+@section('content') 
+                <section class="slider-area slider-area2">
+                    <div class="slider-active" style="height:300px;">
+                        <div class="single-slider slider-height2">
+                            <div class="container">
+                                <div class="row">
+                                    <div class="col-xl-8 col-lg-11 col-md-12">
+                                        <div class="hero__caption hero__caption2" style="padding-top:130px;">
+                                            <h1 data-animation="bounceIn" data-delay="0.2s">Forgot Password</h1>
+                                            <nav aria-label="breadcrumb">
+                                                <ol class="breadcrumb">
+                                                    <li class="breadcrumb-item"><a href="index.html">Login</a></li>
+                                                    <li class="breadcrumb-item"><a href="#"></a>Forgot Password</li> 
+                                                </ol>
+                                            </nav>
+                                        </div>
                                     </div>
-                                    @error('email')
-                                            <small style="color:red;">{{$message}}*</small>
-                                    @enderror                    
-                                    <div class="form-input pt-20">
-                                        <input type="submit" name="submit" value="login">
-                                    </div>   
                                 </div>
-                            </form>  
-            </main>
-        @include('frontend.layouts.footer_info')
-</body>
-</html>
+                            </div>          
+                        </div>
+                    </div>
+                </section>
+                <section class="vh-100 gradient-custom mt-6" style="background-color:#976FFF;height:400px;">
+                  <div class="container mt-6 py-5 h-100">
+                    <div class="row justify-content-center align-items-center h-100">
+                      <div class="col-12 col-lg-9 col-xl-6">
+                        <div class="card shadow-2-strong card-registration" style="border-radius: 15px;">
+                          <div class="card-body p-4 p-md-5 mt-6">
+                                <h2 class="mb-4 pb-2 pb-md-0 mb-md-5 text-center">Forgot Password</h3>
+                                @include('frontend.layouts.page_info')
+                                <form class="form-default" action="{{route('forgotPassword.send-email')}}" method="POST" id="form">
+                                    @csrf  
+                                      <div class="row">
+                                        <div class="col-md-12 mb-4 ">
+                                          <div class="form-outline ">
+                                            <label class="form-label">Email</label>
+                                            <input type="email" name="email" class="form-control form-control-lg" id="password" />
+                                          </div>
+                                          @error('email')
+                                                <small style="color:red;">{{$message}}*</small>
+                                        @enderror
+                                        </div>
+                                      </div>
+                                      <div class="mt-4 pt-2">
+                                        <input class="btn btn-primary btn-lg" type="submit" value="Submit" />
+                                      </div>
+                                </form>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </section>
+@endsection

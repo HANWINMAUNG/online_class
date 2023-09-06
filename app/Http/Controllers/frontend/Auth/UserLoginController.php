@@ -42,7 +42,7 @@ class UserLoginController extends Controller
     public function logout()
     {
         Auth::logout();
-        return redirect()->route('get.login');
+        return redirect()->route('home');
     }
 
     private function setResend($user)
