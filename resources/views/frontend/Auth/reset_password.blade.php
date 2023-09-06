@@ -1,4 +1,4 @@
-@include('frontend.layouts.layouts.header_info')
+@include('frontend.layouts.header_info')
 <body style="background-image:url({{asset('frontend/assets/img/gallery/login.jpg')}});" >
     @include('frontend.layouts.preloader')
                 <main class="login-body">  
@@ -23,6 +23,6 @@
                                 </div>
                         </form>    
                 </main>
-    @include('frontend.layouts.layouts.footer_info')
+    @include('frontend.layouts.footer_info')
 </body>
 </html>

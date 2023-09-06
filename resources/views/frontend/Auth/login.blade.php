@@ -1,4 +1,4 @@
-@include('frontend.layouts.layouts.header_info')
+@include('frontend.layouts.header_info')
 <body style="background-color:#976FFF;" >
           @include('frontend.layouts.preloader')
             <section class="vh-100 gradient-custom mt-6">
@@ -53,6 +53,6 @@
                 </div>
               </div>
             </section>
-          @include('frontend.layouts.layouts.footer_info')
+          @include('frontend.layouts.footer_info')
 </body>
 </html>

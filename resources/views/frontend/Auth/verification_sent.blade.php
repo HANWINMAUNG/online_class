@@ -1,4 +1,4 @@
-@include('frontend.layouts.layouts.header_info')
+@include('frontend.layouts.header_info')
 <body style="background-image:url({{asset('frontend/assets/img/gallery/sent.jpg')}});">
           @include('frontend.layouts.preloader')
           <div class="container mt-30 d-flex justify-content-center  align-middle">
@@ -10,7 +10,7 @@
                   </div>
                </div>
           </div>     
-          @include('frontend.layouts.layouts.footer_info')
+          @include('frontend.layouts.footer_info')
 </body>
 </html>
 
