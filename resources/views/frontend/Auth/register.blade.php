@@ -99,6 +99,6 @@
                     </div>
                   </div>
                 </section>
-          @include('frontend.footer_info')
+          @include('frontend.layouts.footer_info')
 </body>
 </html>
