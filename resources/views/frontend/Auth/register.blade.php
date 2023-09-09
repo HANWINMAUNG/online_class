@@ -1,12 +1,12 @@
 @extends('frontend.layouts.app')
 @section('content') 
                 <section class="slider-area slider-area2">
-                    <div class="slider-active" style="height:300px;">
+                    <div class="slider-active" style="height:250px;">
                         <div class="single-slider slider-height2">
                             <div class="container">
                                 <div class="row">
                                     <div class="col-xl-8 col-lg-11 col-md-12">
-                                        <div class="hero__caption hero__caption2" style="padding-top:130px;">
+                                        <div class="hero__caption hero__caption2" style="padding-top:90px;">
                                             <h1 data-animation="bounceIn" data-delay="0.2s">Register</h1>
                                             <nav aria-label="breadcrumb">
                                                 <ol class="breadcrumb">
@@ -21,7 +21,7 @@
                         </div>
                     </div>
                 </section>
-                <section class="vh-100 gradient-custom mt-6" style="background-color:#976FFF;">
+                <section class="vh-100 gradient-custom mt-6">
                   <div class="container mt-6 py-5 h-100">
                     <div class="row justify-content-center align-items-center h-100">
                       <div class="col-12 col-lg-9 col-xl-8" >
@@ -31,7 +31,7 @@
                                   <form class="form-default" action="{{route('post.register')}}" method="POST" id="form" enctype="multipart/form-data">
                                                 @csrf
                                                       <div class="row">
-                                                        <div class="col-md-12 mb-4">
+                                                        <div class="col-md-6 mb-4">
                                                           <div class="form-outline">
                                                           <label class="form-label" >Name</label>
                                                             <input type="text"name="name"  id="name" class="form-control form-control-lg" />
@@ -40,8 +40,6 @@
                                                                 <small style="color:red;">{{$message}}*</small>
                                                           @enderror
                                                         </div>
-                                                      </div>
-                                                      <div class="row">
                                                         <div class="col-md-6 mb-4 ">
                                                           <div class="form-outline ">
                                                             <label class="form-label">Password</label>
@@ -49,13 +47,7 @@
                                                           </div>
                                                           @error('password')
                                                                 <small style="color:red;">{{$message}}*</small>
-                                                        @enderror
-                                                        </div>
-                                                        <div class="col-md-6 mb-4 pb-2">
-                                                          <div class="form-outline">
-                                                          <label class="form-label">Date Of Birth</label>
-                                                            <input type="date" name="dob"  class="form-control form-control-lg pb-2" />
-                                                          </div>
+                                                          @enderror
                                                         </div>
                                                       </div>
                                                       <div class="row">
@@ -77,24 +69,30 @@
                                                                 <small style="color:red;">{{$message}}*</small>
                                                         @enderror
                                                         </div>
-                                                      </div>  
+                                                      </div>
                                                       <div class="row">
-                                                        <div class="col-md-12 mb-4">
+                                                      <div class="col-md-6 mb-4">
                                                           <div class="form-outline">
                                                             <label>Gender</label>
-                                                            <select name="gender" class="form-select ">
+                                                            <select name="gender" class="form-select " style="background:white;">
                                                             <option>Male</option>
                                                             <option>Female</option>
                                                             <option>Other</option>
                                                           </select>
                                                           </div>
                                                         </div>
-                                                      </div>
+                                                        <div class="col-md-6 mb-4 pb-2">
+                                                          <div class="form-outline">
+                                                          <label class="form-label">Date Of Birth</label>
+                                                            <input type="date" name="dob"  class="form-control form-control-lg pb-2" />
+                                                          </div>
+                                                        </div>
+                                                      </div>  
                                                       <div class="row">
                                                         <div class="col-md-12 mb-4">
                                                           <div class="form-outline">
                                                           <label class="form-label" >Profile</label>
-                                                            <input type="file" name="profile" class="form-control form-control-lg" />
+                                                            <input type="file" name="profile" class="form-control form-control-lg py-2" />
                                                           </div>
                                                           @error('profile')
                                                                 <small style="color:red;">{{$message}}*</small>
@@ -119,4 +117,4 @@
                     </div>
                   </div>
                 </section>        
-@endsection
+@endsection 

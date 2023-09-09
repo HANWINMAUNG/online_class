@@ -65,7 +65,7 @@ class InstructorController extends Controller
           $attributes['profile'] = $file_name;
        }
         $attributes['link'] = json_encode($attributes['link']);
-        Instructor::create([$attributes]);
+        Instructor::create($attributes);
         return redirect()->route('instructor.index')->with('success' , 'Instructor is successfully created!');
     }
 
@@ -107,7 +107,7 @@ class InstructorController extends Controller
             $attributes['profile'] = $file_name;
          }
          $attributes['link'] = json_encode($attributes['link']);
-         $instructor->update([$attributes]);
+         $instructor->update($attributes);
          return redirect()->route('instructor.index')->with('success' , 'Instructor is successfully updated!');
     }
 

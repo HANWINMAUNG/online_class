@@ -8,7 +8,7 @@
     <div class = "container px-6 mx-auto grid">
             <h2 class = "my-6 text-2xl font-semibold text-gray-700 dark:text-gray-200">Admin Edit Form</h2>
             <div class = "flex justify-items-end">
-              <a class = "float-right p-4 mb-8 text-sm  text-purple-100 bg-purple-600 rounded-lg shadow-md focus:outline-none focus:shadow-outline-purple"href = "{{ route('admin.index') }}">Back &LeftArrow;</a>
+              <a class = "float-right px-4 py-2 mb-8 text-sm  text-purple-100 bg-purple-600 rounded-lg shadow-md focus:outline-none focus:shadow-outline-purple"href = "{{ route('admin.index') }}">Back &LeftArrow;</a>
             </div>
             <form action = "{{ route('admin.update' , $admin->id) }}" method = "post" id = "form" enctype = "multipart/form-data">
              @method('PATCH') 
@@ -62,14 +62,19 @@
                                   <option>Other</option>
                             </select>
                       </label>
-                      @error('gender')
+                      @error('gender')  
                                 <small style = "color:red;">{{ $message }}*</small>
                       @enderror
 
-                    <label class = "block mt-4 text-sm">
+                    <label class = "block mt-4 text-sm pb-4">
                             <span class = "text-gray-700 dark:text-gray-400">Profile<span style = "color:red;">*</span></span>
                             <input type = "file" name = "profile" value = "{{ $admin->profile }}" class = "block w-full mt-1 text-sm dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input"/>
                     </label>
+                        @if(!$admin->profile == '')
+                        <img src="{{asset('images/' . $admin->profile)}}" alt="" style="width:100px;height:100px;padding-top:10px;" class="pt-6">
+                        @else
+                        <img src="{{asset('assets/img/noimage.jpg')}}" alt="" style="width:100px;height:100px;padding-top:10px;" class="pt-6">
+                        @endif
                       @error('profile')
                               <small style = "color:red;">{{ $message }}*</small>
                       @enderror

@@ -5,7 +5,7 @@
     <div class="container px-6 mx-auto grid">
             <h2 class = "my-6 text-2xl font-semibold text-gray-700 dark:text-gray-200"> Course Create Form</h2>
             <div class = "flex justify-items-end">
-                  <a class = "float-right p-4 mb-8 text-sm  text-purple-100 bg-purple-600 rounded-lg shadow-md focus:outline-none focus:shadow-outline-purple" href = "{{ route('course.index') }}">Back &LeftArrow;</a>
+                  <a class = "float-right px-4 py-2 mb-8 text-sm  text-purple-100 bg-purple-600 rounded-lg shadow-md focus:outline-none focus:shadow-outline-purple" href = "{{ route('course.index') }}">Back &LeftArrow;</a>
             </div>
             <form action = "{{ route('course.store') }}" method = "post" id = "form" enctype = "multipart/form-data">
                   @csrf

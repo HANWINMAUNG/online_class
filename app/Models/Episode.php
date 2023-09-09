@@ -15,9 +15,10 @@ class Episode extends Model
         return $this->belongsTo(Course::class, 'course_id');
     }
 
-    public function setTitleAttributes($value)
+    public function setTitleAttribute($value)
     {
-        $this->attributes['title'] = strtolower($value);
-        $this->attributes['slug'] = Str::slug($value);
+        $this->attributes['title'] = $value;
+        $this->attributes['slug'] = strtolower(Str::slug($value));
     }
 }
+

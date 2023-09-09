@@ -33,7 +33,6 @@ class EpisodeRequest extends FormRequest
             }else{
             return [
                 'title'=>'required',
-                'course_id' =>'required',
                 'cover' =>'nullable|mimes:png,jpg',
                 'image' =>'nullable|mimes:png,jpg',
                 'video' =>'nullable',

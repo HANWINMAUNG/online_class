@@ -5,7 +5,7 @@
             <h2 class="my-6 text-2xl font-semibold text-gray-700 dark:text-gray-200">Role Edit Form</h2>
             <div class="flex justify-items-end">
               <a
-                class="float-right p-4 mb-8 text-sm  text-purple-100 bg-purple-600 rounded-lg shadow-md focus:outline-none focus:shadow-outline-purple"
+                class="float-right px-4 py-2 mb-8 text-sm  text-purple-100 bg-purple-600 rounded-lg shadow-md focus:outline-none focus:shadow-outline-purple"
                 href="{{ route('role.index') }}"
               >
                 Back &LeftArrow;
@@ -26,8 +26,12 @@
                     <label class="block mt-4 text-sm">
                       <span class="text-gray-700 dark:text-gray-400">Permission <span style="color:red;">*</span> </span>
                       <select name="permission[]" id="permission" class="select2 block w-full mt-1 text-sm dark:text-gray-300 dark:border-gray-600 dark:bg-gray-700 form-select focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:focus:shadow-outline-gray"multiple>
-                        @foreach($permissions as $key =>$permission)
-                        <option value="{{$key}}">{{$permission}}</option>
+                        @foreach($permissions as $key => $permission)
+                            @foreach($permission_roles as $keys => $permission_role)
+                                  @if($keys == $key)
+                                  <option value="{{$key}}" selected>{{$permission}}</option>
+                                  @endif
+                            @endforeach
                         @endforeach
                       </select>
                     </label>

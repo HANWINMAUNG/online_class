@@ -4,7 +4,7 @@
         <div class="container grid px-6 mx-auto flex ">
                   @include('backend.layouts.page_info')  
                   <div class="justify-items-end my-6 text-2xl font-semibold text-gray-700 dark:text-gray-200">
-                    <a class="float-right p-4 mb-8 text-sm  text-purple-100 bg-purple-600 rounded-lg shadow-md focus:outline-none focus:shadow-outline-purple"href="{{ route('instructor.create') }}"> Instructor Create &RightArrow;</a>
+                    <a class="float-right px-4 py-2 mb-8 text-sm  text-purple-100 bg-purple-600 rounded-lg shadow-md focus:outline-none focus:shadow-outline-purple"href="{{ route('instructor.create') }}"> Instructor Create &RightArrow;</a>
                   </div>
                   <h4 class="mb-4 text-lg font-semibold text-gray-600 dark:text-gray-300"> Instructor Table</h4>
                   <div class="w-full overflow-hidden rounded-lg shadow-xs">

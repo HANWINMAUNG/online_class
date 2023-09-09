@@ -116,7 +116,7 @@
                                                 To view this video please enable JavaScript, and consider upgrading to a
                                                 web browser that
                                              </p>
-                                 </video>
+                                    </video>
                                  </div>
                               @endforeach
                   </div>

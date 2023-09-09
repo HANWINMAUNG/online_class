@@ -53,7 +53,7 @@ Route::post('reset-password', [UserResetPasswordController::class, 'reset'])->na
 //backend
 Route::group([ 
     'prefix' => 'admin/',
-    'middleware' => 'guest',
+    'middleware' => 'guest:admin',
 ],function(){
 Route::get('login', [LoginController::class, 'Login'])->name('admin_get.login');
 Route::post('login', [LoginController::class, 'postLogin'])->name('admin_post.login');
@@ -70,7 +70,7 @@ Route::group([
     'prefix' => 'admin/',
      'middleware' => 'auth:admin',
 ],function(){
-    Route::get('dashboard', function(){return view('backend/index');})->name('admin');
+    Route::get('', function(){return view('backend/index');})->name('admin');
    
 //admin
 Route::get('account', [AdminController::class, 'index'])->name('admin.index');

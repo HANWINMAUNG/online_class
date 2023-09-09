@@ -72,17 +72,18 @@ class CourseController extends Controller
         if($request->hasFile('cover_photo') && $request->file('cover_photo')->isValid())
         {
             $file_name = uploadFile($request->cover_photo , 'images');
-            $attributes['cover'] = $file_name;
+            $attributes['cover_photo'] = $file_name;
          }
 
          if($request->hasFile('image') && $request->file('image')->isValid()){
             $file_name = uploadFile($request->image , 'images');
             $attributes['image'] = $file_name;
          }
-        $title = $attributes['title'];
-        $slug = Str::slug($title['title']);  
-        $course = Course::create([$attributes]);
-        $course->Category()->attach($attributes['category']); 
+       
+        $category = $attributes['category'];
+        unset($attributes['category']);
+        $course = Course::create($attributes);
+        $course->Category()->attach($category); 
         return redirect()->route('course.index')->with('success' , 'Course is successfully created!');
     }
 
@@ -125,18 +126,21 @@ class CourseController extends Controller
     public function update(CourseRequest $request , Course $course)
     {
         $attributes = $request->validated();
+
         if($request->hasFile('cover_photo') && $request->file('cover_photo')->isValid())
         {
             $file_name = uploadFile($request->cover_photo , 'images');
-            $attributes['cover'] = $file_name;
+            $attributes['cover_photo'] = $file_name;
          }
          if($request->hasFile('image') && $request->file('image')->isValid())
          {
             $file_name = uploadFile($request->image , 'images');
             $attributes['image'] = $file_name;
-         } 
+         }
+         $category =$attributes['category'];
+         unset($attributes['category']);
         $course->update($attributes);
-        $course->Category()->sync($attributes['category']);
+        $course->Category()->sync($category);
         return redirect()->route('course.index')->with('success' , 'Course is successfully updated!');
     }
 

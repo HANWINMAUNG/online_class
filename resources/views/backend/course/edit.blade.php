@@ -5,7 +5,7 @@
     <div class = "container px-6 mx-auto grid">
             <h2 class = "my-6 text-2xl font-semibold text-gray-700 dark:text-gray-200"> Course Edit Form</h2>
             <div class = "flex justify-items-end">
-                  <a class="float-right p-4 mb-8 text-sm  text-purple-100 bg-purple-600 rounded-lg shadow-md focus:outline-none focus:shadow-outline-purple" href="{{ route('course.index') }}"> Back &LeftArrow;</a>
+                  <a class="float-right px-4 py-2 mb-8 text-sm  text-purple-100 bg-purple-600 rounded-lg shadow-md focus:outline-none focus:shadow-outline-purple" href="{{ route('course.index') }}"> Back &LeftArrow;</a>
             </div>
             <form action = "{{ route('course.update' , $course->id) }}" method = "post" id = "form" enctype = "multipart/form-data">
                 @method('PATCH')
@@ -55,8 +55,13 @@
 
                   <label class = "block mt-4 text-sm">
                             <span class = "text-gray-700 dark:text-gray-400">Image<span style = "color:red;">*</span></span>
-                            <input type = "file" name = "image" value="{{ $course->image }}"class="block w-full mt-1 text-sm dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input"/>
+                            <input type = "file" name = "image"class="block w-full mt-1 text-sm dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input"/>
                   </label>
+                    @if(!$course->image == '')
+                    <img src="{{asset('images/' . $course->image)}}" alt="" style="width:100px;height:100px;padding-top:10px;" class="pt-6">
+                    @else
+                    <img src="{{asset('assets/img/noimage.jpg')}}" alt="" style="width:100px;height:100px;padding-top:10px;" class="pt-6">
+                    @endif
                   @error('image')
                             <small style = "color:red;">{{ $message }}*</small>
                   @enderror
@@ -65,6 +70,11 @@
                         <span class = "text-gray-700 dark:text-gray-400">Cover Photo<span style = "color:red;">*</span></span>
                         <input type = "file" name = "cover_photo" value="{{ $course->cover_photo }}" class="block w-full mt-1 text-sm dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input"/>
                   </label>
+                  @if(!$course->cover_photo == '')
+                    <img src="{{asset('images/' . $course->cover_photo)}}" alt="" style="width:100px;height:100px;padding-top:10px;" class="pt-6">
+                    @else
+                    <img src="{{asset('assets/img/noimage.jpg')}}" alt="" style="width:100px;height:100px;padding-top:10px;" class="pt-6">
+                    @endif
                   @error('cover_photo')
                             <small style = "color:red;">{{ $message }}*</small>
                   @enderror
@@ -74,7 +84,7 @@
                           <textarea type="text" name="description"class="block w-full mt-1 text-sm dark:text-gray-300 dark:border-gray-600 dark:bg-gray-700 form-textarea focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:focus:shadow-outline-gray" rows="3" id="description">{{ $course->description }}</textarea>
                   </label>
                   @error('description')
-                            <small style="color:red;">{{ $ }}*</small>
+                            <small style="color:red;">{{ $message }}*</small>
                   @enderror
   
                   <label class = "block mt-4 text-sm">

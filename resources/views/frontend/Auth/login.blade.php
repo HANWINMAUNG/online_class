@@ -1,12 +1,12 @@
 @extends('frontend.layouts.app')
 @section('content') 
                 <section class="slider-area slider-area2">
-                    <div class="slider-active" style="height:300px;">
+                    <div class="slider-active" style="height:250px;">
                         <div class="single-slider slider-height2">
                             <div class="container">
                                 <div class="row">
                                     <div class="col-xl-8 col-lg-11 col-md-12">
-                                        <div class="hero__caption hero__caption2" style="padding-top:130px;">
+                                        <div class="hero__caption hero__caption2" style="padding-top:90px;">
                                             <h1 data-animation="bounceIn" data-delay="0.2s">Login</h1>
                                             <nav aria-label="breadcrumb">
                                                 <ol class="breadcrumb">
@@ -21,7 +21,7 @@
                         </div>
                     </div>
                 </section>
-                <section class="vh-100 gradient-custom mt-6" style="background-color:#976FFF;">
+                <section class="vh-100 gradient-custom mt-6">
                   <div class="container mt-6 py-5 h-100">
                     <div class="row justify-content-center align-items-center h-100">
                       <div class="col-12 col-lg-9 col-xl-6">

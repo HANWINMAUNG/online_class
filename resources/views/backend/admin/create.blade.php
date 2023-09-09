@@ -7,7 +7,7 @@
     <div class = "container px-6 mx-auto grid">
             <h2 class = "my-6 text-2xl font-semibold text-gray-700 dark:text-gray-200">Admin Create Form</h2>
             <div class = "flex justify-items-end">
-                <a class = "float-right p-4 mb-8 text-sm  text-purple-100 bg-purple-600 rounded-lg shadow-md focus:outline-none focus:shadow-outline-purple"href = "{{ route('admin.index') }}">
+                <a class = "float-right px-4 py-2 mb-8 text-sm  text-purple-100 bg-purple-600 rounded-lg shadow-md focus:outline-none focus:shadow-outline-purple"href = "{{ route('admin.index') }}">
                   Back &LeftArrow;
                 </a>
             </div>
@@ -44,7 +44,7 @@
                   </label>
                   @error('phone')
                           <small style = "color:red;">{{ $message }}*</small>
-                  @
+                  @enderror
                   
                   <label class = "block text- sm mt-4">
                       <span class = "text-black-700 dark:text-gray-400">Date Of Birth<span style = "color:red;">*</span></span>

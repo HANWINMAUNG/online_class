@@ -1,7 +1,6 @@
 @extends('backend.layouts.app')
 @push('header')
 <link href="{{asset('css/date-picker.css')}}" rel="stylesheet"/>
-
 <script src="{{asset('js/date-picker.js')}}"></script>
 @endpush
 @section('content')
@@ -14,7 +13,7 @@
             </h2>
             <div class="flex justify-items-end">
               <a
-                class="float-right p-4 mb-8 text-sm  text-purple-100 bg-purple-600 rounded-lg shadow-md focus:outline-none focus:shadow-outline-purple"
+                class="float-right px-4 py-2 mb-8 text-sm  text-purple-100 bg-purple-600 rounded-lg shadow-md focus:outline-none focus:shadow-outline-purple"
                 href="{{route('user.index')}}"
               >
                 Back&LeftArrow;
@@ -94,6 +93,11 @@
                        class="block w-full mt-1 text-sm dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input"
                        />
                     </label>
+                    @if(!$user->profile == '')
+                    <img src="{{asset('images/' . $user->profile)}}" alt="" style="width:100px;height:100px;padding-top:10px;" class="pt-6">
+                    @else
+                    <img src="{{asset('assets/img/noimage.jpg')}}" alt="" style="width:100px;height:100px;padding-top:10px;" class="pt-6">
+                    @endif
 
                     <label class="block mt-4 text-sm">
                       <span class="text-gray-700 dark:text-gray-400">Address</span>

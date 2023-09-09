@@ -2,12 +2,12 @@
 @section('content') 
 <main>     
         <section class="slider-area slider-area2">
-            <div class="slider-active" style="height:300px;">
+            <div class="slider-active" style="height:250px;">
                 <div class="single-slider slider-height2">
                     <div class="container">
                         <div class="row">
                             <div class="col-xl-8 col-lg-11 col-md-12">
-                                <div class="hero__caption hero__caption2" style="padding-top:130px;">
+                                <div class="hero__caption hero__caption2" style="padding-top:90px;">
                                     <h1 data-animation="bounceIn" data-delay="0.2s">Our courses</h1>
                                     <nav aria-label="breadcrumb">
                                         <ol class="breadcrumb">
@@ -51,27 +51,27 @@
                 </div>
                 <div class="row">
                   @if($courses->count()>0)
-                    @foreach($courses as $course)
-                    <div class="col-lg-4">
-                        <div class="properties properties2 mb-30">
-                            <div class="properties__card">
-                                <div class="properties__img overlay1">
-                                    <a href="#"><img src="{{asset('images/' . $course->image)}}" alt="" style="width:340px;height:206px;"></a>
-                                </div>
-                                <div class="properties__caption">
-                                    <p>Instructor Name - {{Str::limit($course->Instructor->name,15,'...')}}</p>
-                                    <h3><a href="#">{{$course->title}}</a></h3>
-                                    <p>{{Str::limit($course->description,30,'...')}}</p>
-                                    <div class="properties__footer d-flex justify-content-between align-items-center">
-                                        <div class="price">
-                                            <span>${{$course->price}}</span>
+                    @foreach($courses as $course)      
+                            <div class="col-lg-4">
+                                <div class="properties properties2 mb-30">
+                                    <div class="properties__card">
+                                        <div class="properties__img overlay1">
+                                            <a href="{{route('course-detail',[$course->slug])}}"><img src="{{asset('images/' . $course->image)}}" alt="" style="width:340px;height:206px;"></a>
+                                        </div>
+                                        <div class="properties__caption">
+                                            <a href="{{route('course-detail',[$course->slug])}}"><p>Instructor Name - {{Str::limit($course->Instructor->name,15,'...')}}</p></a>
+                                            <h3><a href="{{route('course-detail',[$course->slug])}}">{{$course->title}}</a></h3>
+                                            <a href="{{route('course-detail',[$course->slug])}}"><p>{{Str::limit($course->description,30,'...')}}</p></a>
+                                            <div class="properties__footer d-flex justify-content-between align-items-center">
+                                                <div class="price">
+                                                     <a href="{{route('course-detail',[$course->slug])}}"><span>${{$course->price}}</span></a>
+                                                </div>
+                                            </div>
+                                            <a href="{{route('course-detail',[$course->slug])}}" class="border-btn border-btn2">Find out more</a>
                                         </div>
                                     </div>
-                                    <a href="{{route('course-detail',[$course->slug])}}" class="border-btn border-btn2">Find out more</a>
                                 </div>
-                            </div>
-                        </div>
-                    </div>
+                            </div>              
                     @endforeach
                     {{$courses->links()}}
                     @else

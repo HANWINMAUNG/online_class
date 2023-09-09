@@ -3,6 +3,7 @@ namespace App\Models;
 use App\Models\Episode;
 use App\Models\Category;
 use App\Models\Instructor;
+use Illuminate\Support\Str;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -17,19 +18,21 @@ class Course extends Model
         return $this->belongsTo(Instructor::class, 'instructor_id');
     }
 
-    public function Category(){ 
+    public function Category()
+    { 
         return $this->belongsToMany(Category::class);
     }
+    
 
     public function Episode()
     {
         return $this->hasMany(Episode::class);
     }
 
-    public function setTitleAttributes($value)
+    public function setTitleAttribute($value)
     {
-        $this->attributes['title'] = strtolower($value);
-        $this->attributes['slug'] = Str::slug($value);
+        $this->attributes['title'] = $value;
+        $this->attributes['slug'] = strtolower(Str::slug($value));
     }
 
     public function scopeFilter(Builder $builder, array $filters)

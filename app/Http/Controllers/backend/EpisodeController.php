@@ -75,11 +75,11 @@ class EpisodeController extends Controller
          }
          if($request->hasFile('video') && $request->file('video')->isValid())
          {
-            $file_name = uploadFile($request->cover , 'videos');
+            $file_name = uploadFile($request->video , 'videos');
             $attributes['video'] = $file_name;
          } 
         $attributes['course_id'] = $course->id;  
-        Episode::create([$attributes]);
+        Episode::create($attributes);
         return redirect()->route('episode.index' , [$course->id])->with('success' , 'Episode is successfully created!');
     }
 

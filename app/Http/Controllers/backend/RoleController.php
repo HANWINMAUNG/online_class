@@ -85,15 +85,20 @@ class RoleController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function edit(Role $role)
-    {
+    {   
+        $permission_roles = $role->permissions->toBase()->pluck('name','id');
         $permissions = Permission::pluck('name', 'id')->toArray();
         return view('backend.role.edit' , [
             'permissions' => $permissions, 
-            'role'  =>$role]);
+            'permission_roles' => $permission_roles, 
+            'role'  =>$role
+        ]);
     }
 
     /**
      * Update the specified resource in storage.
+     * 
+
      *
      * @param  \Illuminate\Http\Request  $request
      * @param  int  $id

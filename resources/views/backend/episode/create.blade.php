@@ -2,9 +2,9 @@
 @section('content')
 <main class="h-full pb-16 overflow-y-auto">
       <div class="container px-6 mx-auto grid">
-                <h2 class="my-6 text-2xl font-semibold text-gray-700 dark:text-gray-200">Create Form</h2>
+                <h2 class="my-6 text-2xl font-semibold text-gray-700 dark:text-gray-200">Episode Create Form</h2>
                 <div class="flex justify-items-end">
-                      <a class="float-right p-4 mb-8 text-sm  text-purple-100 bg-purple-600 rounded-lg shadow-md focus:outline-none focus:shadow-outline-purple" href="{{route('episode.index',[$course->id])}}">Back &LeftArrow;</a>
+                      <a class="float-right px-4 py-2 mb-8 text-sm  text-purple-100 bg-purple-600 rounded-lg shadow-md focus:outline-none focus:shadow-outline-purple" href="{{route('episode.index',[$course->id])}}">Back &LeftArrow;</a>
                 </div>
                 <form action="{{route('episode.store',[$course->id])}}" method="post" id="form" enctype="multipart/form-data">
                     @csrf
@@ -14,14 +14,6 @@
                                 <input type="text" id="title" name="title" class="block w-full mt-1 text-sm dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input"/>
                         </label>  
                         @error('title')
-                                  <small style="color:red;">{{$message}}*</small>
-                        @enderror
-
-                        <label class="block mt-4 text-sm">
-                                <span class="text-gray-700 dark:text-gray-400">Course Name <span style="color:red;">*</span></span>
-                                <input type="text" name="course_id" value="{{ $course->title }}" class="block w-full mt-1 text-sm dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input" />
-                        </label>
-                        @error('course_id')
                                   <small style="color:red;">{{$message}}*</small>
                         @enderror
 

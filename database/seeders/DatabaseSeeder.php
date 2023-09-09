@@ -20,6 +20,7 @@ class DatabaseSeeder extends Seeder
          \App\Models\Category::factory(20)->create();
          \App\Models\Course::factory(20)->create();
          \App\Models\Episode::factory(20)->create();
+         \App\Models\CategoryCourse::factory(20)->create();
 
          $this->call(PermissionSeeder::class);
          $this->call(SuperAdminSeeder::class);

@@ -5,7 +5,7 @@
               <h2 class="my-6 text-2xl font-semibold text-gray-700 dark:text-gray-200">Role Create Form</h2>
               <div class="flex justify-items-end">
                 <a
-                  class="float-right p-4 mb-8 text-sm  text-purple-100 bg-purple-600 rounded-lg shadow-md focus:outline-none focus:shadow-outline-purple"
+                  class="float-right px-4 py-2 mb-8 text-sm  text-purple-100 bg-purple-600 rounded-lg shadow-md focus:outline-none focus:shadow-outline-purple"
                   href="{{route('role.index')}}"
                 >
                   Back &LeftArrow;
