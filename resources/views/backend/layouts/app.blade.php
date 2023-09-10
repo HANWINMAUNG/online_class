@@ -62,14 +62,22 @@
                             selected: new Date(),
 
                         });
+                   
+                        // const toast = document.getElementById('toast-success');
+                        // toast.addEventListener('click', () => {
+                        //   toast.remove();
+                        //   });
+                        //   const danger = document.getElementById('toast-danger');
+                        // danger.addEventListener('click', () => {
+                        //   danger.remove();
+                        //   });
 
-                        // setTimeout(() =>{
-
-                        //         $('#error_message').fadeOut(); 
-
-                        //     $('#success_message').fadeOut(); 
-
-                        //     },5000);
+                        $('#close_success').on('click', function () {
+                            $('#toast-success').remove()
+                        });
+                        $('#close_danger').on('click', function () {
+                            $('#toast-danger').remove()
+                        });
     </script>
 @stack('script')
 </body>

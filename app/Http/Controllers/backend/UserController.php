@@ -125,6 +125,6 @@ class UserController extends Controller
     {
         $this->checkRolePermission('delete-user');
         $user->delete();
-        return redirect()->route('user.index')->with('success' , 'User is successfully deleted!');
+        return redirect()->route('user.index')->with('delete' , 'User is successfully deleted!');
     }
 }

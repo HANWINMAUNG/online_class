@@ -53,9 +53,9 @@
                     fill="currentColor"
                     viewBox="0 0 20 20"
                   >
-                    <path
-                      d="M10 2a6 6 0 00-6 6v3.586l-.707.707A1 1 0 004 14h12a1 1 0 00.707-1.707L16 11.586V8a6 6 0 00-6-6zM10 18a3 3 0 01-3-3h6a3 3 0 01-3 3z"
+                    <patha3 3 0 01-3 3z"
                     ></path>
+                      d="M10 2a6 6 0 00-6 6v3.586l-.707.707A1 1 0 004 14h12a1 1 0 00.707-1.707L16 11.586V8a6 6 0 00-6-6zM10 18a3 3 0 01-3-3h6
                   </svg>
                   <span
                     aria-hidden="true"
@@ -204,7 +204,7 @@
                 </template>
               </li>
             </ul>
-            <div class="ml-4">
+            <div class="ml-4 relative">
                    @if(auth()->guard('admin')->user())
                         <p
                          class="px-4 py-2 text-sm font-medium leading-5 text-white transition-colors duration-150 text-purple-600 border border-transparent rounded-lg active:bg-purple-600 hover:bg-purple-700 focus:outline-none focus:shadow-outline-purple"
@@ -219,5 +219,6 @@
                       </a>
                       @endif
             </div>
-    </div>
+            @include('backend.layouts.page_info')
+          </div>
 </header>

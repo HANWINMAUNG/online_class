@@ -75,12 +75,16 @@
                     <!-- Single -->
                     <div class="properties pb-20">
                         <div class="properties__card">
-                            <div class="properties__img overlay1">
-                                <a href="#"><img src="{{asset('images/' . $course->image)}}" alt="" style="width:360px;height:218px;"></a>
+                            <div class="properties__img overlay1" style="background-color:#ccc;text-align:center;">
+                                @if(!$course->image == '')
+                                <a href="{{route('course-detail',[$course->slug])}}"><img src="{{asset('images/' . $course->image)}}" alt="" style="width:360px;height:218px;object-fit:contain;"></a>
+                                @else
+                                <a href="{{route('course-detail',[$course->slug])}}"><img src="{{asset('assets/img/noimage.jpg')}}" alt="" style="width:360px;height:218px;object-fit:contain;"></a>
+                                @endif
                             </div>
                             <div class="properties__caption">
                                 <p>Instructor Name - {{Str::limit($course->Instructor->name,15,'...')}}</p>
-                                <h3><a href="#">{{$course->title}}</a></h3>
+                                <h3><a href="{{route('course-detail',[$course->slug])}}">{{$course->title}}</a></h3>
                                 <p>{{Str::limit($course->description,30,'...')}}</p>
                                 <div class="properties__footer d-flex justify-content-between align-items-center">
                                     <div class="price">
@@ -89,19 +93,22 @@
                                 </div>
                                 <a href="{{route('course-detail',[$course->slug])}}" class="border-btn border-btn2">Find out more</a>
                             </div>
-
                         </div>
                     </div>
                     @endforeach
                     @foreach($courses->skip(3) as $course_second)
                     <div class="properties pb-20">
                         <div class="properties__card">
-                            <div class="properties__img overlay1">
-                                <a href="#"><img src="{{asset('images/' . $course_second->image)}}" alt="" style="width:360px;height:218px;"></a>
+                            <div class="properties__img overlay1" style="background-color:#ccc;text-align:center;">
+                                @if(!$course_second->image == '')
+                                <a href="{{route('course-detail',[$course_second->slug])}}"><img src="{{asset('images/' . $course_second->image)}}" alt="" style="width:360px;height:218px;object-fit:contain;"></a>
+                                @else
+                                <a href="{{route('course-detail',[$course_second->slug])}}"><img src="{{asset('assets/img/noimage.jpg')}}" alt="" style="width:360px;height:218px;object-fit:contain;"></a>
+                                @endif
                             </div>
                             <div class="properties__caption">
                                 <p>Instructor Name - {{Str::limit($course_second->Instructor->name,15,'...')}}</p>
-                                <h3><a href="#">{{$course_second->title}}</a></h3>
+                                <h3><a href="{{route('course-detail',[$course_second->slug])}}">{{$course_second->title}}</a></h3>
                                 <p>{{Str::limit($course_second->description,30,'...')}}</p>
                                 <div class="properties__footer d-flex justify-content-between align-items-center">
                                     <div class="price">
@@ -281,8 +288,12 @@
                 <div class="team-active">
                 @foreach($instructors->take(4) as $instructor)
                     <div class="single-cat text-center">
-                        <div class="cat-icon">
-                            <img src="{{asset('images/' . $course_second->profile)}}" alt="" style="width:193px;height:193px;">
+                        <div class="cat-icon" style="background-color:gray;text-align:center;">
+                                 @if(!$instructor->profile == '')
+                                <img src="{{asset('images/' . $instructor->profile)}}" alt="" style="width:193px;height:193px;object-fit:contain;">
+                                @else
+                                <img src="{{asset('assets/img/noimage.jpg')}}" alt="" style="width:193px;height:193px;object-fit:contain;">
+                                @endif
                         </div>
                         <div class="cat-cap">
                             <h5><a href="services.html">{{$instructor->name}}</a></h5>
@@ -292,8 +303,12 @@
                 @endforeach
                 @foreach($instructors->skip(4) as $instructor_second)
                     <div class="single-cat text-center">
-                        <div class="cat-icon">
-                            <img src="{{asset('images/' . $course_second->profile)}}" alt="" style="width:193px;height:193px;">
+                        <div class="cat-icon" style="background-color:gray;text-align:center;">
+                                @if(!$instructor->profile == '')
+                                <img src="{{asset('images/' . $instructor_second->profile)}}" alt="" style="width:193px;height:193px;object-fit:contain;">
+                                @else
+                                <img src="{{asset('assets/img/noimage.jpg')}}" alt="" style="width:193px;height:193px;object-fit:contain;">
+                                @endif
                         </div>
                         <div class="cat-cap">
                             <h5><a href="services.html">{{$instructor_second->name}}</a></h5>

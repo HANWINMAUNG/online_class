@@ -120,6 +120,6 @@ class InstructorController extends Controller
     public function destroy(Instructor $instructor)
     {
         $instructor->delete();
-        return redirect()->route('instructor.index')->with('success' , 'Instructor is successfully deleted!');
+        return redirect()->route('instructor.index')->with('delete' , 'Instructor is successfully deleted!');
     }
 }

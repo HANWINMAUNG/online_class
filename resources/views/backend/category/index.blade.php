@@ -2,7 +2,6 @@
 @section('content') 
 <main class = "h-full pb-16 overflow-y-auto">
           <div class = "container grid px-6 mx-auto flex ">
-                @include('backend.layouts.page_info')
                 <div class = "justify-items-end my-6 text-2xl font-semibold text-gray-700 dark:text-gray-200">
                     <a class = "float-right px-4 py-2 mb-8 text-sm  text-purple-100 bg-purple-600 rounded-lg shadow-md focus:outline-none focus:shadow-outline-purple"href="{{ route('category.create') }}">Category Create &RightArrow;</a>
                 </div>

@@ -25,10 +25,14 @@
       <section class="blog_area single-post-area section-padding">
          <div class="container">
                <div class="row">
-                     <div class="col-lg-6 posts-list">
+                     <div class="col-lg-8 posts-list">
                         <div class="single-post">
-                           <div class="feature-img">
-                              <img class="image-fluid" src="{{asset('images/' . $course->image)}}" alt="image" style="width:550px;height:auto">
+                           <div class="" style="background-color:#ccc;text-align:center;">
+                                       @if(!$course->image == '')
+                                          <a href="{{route('course-detail',[$course->slug])}}"><img   src="{{asset('images/' . $course->image)}}" alt="" style="width:700px;height:350px;object-fit:contain;"></a>
+                                       @else
+                                           <a href="{{route('course-detail',[$course->slug])}}"><img  src="{{asset('assets/img/noimage.jpg')}}" alt="" style="width:700px;height:350px;object-fit:contain;"></a>
+                                       @endif
                            </div>
                         </div>
                         <div class="blog_details">
@@ -47,8 +51,12 @@
                            <div class="blog_right_sidebar">
                                  <aside class="single_sidebar_widget popular_post_widget">
                                        <h3 class="widget_title" style="color: #2d2d2d;">Instructor</h3>
-                                       <div class="media post_item text-center">
-                                          <img src="{{asset('images/' . $course->Instructor->profile)}}" alt="image" style="width:200px;height:200px;text-align:center;">
+                                       <div class="media post_item text-center"style="background-color:white;text-align:center;">
+                                             @if(! $course->Instructor->profile == '')
+                                             <img src="{{asset('images/' . $course->Instructor->profile)}}" alt="" style="width:310px;height:200px;object-fit:contain;">
+                                             @else
+                                             <img src="{{asset('assets/img/noimage.jpg')}}" alt="" style="width:310px;height:200px;object-fit:contain;">
+                                             @endif
                                        </div>
                                        <div class="media post_item">
                                           <i class="fa fa-user"></i>
@@ -95,21 +103,22 @@
                      <div class="text-center mb-2">
                         <h1>Related Episodes</h1>
                      </div>
+                     @foreach($episodes as $episode)
                      <a href="{{ route('episode-detail' , [$course->slug]) }}">
-                           <div class="blog-author" style="background-color:#CC6AFF;">
+                           <div class="blog-author" style="background-color:#b9b7bd;">
                               <div class="media ">
-                                    <svg id="i-video" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="100" height="100" fill="none" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="2">
+                                    <svg id="i-video" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="30" height="30" fill="none" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="2">
                                        <path d="M22 13 L30 8 30 24 22 19 Z M2 8 L2 24 22 24 22 8 Z" />
                                     </svg></i>
                                  <div class="media-body pl-4">
-                                    <a href="#" class="mb-2">
-                                       <h4>Episode</h4>
+                                    <a href="{{ route('episode-detail' , [$course->slug]) }}" class="mb-2">
+                                       <h4>{{ $episode->title }}</h4>
                                     </a>
-                                    <p>See More...</p>
                                  </div>
                               </div>
                            </div>
                      </a>
+                     @endforeach
                   </div>
                </div>    
          </div>

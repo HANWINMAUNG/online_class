@@ -55,8 +55,12 @@
                             <div class="col-lg-4">
                                 <div class="properties properties2 mb-30">
                                     <div class="properties__card">
-                                        <div class="properties__img overlay1">
-                                            <a href="{{route('course-detail',[$course->slug])}}"><img src="{{asset('images/' . $course->image)}}" alt="" style="width:340px;height:206px;"></a>
+                                        <div class="properties__img overlay1" style="background-color:#ccc;text-align:center;">
+                                                @if(!$course->image == '')
+                                                <a href="{{route('course-detail',[$course->slug])}}"><img src="{{asset('images/' . $course->image)}}" alt="" style="width:340px;height:206px;object-fit:contain;"></a>
+                                                @else
+                                                <a href="{{route('course-detail',[$course->slug])}}"><img src="{{asset('assets/img/noimage.jpg')}}" alt="" style="width:340px;height:206px;object-fit:contain;"></a>
+                                                @endif
                                         </div>
                                         <div class="properties__caption">
                                             <a href="{{route('course-detail',[$course->slug])}}"><p>Instructor Name - {{Str::limit($course->Instructor->name,15,'...')}}</p></a>
@@ -73,7 +77,9 @@
                                 </div>
                             </div>              
                     @endforeach
-                    {{$courses->links()}}
+                   <div class="d-flex w-100 justify-content-end" style="font-size:30px;">
+                             {{$courses->links()}}
+                   </div>
                     @else
                     <p class=" text-center text-danger font-weight-bold">
                         No record found!

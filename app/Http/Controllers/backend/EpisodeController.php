@@ -143,6 +143,6 @@ class EpisodeController extends Controller
     public function destroy(Course $course , Episode $episode)
     {
         $episode->delete();
-        return redirect()->route('episode.index' , [$episode->Course->id])->with('success' , 'Episode is successfully deleted!');
+        return redirect()->route('episode.index' , [$episode->Course->id])->with('delete' , 'Episode is successfully deleted!');
     }
 }

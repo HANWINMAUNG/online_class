@@ -16,7 +16,7 @@
                                     <div class="main-menu d-none d-lg-block">
                                         <nav>
                                             <ul id="navigation">                                                                                          
-                                                <li class="active" ><a href="{{ route('home') }}">Home</a></li>
+                                                <li class="active"><a href="{{ route('home') }}">Home</a></li>
                                                 <li><a href="{{ route('courses') }}">Courses</a></li>
                                                 <li><a href="{{ route('about') }}">About</a></li>
                                                 <li><a href="{{ route('contact') }}">Contact</a></li>
