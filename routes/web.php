@@ -34,6 +34,9 @@ Route::get('login', [UserLoginController::class, 'Login'])->name('get.login');
 Route::post('login', [UserLoginController::class, 'postLogin'])->name('post.login');
 Route::get('logout', [UserLoginController::class, 'Logout'])->name('logout');
 
+Route::get('auth/github', [UserLoginController::class, 'github'])->name('auth.socialize');
+Route::post('auth/github/callback', [UserLoginController::class, 'githubCallback'])->name('auth.socialize.callback');
+
 Route::prefix('email/verify')->group(function()
 {
     Route::get('/', [EmailVerificationController::class, 'verify'])->name('verification.verify');

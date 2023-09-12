@@ -6,6 +6,8 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
+use Laravel\Socialite\Facades\Socialite;
+use Carbon\Carbon;
 
 class UserLoginController extends Controller
 {
@@ -48,5 +50,33 @@ class UserLoginController extends Controller
     private function setResend($user)
       {
         session(['resend'=>['id'=>$user->id]]);
-      }    
+      }  
+      
+     public function github()
+     {
+        return Socialite::driver('github')->redirect();
+     } 
+
+     public function githubCallback(Request $request)
+     {
+        if($request->error) {
+            dd(here);
+             return redirect()->route('get.login')->withErrors(['error' => $request->error_description]);
+         }
+          
+         $user = Socialite::driver('github')->user();
+
+         $user = User::firstOrCreate([
+             'email' => $user->getEmail()
+         ] , [
+               'name' => $user->getName(),
+               'password' => 123123123,
+               'profile' => $user->getAvatar(), 
+               'dob' => Carbon::now()->format('Y-m-d'),
+         ]);
+         Auth :: login($user);
+         return redirect()->route('home');
+     }
 }
+
+
