@@ -24,6 +24,7 @@ Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::get('/courses',[CoursesController::class, 'index'])->name('courses');
 Route::get('/courses/{course:slug}',[CoursesController::class, 'show'])->name('course-detail');
 Route::get('/courses/{course:slug}/episode',[EpisodesController::class, 'index'])->name('episode-detail');
+Route::get('/courses/{course:slug}/episode/video',[EpisodesController::class, 'episodeVideo'])->name('episode-video');
 Route::get('/about', function () {return view('frontend/about');})->name('about');
 Route::get('/contact', function () {return view('frontend/contact');})->name('contact');
 
@@ -32,10 +33,15 @@ Route::post('register', [RegisterController::class, 'postRegister'])->name('post
 
 Route::get('login', [UserLoginController::class, 'Login'])->name('get.login');
 Route::post('login', [UserLoginController::class, 'postLogin'])->name('post.login');
-Route::get('logout', [UserLoginController::class, 'Logout'])->name('logout');
 
-Route::get('auth/github', [UserLoginController::class, 'github'])->name('auth.socialize');
-Route::post('auth/github/callback', [UserLoginController::class, 'githubCallback'])->name('auth.socialize.callback');
+Route::group([
+    'middleware'=>'auth',
+],function(){
+Route::get('logout', [UserLoginController::class, 'Logout'])->name('logout');
+});
+
+Route::get('auth/{provider}', [UserLoginController::class, 'socialiteSignIn'])->name('auth.socialize');
+Route::get('auth/{provider}/callback', [UserLoginController::class, 'socialiteCallback'])->name('auth.socialize.callback');
 
 Route::prefix('email/verify')->group(function()
 {

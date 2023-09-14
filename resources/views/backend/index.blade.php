@@ -8,7 +8,7 @@
                     Dashboard
                   </h2>
                   <a
-                    class="flex items-center justify-between p-4 mb-8 text-sm font-semibold text-purple-100 bg-purple-600 rounded-lg shadow-md focus:outline-none focus:shadow-outline-purple"
+                    class="flex items-center justify-between px-4 py-4 mb-8 text-sm font-semibold text-purple-100 bg-purple-600 rounded-lg shadow-md focus:outline-none focus:shadow-outline-purple"
                     href="https://github.com/estevanmaito/windmill-dashboard"
                   >
                     <div class="flex items-center">
@@ -27,7 +27,7 @@
                   </a>
                   <div class="grid gap-6 mb-8 md:grid-cols-2 xl:grid-cols-4">
                     <div
-                      class="flex items-center p-4 bg-white rounded-lg shadow-xs dark:bg-gray-800"
+                      class="flex items-center px-4 py-4 bg-white rounded-lg shadow-xs dark:bg-gray-800"
                     >
                       <div
                         class="p-3 mr-4 text-orange-500 bg-orange-100 rounded-full dark:text-orange-100 dark:bg-orange-500"
@@ -52,7 +52,7 @@
                       </div>
                     </div>
                     <div
-                      class="flex items-center p-4 bg-white rounded-lg shadow-xs dark:bg-gray-800"
+                      class="flex items-center px-4 py-4 bg-white rounded-lg shadow-xs dark:bg-gray-800"
                     >
                       <div
                         class="p-3 mr-4 text-green-500 bg-green-100 rounded-full dark:text-green-100 dark:bg-green-500"
@@ -79,7 +79,7 @@
                       </div>
                     </div>
                     <div
-                      class="flex items-center p-4 bg-white rounded-lg shadow-xs dark:bg-gray-800"
+                      class="flex items-center px-4 py-4 bg-white rounded-lg shadow-xs dark:bg-gray-800"
                     >
                       <div
                         class="p-3 mr-4 text-blue-500 bg-blue-100 rounded-full dark:text-blue-100 dark:bg-blue-500"
@@ -104,7 +104,7 @@
                       </div>
                     </div>
                     <div
-                      class="flex items-center p-4 bg-white rounded-lg shadow-xs dark:bg-gray-800"
+                      class="flex items-center px-4 py-4 bg-white rounded-lg shadow-xs dark:bg-gray-800"
                     >
                       <div
                         class="p-3 mr-4 text-teal-500 bg-teal-100 rounded-full dark:text-teal-100 dark:bg-teal-500"
@@ -138,7 +138,7 @@
                   </h2>
                   <div class="grid gap-6 mb-8 md:grid-cols-2">
                     <div
-                      class="min-w-0 p-4 bg-white rounded-lg shadow-xs dark:bg-gray-800"
+                      class="min-w-0 px-4 py-4 bg-white rounded-lg shadow-xs dark:bg-gray-800"
                     >
                       <h4 class="mb-4 font-semibold text-gray-800 dark:text-gray-300">
                         Revenue
@@ -168,7 +168,7 @@
                       </div>
                     </div>
                     <div
-                      class="min-w-0 p-4 bg-white rounded-lg shadow-xs dark:bg-gray-800"
+                      class="min-w-0 px-4 py-4 bg-white rounded-lg shadow-xs dark:bg-gray-800"
                     >
                       <h4 class="mb-4 font-semibold text-gray-800 dark:text-gray-300">
                         Traffic

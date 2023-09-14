@@ -27,15 +27,17 @@
                       <span class="text-gray-700 dark:text-gray-400">Permission <span style="color:red;">*</span> </span>
                       <select name="permission[]" id="permission" class="select2 block w-full mt-1 text-sm dark:text-gray-300 dark:border-gray-600 dark:bg-gray-700 form-select focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:focus:shadow-outline-gray"multiple>
                         @foreach($permissions as $key => $permission)
-                            @foreach($permission_roles as $keys => $permission_role)
-                                  @if($keys == $key)
+                                 @if(array_key_exists($key, $permission_roles))
                                   <option value="{{$key}}" selected>{{$permission}}</option>
+                                  @else
+                                  <option value="{{$key}}">{{$permission}}</option>
                                   @endif
-                            @endforeach
                         @endforeach
                       </select>
                     </label>
-
+                    @error('permission')
+                          <small style="color:red;">{{$message}}*</small>
+                    @enderror
                     <div class="flex mt-6 text-sm  ">
                            <div class="flex justify-items-end">
                                 <button type="submit"class="px-4 py-2 text-sm font-medium leading-5 text-black transition-colors duration-150 bg-purple-600 border border-transparent rounded-lg active:bg-purple-600 hover:bg-purple-700 focus:outline-none focus:shadow-outline-purple">Submit</button>

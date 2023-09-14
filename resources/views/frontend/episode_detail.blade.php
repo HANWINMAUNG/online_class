@@ -14,7 +14,7 @@
                                                    <h1 data-animation="bounceIn" data-delay="0.2s">Episodes</h1>
                                                    <nav aria-label="breadcrumb">
                                                             <ol class="breadcrumb">
-                                                               <li class="breadcrumb-item"><a href="index.html">course</a></li>
+                                                               <li class="breadcrumb-item"><a href="{{route('course-detail' , $course->slug)}}">course</a></li>
                                                                <li class="breadcrumb-item"><a href="#">Episode</a></li> 
                                                             </ol>
                                                    </nav>
@@ -31,9 +31,9 @@
       <section class="blog_area single-post-area section-padding">
             <div class="container">
                   <div class="row">
-                        <div class="col-lg-4 posts-list card p-4" style="height:600px;">
+                        <div class="col-lg-4 posts-list card p-4" style="height:630px;">
                                  @foreach($episodes as $episode)
-                                       <div class="blog-author click-to ep{{$loop->index}}" style="background-color:#b9b7bd;padding:20px 40px;margin-top:10px;" data-toggle="collapse" data-target="#{{$episode->id}}" aria-expanded="false" aria-controls="collapseOne">
+                                       <div class="blog-author click" id="{{$episode->id}} " style="background-color:#b9b7bd;padding:20px 40px;margin-top:10px;" data-toggle="collapse" data-target="#{{$episode->id}}" aria-expanded="false" aria-controls="collapseOne">
                                              <div class="media align-items-center">
                                                       @if($episode->privacy == 'public')
                                                       <svg id="i-video" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="30" height="30" fill="none" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="2">
@@ -49,37 +49,8 @@
                                        </div>
                                  @endforeach
                         </div>
-                        <div class="col-lg-8 card p-4" style="height:600px;">
-                              @foreach($episodes as $episode)
-                                    <div id="vd{{$loop->index}}" >
-                                          <video
-                                                id="my-video"
-                                                class="video-js"
-                                                controls
-                                                preload="auto"
-                                                width="768"
-                                                height="400"
-                                                poster="MY_VIDEO_POSTER.jpg"
-                                                data-setup="{}"
-                                                >
-                                                <source src="{{asset('videos/' . $episode->video)}}" type="video/mp4" />
-                                                <p class="vjs-no-js">
-                                                      To view this video please enable JavaScript, and consider upgrading to a
-                                                      web browser that
-                                                </p>
-                                          </video>
-                                    </div>
-                                    <div>
-                                          <h4 class="mt-4">
-                                          Summary
-                                          </h4>
-                                          <div class="quote-wrapper">
-                                                <div class="quotes">
-                                                      {{$episode->summary}}
-                                                </div>
-                                          </div>  
-                                    </div>
-                              @endforeach 
+                        <div class=" append col-lg-8 card p-4" style="height:630px;">
+                              <!-- append -->
                         </div>
                   </div>
             </div>
@@ -90,13 +61,40 @@
    <script src="{{asset('frontend/assets/js/video.min.js')}}"></script>
     
 <script>
-         $(() => {
-            $(document).on('click', '.click-to', () => {
-                  let ca = 0;
-                  $(this).remove();
-                  console.log();
-            })
-      })
+      $( document ).ready(function() {
+            $(document ).on( "click", '.click', function() {
+                  let course_slug = "{{ $course->slug }}";
+                  let video_id = $(this).attr('id');
+                  $('.remove').remove();
+                            $.get(`http://localhost:8000/courses/${course_slug}/episode/video` , {video_id:video_id}, (res) => {
+                              $('.remove').remove();
+                                       let response = JSON.parse(res)
+                                       console.log(response)
+                                       let path_video = "{{ asset('videos') }}"
+                                       console.log(path_video);
+                                       let temp =
+                                       `<div class="remove">
+                                          <video style="width:901px;height:400px;" controls>
+                                                <source src="${path_video}/${response.video}" type="video/mp4">
+                                          </video>
+                                          <div>
+                                                <h4 class="mt-4">
+                                                Summary
+                                                </h4>
+                                                <div class="quote-wrapper">
+                                                      <div class="quotes">
+                                                            ${response.summary}
+                                                      </div>
+                                                </div>  
+                                          </div>
+                                    </div>`;
+                                    $( ".append" ).append( temp )
+                            }) 
+                            
+                              } );
+                             
+               });
+         
 </script>
 
 @endpush

@@ -47,7 +47,7 @@
                       
                       <label class="block text- sm mt-4">
                         <span class="text-gray-700 dark:text-gray-400">Date Of Birth<span style="color:red;">*</span></span>
-                        <input type="date" id="datePicker"  name="dob" class=" w-full mt-1 text-sm dark:border-gray-600 dark:bg-gray-700 focus:border-purple-700 focus:outline-none focus:shadow-outline-purple-500 dark:text-gray-300 dark:focus:shadow-outline-gray form-input"/>
+                        <input type="date" id="datePicker"  name="dob" class=" w-full mt-1 text-sm border-gray-600 dark:bg-gray-700 focus:border-purple-700 focus:outline-none focus:shadow-outline-purple-500 dark:text-gray-300 dark:focus:shadow-outline-gray form-input"/>
                       </label>
                       @error('dob')
                                 <small style="color:red;">{{$message}}*</small>

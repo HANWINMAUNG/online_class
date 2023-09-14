@@ -12,7 +12,7 @@ class HomeController extends Controller
     public function index()
     {  
         $courses = Course::query()->with('Instructor' , 'Category')->get(); 
-        $categories = Category::toBase()->get();
+        $categories = Category::get();
         $instructors = Instructor::toBase()->get(); 
         return view('frontend/home',
         [

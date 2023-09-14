@@ -106,9 +106,10 @@ class CourseController extends Controller
      */
     public function edit(Course $course)
     {
-        $category_courses = $course->Category->toBase()->pluck('title' , 'id')->toArray();
+        $category_courses = $course->Category->toBase()->pluck('id', 'id')->toArray();
         $categories = Category::pluck('title', 'id')->toArray();
         $instructors = Instructor::query()->get();
+        //  dd($category_courses);
         return view('backend.course.edit',[
             'instructors' =>  $instructors,
             'course' => $course,

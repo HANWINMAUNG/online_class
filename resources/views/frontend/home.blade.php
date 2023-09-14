@@ -77,9 +77,9 @@
                         <div class="properties__card">
                             <div class="properties__img overlay1" style="background-color:#ccc;text-align:center;">
                                 @if(!$course->image == '')
-                                <a href="{{route('course-detail',[$course->slug])}}"><img src="{{asset('images/' . $course->image)}}" alt="" style="width:360px;height:218px;object-fit:contain;"></a>
+                                <a href="{{route('course-detail',[$course->slug])}}"><img src="{{asset('images/' . $course->image)}}" alt="" style="width:419px;height:218px;object-fit:contain;"></a>
                                 @else
-                                <a href="{{route('course-detail',[$course->slug])}}"><img src="{{asset('assets/img/noimage.jpg')}}" alt="" style="width:360px;height:218px;object-fit:contain;"></a>
+                                <a href="{{route('course-detail',[$course->slug])}}"><img src="{{asset('assets/img/noimage.jpg')}}" alt="" style="width:419px;height:218px;object-fit:contain;"></a>
                                 @endif
                             </div>
                             <div class="properties__caption">
@@ -101,9 +101,9 @@
                         <div class="properties__card">
                             <div class="properties__img overlay1" style="background-color:#ccc;text-align:center;">
                                 @if(!$course_second->image == '')
-                                <a href="{{route('course-detail',[$course_second->slug])}}"><img src="{{asset('images/' . $course_second->image)}}" alt="" style="width:360px;height:218px;object-fit:contain;"></a>
+                                <a href="{{route('course-detail',[$course_second->slug])}}"><img src="{{asset('images/' . $course_second->image)}}" alt="" style="width:419px;height:218px;object-fit:contain;"></a>
                                 @else
-                                <a href="{{route('course-detail',[$course_second->slug])}}"><img src="{{asset('assets/img/noimage.jpg')}}" alt="" style="width:360px;height:218px;object-fit:contain;"></a>
+                                <a href="{{route('course-detail',[$course_second->slug])}}"><img src="{{asset('assets/img/noimage.jpg')}}" alt="" style="width:419px;height:218px;object-fit:contain;"></a>
                                 @endif
                             </div>
                             <div class="properties__caption">

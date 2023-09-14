@@ -52,20 +52,25 @@ class UserLoginController extends Controller
         session(['resend'=>['id'=>$user->id]]);
       }  
       
-     public function github()
+     public function socialiteSignIn(string $provider)
      {
-        return Socialite::driver('github')->redirect();
+        if(false == in_array($provider , ['github' , 'google'])){
+            return back()->withErrors(['error' => 'Invalid provider to sign in!']);
+        }
+        return Socialite::driver($provider)->redirect();
      } 
 
-     public function githubCallback(Request $request)
+     public function socialiteCallback(string $provider, Request $request)
      {
         if($request->error) {
-            dd(here);
-             return redirect()->route('get.login')->withErrors(['error' => $request->error_description]);
+             return redirect()->route('get.login')->withErrors(['errors' => $request->error_description]);
          }
-          
-         $user = Socialite::driver('github')->user();
 
+         if(false == in_array($provider , ['github' , 'google'])){
+            return back()->withErrors(['error' => 'Invalid provider to sign in!']);
+        }   
+          
+         $user = Socialite::driver($provider)->stateless()->user();
          $user = User::firstOrCreate([
              'email' => $user->getEmail()
          ] , [
@@ -73,6 +78,7 @@ class UserLoginController extends Controller
                'password' => 123123123,
                'profile' => $user->getAvatar(), 
                'dob' => Carbon::now()->format('Y-m-d'),
+               'email_verified_at' => Carbon::now()->format('Y-m-d H:m:i'),
          ]);
          Auth :: login($user);
          return redirect()->route('home');

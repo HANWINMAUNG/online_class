@@ -29,9 +29,9 @@
                         <div class="single-post">
                            <div class="" style="background-color:#ccc;text-align:center;">
                                        @if(!$course->image == '')
-                                          <a href="{{route('course-detail',[$course->slug])}}"><img   src="{{asset('images/' . $course->image)}}" alt="" style="width:700px;height:350px;object-fit:contain;"></a>
+                                          <a href="{{route('course-detail',[$course->slug])}}"><img   src="{{asset('images/' . $course->image)}}" alt="" style="width:448px;height:350px;object-fit:contain;"></a>
                                        @else
-                                           <a href="{{route('course-detail',[$course->slug])}}"><img  src="{{asset('assets/img/noimage.jpg')}}" alt="" style="width:700px;height:350px;object-fit:contain;"></a>
+                                           <a href="{{route('course-detail',[$course->slug])}}"><img  src="{{asset('assets/img/noimage.jpg')}}" alt="" style="width:448px;height:350px;object-fit:contain;"></a>
                                        @endif
                            </div>
                         </div>

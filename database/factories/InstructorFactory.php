@@ -22,7 +22,7 @@ class InstructorFactory extends Factory
             'profile' => $this->faker->imageUrl(640,480),
             'gender'=> $this->faker->name(),
             'bio'=> $this->faker->company(),
-            'link'=> ['icon' => $faker->company() , 'link' => $faker->company() , 'label' => $faker->company()],
+            'link'=> json_encode([['icon' => $this->faker->company() , 'link' => $this->faker->company() , 'label' => $this->faker->company()]]),
             'dob' => $this->faker->date(),
             'password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi',
         ];

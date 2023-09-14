@@ -3,13 +3,19 @@
 <main class="h-full pb-16 overflow-y-auto mt-16">
           <div class="container px-6 mx-auto grid">
                <div class="flex justify-items-end">
-                     <a class="float-right p-4 mb-8 text-sm  text-purple-100 bg-purple-600 rounded-lg shadow-md focus:outline-none focus:shadow-outline-purple"href="{{ route('instructor.index') }}"> Back &LeftArrow;</a>
+                     <a class="float-right p-2 mb-8 text-sm  text-purple-100 bg-purple-600 rounded-lg shadow-md focus:outline-none focus:shadow-outline-purple"href="{{ route('instructor.index') }}"> Back &LeftArrow;</a>
                </div>
                <h4 class="mb-4 text-lg font-semibold text-gray-600 dark:text-gray-300"> Instructor Details</h4>
                <div class="  mb-8 ">
-                    <div class="w-full p-4 bg-white rounded-lg shadow-xs dark:bg-gray-800">
+                    <div class="w-full px-4 py-4 bg-white rounded-lg shadow-xs dark:bg-gray-800">
                           <h4 class="mb-4 font-semibold text-gray-600 dark:text-gray-300"> Personal Info</h4>
-                          <img src="{{asset('images/' . $instructor->profile)}}" alt="image" style="width:200px;height:200px;" class="mb-4">
+                          <div class="bg-white border-purple-600 text-center rounded-md border-purple-600">
+                                @if(!$instructor->profile == '')
+                                    <img src="{{asset('images/' . $instructor->profile)}}" alt="" style="width:200px;height:200px;padding-top:10px;object-fit:contain;" class=" mb-4 pt-6">
+                                @else
+                                    <img src="{{asset('assets/img/noimage.jpg')}}" alt="" style="width:200px;height:200px;padding-top:10px;object-fit:contain;" class="mb-4 pt-6">
+                                @endif
+                          </div>
                           <div class="flex flex-row">
                                 <p class="text-gray-600 dark:text-gray-400 basis-1/2 ml-8">Name</p>
                                 <p class="ml-6 text-gray-600 dark:text-gray-400 basis-1/2 ">-{{ $instructor->name }}</p>
@@ -39,32 +45,23 @@
                             <p class="ml-6 text-gray-600 dark:text-gray-400 basis-1/2 ">-{{ $instructor->address }}</p>
                           </div>
                           <div class="flex flex-row mt-4">
-                                <h4 class="mb-4 font-semibold text-gray-600 dark:text-gray-300">Link</h4>
-                                <br>
+                          <div class=""><p class="mb-4 font-semibold text-gray-600 dark:text-gray-300 w-full"> Link : </p></div>
                                   @foreach(json_decode($instructor->link,true) as $link)
+                                    <div style="padding-right:40px;">
                                           <p class="text-gray-600 dark:text-gray-400 basis-1/2 ml-8">
-                                            Icon
-                                          </p>
-                                          <p class="ml-6 text-gray-600 dark:text-gray-400 ">
-                                            -{{ $link['icon'] }} 
+                                            Icon  -{{ $link['icon'] }} 
                                           </p>
                                           <p class="text-gray-600 dark:text-gray-400 ml-8">
-                                            Url
-                                          </p>
-                                          <p class="ml-6 text-gray-600 dark:text-gray-400  ">
-                                            -{{ $link['link'] }} 
+                                            Url -{{ $link['link'] }} 
                                           </p>
                                           <p class="text-gray-600 dark:text-gray-400 ml-8">
-                                            Label
+                                            Label -{{ $link['label'] }}
                                           </p>
-                                          <p class="ml-6 text-gray-600 dark:text-gray-400  ">
-                                            -{{ $link['label'] }} 
-                                          </p>
-                                          <br>
+                                      </div>
                                   @endforeach
                           </div>
                     </div>
-               </div>
+               </div> 
           </div>
 </main>
 @endsection

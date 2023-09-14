@@ -25,7 +25,7 @@
                                                 <li class="button-header"><a href="{{ route('logout') }}" class="btn btn3">Logout</a></li>
                                                 @else
                                                 <li class="button-header margin-left "><a href="{{ route('get.register') }}" class="btn">Register</a></li>
-                                                <li class="button-header"><a href="{{ route('get.login') }}" class="btn btn3">Log in</a></li>
+                                                <li class="button-header p-2"><a href="{{ route('get.login') }}" class="btn btn3">Log in</a></li>
                                                 @endif
                                             </ul>
                                         </nav>

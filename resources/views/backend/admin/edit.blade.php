@@ -70,11 +70,13 @@
                             <span class = "text-gray-700 dark:text-gray-400">Profile<span style = "color:red;">*</span></span>
                             <input type = "file" name = "profile" value = "{{ $admin->profile }}" class = "block w-full mt-1 text-sm dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input"/>
                     </label>
+                    <div class=" rounded-md bg-white text-center">
                         @if(!$admin->profile == '')
-                        <img src="{{asset('images/' . $admin->profile)}}" alt="" style="width:100px;height:100px;padding-top:10px;" class="pt-6">
+                        <img src="{{asset('images/' . $admin->profile)}}" alt="" style="width:200px;height:200px;padding-top:10px;object-fit:contain;" class="pt-6">
                         @else
-                        <img src="{{asset('assets/img/noimage.jpg')}}" alt="" style="width:100px;height:100px;padding-top:10px;" class="pt-6">
+                        <img src="{{asset('assets/img/noimage.jpg')}}" alt="" style="width:200px;height:200px;padding-top:10px;object-fit:contain;" class="pt-6">
                         @endif
+                      </div>
                       @error('profile')
                               <small style = "color:red;">{{ $message }}*</small>
                       @enderror

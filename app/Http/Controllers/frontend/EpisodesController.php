@@ -16,4 +16,10 @@ class EpisodesController extends Controller
             'course' => $course
         ]);
     } 
+    public function episodeVideo()
+    {  
+        
+        $video = Episode::where('id',request()->video_id)->first();
+        return json_encode($video);
+    } 
 }

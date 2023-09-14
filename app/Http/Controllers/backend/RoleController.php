@@ -86,7 +86,7 @@ class RoleController extends Controller
      */
     public function edit(Role $role)
     {   
-        $permission_roles = $role->permissions->toBase()->pluck('name','id');
+        $permission_roles = $role->permissions->toBase()->pluck('id','id')->toArray();
         $permissions = Permission::pluck('name', 'id')->toArray();
         return view('backend.role.edit' , [
             'permissions' => $permissions, 
@@ -104,10 +104,10 @@ class RoleController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(RoleRequest $request , $id)
+    public function update(RoleRequest $request , Role $role)
     {
         $attributes = $request->validated();
-        $role = Role::update([
+        $role ->update([
             'name' => $attributes['name'],
             'guard_name' => 'admin'
         ]);

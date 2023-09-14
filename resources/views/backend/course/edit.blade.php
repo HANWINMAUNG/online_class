@@ -36,11 +36,11 @@
                          <span class="text-gray-700 dark:text-gray-400">Category Name<span style="color:red;">*</span></span>
                          <select name="category[]" id="category"class="select2 block w-full mt-1 text-sm dark:text-gray-300 dark:border-gray-600 dark:bg-gray-700 form-select focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:focus:shadow-outline-gray"multiple>
                                        @foreach($categories as $key =>$category)
-                                         @foreach($category_courses as $keys =>$category_course)
-                                              @if($keys == $key)
+                                              @if(array_key_exists($key, $category_courses))
                                               <option value="{{$key}}" selected>{{$category}}</option>
+                                              @else
+                                              <option value="{{$key}}">{{$category}}</option>
                                               @endif
-                                         @endforeach
                                       @endforeach
                          </select>
                   </label>
@@ -57,11 +57,13 @@
                             <span class = "text-gray-700 dark:text-gray-400">Image<span style = "color:red;">*</span></span>
                             <input type = "file" name = "image"class="block w-full mt-1 text-sm dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input"/>
                   </label>
-                    @if(!$course->image == '')
-                    <img src="{{asset('images/' . $course->image)}}" alt="" style="width:100px;height:100px;padding-top:10px;" class="pt-6">
-                    @else
-                    <img src="{{asset('assets/img/noimage.jpg')}}" alt="" style="width:100px;height:100px;padding-top:10px;" class="pt-6">
-                    @endif
+                  <div class=" rounded-md bg-white text-center">
+                        @if(!$course->image == '')
+                        <img src="{{asset('images/' . $course->image)}}" alt="" style="width:200px;height:200px;padding-top:10px;object-fit:contain" class="pt-6">
+                        @else
+                        <img src="{{asset('assets/img/noimage.jpg')}}" alt="" style="width:200px;height:200px;padding-top:10px;object-fit:contain" class="pt-6">
+                        @endif
+                  </div>
                   @error('image')
                             <small style = "color:red;">{{ $message }}*</small>
                   @enderror
@@ -70,11 +72,13 @@
                         <span class = "text-gray-700 dark:text-gray-400">Cover Photo<span style = "color:red;">*</span></span>
                         <input type = "file" name = "cover_photo" value="{{ $course->cover_photo }}" class="block w-full mt-1 text-sm dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input"/>
                   </label>
-                  @if(!$course->cover_photo == '')
-                    <img src="{{asset('images/' . $course->cover_photo)}}" alt="" style="width:100px;height:100px;padding-top:10px;" class="pt-6">
-                    @else
-                    <img src="{{asset('assets/img/noimage.jpg')}}" alt="" style="width:100px;height:100px;padding-top:10px;" class="pt-6">
-                    @endif
+                  <div class=" rounded-md bg-white text-center">
+                      @if(!$course->cover_photo == '')
+                        <img src="{{asset('images/' . $course->cover_photo)}}" alt="" style="width:200px;height:200px;padding-top:10px;object-fit:contain" class="pt-6">
+                        @else
+                        <img src="{{asset('assets/img/noimage.jpg')}}" alt="" style="width:200px;height:200px;padding-top:10px;object-fit:contain" class="pt-6">
+                        @endif
+                  </div>
                   @error('cover_photo')
                             <small style = "color:red;">{{ $message }}*</small>
                   @enderror

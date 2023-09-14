@@ -15,9 +15,11 @@ class CreateCategoryCourseTable extends Migration
     {
         Schema::create('category_course', function (Blueprint $table) {
             $table->id();
-            $table->unsignedInteger('category_id');
-            $table->unsignedInteger('course_id');
+            $table->foreignId('category_id');
+            $table->foreignId('course_id');
             $table->timestamps();
+            $table->foreign('category_id')->references('id')->on('categories')->onDelete('cascade'); 
+            $table->foreign('course_id')->references('id')->on('courses')->onDelete('cascade'); 
         });
     }
 
