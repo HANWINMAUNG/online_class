@@ -44,7 +44,7 @@
                     <div class="text-lg-right">
                     <form method="GET" action="{{ route('courses')}}">
                         <input type="text" name="search" value="{{request('search') ?? ''}}" placeholder="Find something"
-                               class="p-4 m-4 " style="width:340px;">
+                               class="p-4 m-4 " style="width:400px;">
                     </form>
                     </div>
                     </div>

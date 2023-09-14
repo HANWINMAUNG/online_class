@@ -20,7 +20,7 @@
                                             @endif
                                         </div>
                             </div>
-                            <div class="text-lg text-purple-600">
+                            <div class="text-lg text-purple-600" style="padding-left:40px;">
                                          <h3>Cover Photo</h3>
                                         <div class="bg-white border-purple-600 text-center rounded-md">
                                             @if(!$episode->cover_photo == '')
