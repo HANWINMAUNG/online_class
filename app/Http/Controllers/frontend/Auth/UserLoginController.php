@@ -74,7 +74,7 @@ class UserLoginController extends Controller
          $user = User::firstOrCreate([
              'email' => $user->getEmail()
          ] , [
-               'name' => $user->getName(),
+               'name' => $user->getName() ?? '',
                'password' => 123123123,
                'profile' => $user->getAvatar(), 
                'dob' => Carbon::now()->format('Y-m-d'),
