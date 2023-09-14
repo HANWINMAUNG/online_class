@@ -25,7 +25,7 @@ class CreateInstructorsTable extends Migration
             $table->string('profile');
             $table->string('gender')->nullable();
             $table->date('dob');
-            $table->longText('link')->nullable();
+            $table->json('link')->nullable();
             $table->timestamps();
         });
     }
