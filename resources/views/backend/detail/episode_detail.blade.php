@@ -23,8 +23,8 @@
                             <div class="text-lg text-purple-600" style="padding-left:40px;">
                                          <h3>Cover Photo</h3>
                                         <div class="bg-white border-purple-600 text-center rounded-md">
-                                            @if(!$episode->cover_photo == '')
-                                                <img src="{{asset('images/' . $episode->cover_photo)}}" alt="" style="width:200px;height:100px;padding:5px;object-fit:contain;" class=" mb-4">
+                                            @if(!$episode->cover == '')
+                                                <img src="{{asset('images/' . $episode->cover)}}" alt="" style="width:200px;height:100px;padding:5px;object-fit:contain;" class=" mb-4">
                                             @else
                                                 <img src="{{asset('assets/img/noimage.jpg')}}" alt="" style="width:200px;height:100px;padding:5px;object-fit:contain;" class="mb-4">
                                             @endif

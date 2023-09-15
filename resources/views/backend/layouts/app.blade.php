@@ -56,21 +56,13 @@
     <script type="text/javascript" src="{{asset('js/all_plugins.js')}}"></script>
 
     <script src="//cdn.datatables.net/1.13.5/js/jquery.dataTables.min.js"></script>
-    <script>
+@stack('script')
+<script>
                   $("#datePicker").pDatePicker({
 
                             selected: new Date(),
 
                         });
-                   
-                        // const toast = document.getElementById('toast-success');
-                        // toast.addEventListener('click', () => {
-                        //   toast.remove();
-                        //   });
-                        //   const danger = document.getElementById('toast-danger');
-                        // danger.addEventListener('click', () => {
-                        //   danger.remove();
-                        //   });
 
                         $('#close_success').on('click', function () {
                             $('#toast-success').remove()
@@ -79,6 +71,5 @@
                             $('#toast-danger').remove()
                         });
     </script>
-@stack('script')
 </body>
 </html>

@@ -9,7 +9,7 @@
                   <div class="w-full overflow-hidden rounded-lg shadow-xs">
                     <div class="w-full overflow-x-auto">
                           <div class="p-4">
-                                <table class="display p-4 data-table">
+                                <table class="display p-2 data-table">
                                   <thead>
                                     <tr>
                                       <th style="text-align:center;">Instructor Name</th>

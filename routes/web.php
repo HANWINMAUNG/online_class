@@ -34,11 +34,8 @@ Route::post('register', [RegisterController::class, 'postRegister'])->name('post
 Route::get('login', [UserLoginController::class, 'Login'])->name('get.login');
 Route::post('login', [UserLoginController::class, 'postLogin'])->name('post.login');
 
-Route::group([
-    'middleware'=>'auth',
-],function(){
-Route::get('logout', [UserLoginController::class, 'Logout'])->name('logout');
-});
+
+Route::get('logout', [UserLoginController::class, 'Logout'])->name('logout')->middleware(['auth']);
 
 Route::get('auth/{provider}', [UserLoginController::class, 'socialiteSignIn'])->name('auth.socialize');
 Route::get('auth/{provider}/callback', [UserLoginController::class, 'socialiteCallback'])->name('auth.socialize.callback');

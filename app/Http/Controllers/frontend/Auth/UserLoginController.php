@@ -55,7 +55,7 @@ class UserLoginController extends Controller
      public function socialiteSignIn(string $provider)
      {
         if(false == in_array($provider , ['github' , 'google'])){
-            return back()->withErrors(['error' => 'Invalid provider to sign in!']);
+            return back()->withErrors(['err' => 'Invalid provider to sign in!']);
         }
         return Socialite::driver($provider)->redirect();
      } 
@@ -63,14 +63,14 @@ class UserLoginController extends Controller
      public function socialiteCallback(string $provider, Request $request)
      {
         if($request->error) {
-             return redirect()->route('get.login')->withErrors(['errors' => $request->error_description]);
+             return redirect()->route('get.login')->withErrors(['err' => $request->error_description]);
          }
 
          if(false == in_array($provider , ['github' , 'google'])){
             return back()->withErrors(['error' => 'Invalid provider to sign in!']);
         }   
           
-         $user = Socialite::driver($provider)->stateless()->user();
+         $user = Socialite::driver($provider)->user();
          $user = User::firstOrCreate([
              'email' => $user->getEmail()
          ] , [

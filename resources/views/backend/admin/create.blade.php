@@ -93,6 +93,7 @@
 </main>
 @endsection
 @push('script')
+<script src="{{ asset('js/date-picker.js') }}"></script>
                   <script>
                                       const validation = new JustValidate('#form', {
                                             errorFieldCssClass: 'is-invalid',

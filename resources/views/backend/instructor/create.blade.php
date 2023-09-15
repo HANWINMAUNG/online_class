@@ -1,7 +1,6 @@
 @extends('backend.layouts.app')
 @push('header')
 <link href="{{asset('css/date-picker.css')}}" rel="stylesheet"/>
-<script src="{{asset('js/date-picker.js')}}"></script>
 @endpush
 @section('content')
 <main class="h-full pb-16 overflow-y-auto">
@@ -91,7 +90,7 @@
 
                       <div class="append" >
                             <div class="w-full max-w-lg  border-2 relative mt-4 link_select" > 
-                                          <div class="absolute top-0 right-0 ">
+                                          <div class="absolute top-0 right-0 mt-2 mr-2">
                                             <button   id="addMore"class="  px-3 py-1 text-sm font-medium leading-5 text-white transition-colors duration-150 bg-purple-600 border border-transparent rounded-md active:bg-purple-600 hover:bg-purple-700 focus:outline-none focus:shadow-outline-purple">Add more</button>
                                           </div>
                                           <div class="p-6 "  >
@@ -132,6 +131,7 @@
 </main>
 @endsection
 @push('script')
+<script src="{{asset('js/date-picker.js')}}"></script>
    <script>
         $(document).ready(function () {
             $("#addMore").click(function (e) {   
@@ -142,7 +142,7 @@
         let template = `
         
         <div class="w-full max-w-lg  border-2 relative mt-4 append_second link_select" > 
-                                      <div class="absolute top-0 right-0 ">
+                                      <div class="absolute top-0 right-0 mt-2 mr-2">
                                         <button 
                                           class="delete_button px-3 py-1 text-sm font-medium leading-5 text-white transition-colors duration-150 bg-red-600 border border-transparent rounded-md active:bg-red-600 hover:bg-red-700 focus:outline-none focus:shadow-outline-red"
                                         >

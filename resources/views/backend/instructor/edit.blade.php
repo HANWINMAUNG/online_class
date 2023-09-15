@@ -1,7 +1,6 @@
 @extends('backend.layouts.app')
 @push('header')
 <link href="{{asset('css/date-picker.css')}}" rel="stylesheet"/>
-<script src="{{asset('js/date-picker.js')}}"></script>
 @endpush
 @section('content')
 <main class="h-full pb-16 overflow-y-auto">
@@ -28,15 +27,7 @@
                       </label>
                       @error('email')
                                 <small style="color:red;">{{$message}}*</small>
-                      @enderror
-      
-                      <label class="block text-sm mt-2">
-                        <span class="text-gray-700 dark:text-gray-400">Password<span style="color:red;">*</span></span>
-                        <input type="password" name="password" id="password" class="block w-full mt-1 text-sm dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input" />
-                      </label>
-                      @error('password')
-                                <small style="color:red;">{{$message}}*</small>
-                      @enderror
+                      @enderror                    
 
                       <label class="block mt-4 text-sm">
                         <span class="text-gray-700 dark:text-gray-400">Phone<span style="color:red;">*</span></span>
@@ -87,7 +78,7 @@
                       <div class="append" >
                             @foreach(json_decode($instructor->link,true) as  $key => $link)
                                 <div class="w-full max-w-lg  border-2 relative mt-4 link_select" > 
-                                            <div class="absolute top-0 right-0 ">
+                                            <div class="absolute top-0 right-0 mt-2 mr-2">
                                                 @if($key == 0)
                                                 <button class="addMore  px-3 py-1 text-sm font-medium leading-5 text-white transition-colors duration-150 bg-purple-600 border border-transparent rounded-md active:bg-purple-600 hover:bg-purple-700 focus:outline-none focus:shadow-outline-purple"> Add more</button>
                                                 @elseif($key <= count(json_decode($instructor->link,true)))
@@ -132,6 +123,7 @@
 </main>
 @endsection
 @push('script')
+<script src="{{asset('js/date-picker.js')}}"></script>
 <script>
         $(document).ready(function () {
             $(".addMore").click(function (e) {   
@@ -141,7 +133,7 @@
         let template = `
         
         <div class="w-full max-w-lg  border-2 relative mt-4 link_select" > 
-                                      <div class="absolute top-0 right-0 ">
+                                      <div class="absolute top-0 right-0 mt-2 mr-2">
                                         <button 
                                           class="delete_button px-3 py-1 text-sm font-medium leading-5 text-white transition-colors duration-150 bg-red-600 border border-transparent rounded-md active:bg-red-600 hover:bg-red-700 focus:outline-none focus:shadow-outline-red"
                                         >
@@ -206,11 +198,6 @@
                                           {
                                             rule: 'email',
                                             errorMessage: 'Email is invalid!',
-                                          },
-                                        ])
-                                        .addField('#password', [
-                                          {
-                                            rule: 'password',
                                           },
                                         ])
                                        

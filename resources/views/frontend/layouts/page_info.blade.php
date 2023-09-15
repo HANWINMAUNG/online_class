@@ -13,7 +13,7 @@
  </div>
  @endif
  @if(session()->has('err'))
- <div class="text-redtext-2xl text-center w-full mt-2"style="">
+ <div class="text-red text-2xl text-center w-full mt-2"style="">
   <h1 > {{ session('err')}} </h2>
  </div>
  @endif
