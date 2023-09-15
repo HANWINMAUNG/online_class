@@ -8,7 +8,7 @@
               <h4 class = "mb-4 text-lg font-semibold text-gray-600 dark:text-gray-300"> Admin Table</h4>
               <div class = "w-full overflow-hidden rounded-lg shadow-xs">
                   <div class = "w-full overflow-x-auto">
-                        <div class = "p-4">
+                        <div class = "p-4 bg-white">
                                 <table class = "display p-4 data-table">
                                       <thead>
                                           <tr >
@@ -19,8 +19,7 @@
                                             <th style="text-align:center;">Gender</th>
                                             <th style="text-align:center;">Address</th>
                                             <th style="text-align:center;">Joined Date</th>
-                                            <th style="text-align:center;">Actions</th>
-                                            
+                                            <th style="text-align:center;">Actions</th>                                         
                                           </tr>
                                       </thead>
                                       <tbody class = "p-2">
