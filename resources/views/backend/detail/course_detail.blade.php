@@ -45,7 +45,7 @@
                         </div>
                         <div class="flex flex-row mt-4">
                             <p class="text-gray-600 dark:text-gray-400 basis-1/2 ml-8">Summary</p>
-                            <p class="ml-6 text-gray-600 dark:text-gray-400 basis-1/2 ">-{{ $course->summary }} 
+                            <p class="ml-6 text-gray-600 dark:text-gray-400 basis-1/2 ">-{!! $course->summary !!} 
                         </div>
                         <div class="flex flex-row mt-4">
                             <p class="text-gray-600 dark:text-gray-400 basis-1/2 ml-8">Joined Date</p>
