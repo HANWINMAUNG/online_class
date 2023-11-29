@@ -2,15 +2,17 @@
 
 namespace App\Http\Controllers\frontend\Auth;
 
+use Carbon\Carbon;
 use App\Models\User;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
+use App\Providers\RouteServiceProvider;
 use Laravel\Socialite\Facades\Socialite;
-use Carbon\Carbon;
 
 class UserLoginController extends Controller
 {
+    protected $redirectTo = RouteServiceProvider::HOME;
    
     public function Login()
     {

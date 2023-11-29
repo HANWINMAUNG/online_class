@@ -4,9 +4,12 @@ namespace App\Http\Controllers\backend\auth;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
+use App\Providers\RouteServiceProvider;
 
 class LoginController extends Controller
 {
+
+    // protected $redirectTo = RouteServiceProvider::ADMINPANEL;
     public function Login()
     {
         return view('backend.auth.login');
@@ -27,7 +30,8 @@ class LoginController extends Controller
     
      public function Logout()
      {
+      dd('here');
             Auth::guard('admin')->logout();
-            return redirect('admin/login');
+            return redirect()->route('admin');
      }   
 }

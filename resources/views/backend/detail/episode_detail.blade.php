@@ -42,7 +42,7 @@
                                                 <img src="{{asset('assets/img/no-video.jpg.jpg')}}" alt="" style="width:200px;height:100px;padding:5px;object-fit:contain;" class="mb-4">
                                             @endif
                                         </div>
-                            </div>
+                        </div>
                       <div class="flex flex-row">
                            <p class="text-gray-600 dark:text-gray-400 basis-1/2 ml-8">Title</p>
                            <p class="ml-6 text-gray-600 dark:text-gray-400 basis-1/2 ">-{{ $episode->title }}

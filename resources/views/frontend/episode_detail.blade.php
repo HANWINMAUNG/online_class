@@ -88,7 +88,7 @@
                                                 </div>  
                                           </div>
                                     </div>`;
-                                    $( ".append" ).append( temp )
+                                    $( ".append" ).html( temp )
                             }) 
                             
                               } );
